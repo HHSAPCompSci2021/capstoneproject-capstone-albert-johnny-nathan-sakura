@@ -12,7 +12,6 @@ public class Entity {
 	}
 	
 	public boolean isTouching(Entity e) {
-		
 	}
 	
 	public void act() {
