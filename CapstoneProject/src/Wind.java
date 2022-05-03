@@ -1,4 +1,4 @@
 
-public class Wind {
+public class Wind extends Projectile {
 
 }

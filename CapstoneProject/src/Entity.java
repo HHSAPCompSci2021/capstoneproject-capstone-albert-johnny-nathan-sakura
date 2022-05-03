@@ -1,7 +1,7 @@
 
 public class Entity {
 	
-	private double width, height, dmg, x, y;
+	private double width, height, dmg, x, y, vx, vy;
 	private boolean isCircleHitbox;
 	private PImage sprite;
 	
