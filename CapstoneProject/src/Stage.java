@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -7,7 +8,11 @@ public class Stage {
 	private ArrayList<Entity> entityList;
 	private Player curPlayer;
 	private Statistics playerStats;
+	private Point topLeft;
+	private Point dimensions;
 	public Stage(int stageNum) {
+		
+		topLeft = 
 		this.stageNum = stageNum;
 		entityList = new ArrayList<Entity>();
 		entityList.add(new Player());
@@ -15,11 +20,21 @@ public class Stage {
 			entityList.add(new Goon(stageNum));
 		}
 		
+		entityList.add(new Boss(stageNum));
+		
 	}
 	
+	public void setBounds(int x, int y, int width, int height) {
+		topLeft = new Point(x,y);
+		dimensions = new Point(width, height);
+		for (Entity e : entityList) {
+			e.giveBounds(Point topLeft, Point dimensions);
+		}
+	}
 	public void draw(PApplet surface) {
 		act();
-		playerControl()
+		updateStats();
+		playerControls();
 		for (Entity e : entityList) {
 			if (e.isVisble()) e.draw(surface);
 		}
@@ -39,9 +54,7 @@ public class Stage {
 	}
 	
 	private void updateStats() {
-		if () {
-			
-		}
+		//will update Statistics with data about the Player curPlayer
 	}
 	
 }

@@ -8,8 +8,8 @@ public class DrawingSurface extends PApplet {
 	private boolean startMenu;
 	public DrawingSurface() {
 		keys = new ArrayList<Integer>();
-		game1 = new Game();
-		game2 = new Game();
+		game1 = new Game(1);
+		game2 = new Game(2);
 		startMenu = false;
 	}
 	
