@@ -1,10 +1,12 @@
 package entities;
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Entity {
 	
-	private double width, height, dmg, x, y, vx, vy;
+	private double width, height, x, y, vx, vy, hp, dmg;
 	private boolean isCircleHitbox;
 	private PImage sprite;
 	public int[] bounds; //{topLeftX, topLeftY, windowWidth, windowHeight}
@@ -17,6 +19,7 @@ public class Entity {
 		isCircleHitbox = circle; 
 		sprite = image;
 	}
+	
 	
 	/**Returns whether or not the entity is touching another entity
 	 * @param e The other entity
@@ -141,6 +144,12 @@ public class Entity {
 	public double getvy() {
 		return vy;
 	}
+	public void setvx(double v) {
+		vx = v;
+	}
+	public void setvy(double v) {
+		vy = v;
+	}
 	public double getWidth() {
 		return width;
 	}
@@ -150,5 +159,19 @@ public class Entity {
 	public boolean getCircleHitbox() {
 		return isCircleHitbox;
 	}
-	
+	public double getHp() {
+		return hp;
+	}
+	public void setHp(double h) {
+		hp = h;
+	}
+	public void setDmg(double d) {
+		dmg = d;
+	}
+	public double getDmg() {
+		return dmg;
+	}
+	public void act(Entity e) {
+		
+	}
 }
