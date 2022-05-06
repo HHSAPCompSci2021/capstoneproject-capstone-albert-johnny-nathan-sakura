@@ -52,10 +52,15 @@ public class Stage {
 		for (Entity e : entityList) {
 			if (e instanceof Player) {
 				curPlayer = (Player)e;
+				curPlayer.setEntityList(entityList);
 			} else {
 				e.act();
 			}
 		}
+	}
+	
+	public ArrayList<Entity> getEntities() {
+		return entityList;
 	}
 	
 	private void updateStats() {
