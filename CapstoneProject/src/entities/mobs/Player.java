@@ -1,3 +1,5 @@
+package entities.mobs;
+import entities.Entity;
 import processing.core.PImage;
 
 public class Player extends Entity {

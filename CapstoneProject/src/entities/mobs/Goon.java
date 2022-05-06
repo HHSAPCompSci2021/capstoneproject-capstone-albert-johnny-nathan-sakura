@@ -1,3 +1,4 @@
+package entities.mobs;
 
 public class Goon extends Enemy{
 	

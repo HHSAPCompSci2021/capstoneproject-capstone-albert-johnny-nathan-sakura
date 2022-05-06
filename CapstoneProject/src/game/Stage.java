@@ -1,6 +1,11 @@
+package game;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import entities.Entity;
+import entities.mobs.Boss;
+import entities.mobs.Goon;
+import entities.mobs.Player;
 import processing.core.PApplet;
 
 public class Stage {
