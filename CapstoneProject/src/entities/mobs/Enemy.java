@@ -30,18 +30,10 @@ public class Enemy extends Entity{
 		velocity = 0; 
 	}
 	/**
-	 * Fires Bullets
+	 * Allows the Enemy to fire Bullet
 	 */
 	public void shoot(){
-	}
-	
-	
-	public void setHP(double current) {
-		maxHP = current;
-	}
-
-	public double getHP() {
-		return maxHP;
+		
 	}
 	
 	public double getBulletVelocity() {
@@ -51,11 +43,8 @@ public class Enemy extends Entity{
 		velocity = newVelo;
 	}
 	
-	public void setDamage(double newDmg) {
-		damage = newDmg;
-	}
-	
-	public double getDamage() {
-		return damage;
+	public void act() {
+		shoot();
+		super.act();
 	}
 }

@@ -38,7 +38,7 @@ public class Player extends Entity {
 	}
 	
 	/**
-	 * Allows the playr to interact with the surrounding Entities
+	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
 		for (int i = 0; i < entityList.size(); i++) {
@@ -58,7 +58,8 @@ public class Player extends Entity {
 	 * @param y Y-coordinate to move to
 	 */
 	public void move(double x, double y) {
-		
+		setX(x);
+		setY(y);
 	}
 	
 	/**
@@ -68,10 +69,17 @@ public class Player extends Entity {
 	public void addCoins(int a) {
 		coins += a;
 	}
-	
+	/**
+	 * Sets the power up type 
+	 * @param a The type of power up
+	 */
 	public void setPowerUpType(int a) {
 		powerUpType = a;
 	}
+	/**
+	 * Sets the duration of the power up
+	 * @param a Duration of the power up
+	 */
 	public void setPowerUpDuration(int a) {
 		powerUpDuration = a;
 	}

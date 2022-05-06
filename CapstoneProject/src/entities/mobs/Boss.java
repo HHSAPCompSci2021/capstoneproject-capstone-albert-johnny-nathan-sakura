@@ -22,5 +22,12 @@ public class Boss extends Enemy{
 	public Boss(double x, double y, double w, double h, boolean circle, PImage image) {
 		super(x, y, w, h, circle, image);
 	}
-
+	
+	public void shootPatternBullet() {
+		
+	}
+	
+	public void move() {
+		
+	}
 }

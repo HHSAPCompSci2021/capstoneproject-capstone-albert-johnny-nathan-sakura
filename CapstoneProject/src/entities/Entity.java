@@ -149,9 +149,6 @@ public class Entity {
 	 * Causes the entity to act
 	 */
 	public void act() {
-		double distX;
-		double distY;
-		
 		x += vx;
 		y += vy;
 				
@@ -162,7 +159,7 @@ public class Entity {
 		if(bounds[1] <= getY() || getY() >= bounds[1] + bounds[3]) {
 			vy = - vy;
 			y += vy;
-		}					
+		}
 	}
 	
 	/**
@@ -257,31 +254,60 @@ public class Entity {
 	public boolean getCircleHitbox() {
 		return isCircleHitbox;
 	}
-
+	/**
+	 * @return HP of the entity
+	 */
 	public double getHp() {
 		return hp;
 	}
+	/**
+	 * Sets the HP of the entity
+	 * @param h New HP value
+	 */
 	public void setHp(double h) {
 		hp = h;
 	}
+	/**
+	 * Sets the damage per bullet of the entity
+	 * @param d New damage value
+	 */
 	public void setDmg(double d) {
 		dmg = d;
 	}
+	
+	/**
+	 * @return Current damage per bullet
+	 */
 	public double getDmg() {
 		return dmg;
 	}
+	
+	/**
+	 * Causes the entity to act
+	 * @param e
+	 */
 	public void act(Entity e) {
 		
 	}
+	/**
+	 * @return If the player is dead
+	 */
 	public boolean isDead() {
 		return isDead;
 	}
-
+	
+	/**
+	 * @return If the entity is visible
+	 */
 	public boolean isVisble() {
 		return isVisible;
 	}
 
-	//NullPointer
+	/**
+	 * Sets the x,y and dimensions of the window boundary
+	 * @param topLeft Point on the top left corner
+	 * @param dimensions Point on the bottom right corner
+	 */
 	public void giveBounds(Point topLeft, Point dimensions) {
 		bounds[0] = topLeft.x;
 		bounds[1] = topLeft.y;

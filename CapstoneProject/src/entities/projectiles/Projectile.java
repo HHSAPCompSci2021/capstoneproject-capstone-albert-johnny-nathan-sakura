@@ -27,7 +27,7 @@ public class Projectile extends Entity {
 	 * Causes the Entity hit by the bullet to lose HP
 	 */
 	public void act(Entity e) {
-		e.setHp(e.getHp()-getDmg());
+		e.setHp(e.getHp() - getDmg());
 	}
 
 }
