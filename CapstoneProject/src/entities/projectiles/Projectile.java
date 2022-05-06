@@ -2,6 +2,11 @@ package entities.projectiles;
 import entities.Entity;
 import processing.core.PImage;
 
+/**
+ * This class is a projectile, which collides with entities and damages them
+ * @author Johnny Zhang
+ *
+ */
 public class Projectile extends Entity {
 	/**
 	 * Creates a new instance of Projectile with the properties of Entity

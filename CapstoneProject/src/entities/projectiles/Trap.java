@@ -4,6 +4,11 @@ import entities.Entity;
 import entities.mobs.Player;
 import processing.core.PImage;
 
+/**
+ * This is a trap, which can be deployed by players.
+ * @author Johnny Zhang
+ *
+ */
 public class Trap extends Bullet {
 	//1 = hurt, 2 = slow, 3 = subtractCoins
 	private boolean available, cost;

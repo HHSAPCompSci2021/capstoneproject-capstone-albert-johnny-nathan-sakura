@@ -1,7 +1,13 @@
+
 package entities.projectiles;
 
 import processing.core.PImage;
 
+/**
+ * This class is basically the same as projectile, i don't know why we have it
+ * @author Johnny Zhang
+ *
+ */
 public class Bullet extends Projectile {
 	
 	/**
