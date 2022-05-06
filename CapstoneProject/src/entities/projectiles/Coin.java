@@ -6,11 +6,24 @@ import processing.core.PImage;
 
 public class Coin extends Entity {
 	int value;
+	/**
+	 * Creates a new instance of Coin with the properties of Entity
+	 * @param x X-Coordinate
+	 * @param y Y-Coordinate
+	 * @param w Width of hitbox
+	 * @param h Height of hitbox
+	 * @param circle If the hitbox is a circle
+	 * @param image Image of the player sprite
+	 */
 	public Coin(double x, double y, double w, double h, boolean circle, PImage image) {
 		super(x, y, w, h, circle, image);
 		value = 5;
 	}
 	
+	/**
+	 * Adds the coins to the player
+	 * @param e The player
+	 */
 	public void act(Player e) {
 		e.addCoins(value);
 	}
