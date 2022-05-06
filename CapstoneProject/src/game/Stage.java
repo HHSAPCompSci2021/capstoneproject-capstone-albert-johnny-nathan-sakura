@@ -99,6 +99,7 @@ public class Stage {
 			if (e instanceof Player) {
 				playerExists = true;
 				curPlayer = (Player)e;
+				curPlayer.setEntityList(entityList);
 			} else {
 				e.act();
 			}
@@ -106,7 +107,14 @@ public class Stage {
 		if (!playerExists) gameOver = true;
 	}
 	
-	
+	/**Returns the current player referenced in Stage
+	 * 
+	 * @return Player current Player character
+	 */
+	public Player getPlayer() {
+		return curPlayer;
+	}
+
 	
 	private void updateStats() {
 		//will update Statistics with data about the Player curPlayer
