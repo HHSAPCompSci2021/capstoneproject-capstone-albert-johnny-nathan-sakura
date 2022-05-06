@@ -26,12 +26,14 @@ public class Stage {
 		dimensions = new Point(width, height);
 		this.stageNum = stageNum;
 		entityList = new ArrayList<Entity>();
-		entityList.add(new Player());
+		entityList.add(new Player(0, 0, 0, 0, false, null));
 		for (int i = 0; i < 4; i++) {
-			entityList.add(new Goon(stageNum));
+		//	entityList.add(new Goon(stageNum));
+			entityList.add(new Goon(0, 0, 0, 0, false, null));
 		}
 		
-		entityList.add(new Boss(stageNum));
+		//entityList.add(new Boss(stageNum));
+		entityList.add(new Boss(0, 0, 0, 0, false, null));
 		
 		for (Entity e : entityList) {
 			e.giveBounds(topLeft, dimensions);

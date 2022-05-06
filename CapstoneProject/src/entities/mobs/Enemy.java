@@ -1,13 +1,14 @@
 package entities.mobs;
 
 import entities.Entity;
+import processing.core.PImage;
 
 /**
  * The Enemy class represents an enemy with all the properties of the Entity class, with a damage,
  * bullet velocity, and HP.
  * @author nathangu
  */
-public class Enemy{
+public class Enemy extends Entity{
 	
 	private double maxHP;
 	private double damage;
@@ -20,10 +21,11 @@ public class Enemy{
 	 * @param velocity Velocity of the bullets
 	 * @param isCircle If the hitbox is a circle
 	 */
-	public Enemy(double maxHP, double damage, double velocity, boolean isCircle) {
-		this.damage = damage;
-		this.maxHP = maxHP;
-		this.velocity = velocity; 
+	public Enemy(double x, double y, double w, double h, boolean circle, PImage image) {
+		super(x, y, w, h, circle, image);
+		damage = 0;
+		maxHP = 1;
+		velocity = 0; 
 	}
 	/**
 	 * Fires Bullets

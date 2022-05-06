@@ -1,5 +1,7 @@
 package entities.mobs;
 
+import processing.core.PImage;
+
 /**
  * The class Goon class represents an Enemy
  * @author 
@@ -14,8 +16,8 @@ public class Goon extends Enemy{
 	 * @param speed Speed of the bullet
 	 * @param isCircle If the hitbox is a circle
 	 */
-	public Goon(double hp, double damage, double speed, boolean isCircle) {
-		super(hp, damage, speed, isCircle);
+	public Goon(double x, double y, double w, double h, boolean circle, PImage image) {
+		super(x, y, w, h, circle, image);
 	}
 	
 	/**

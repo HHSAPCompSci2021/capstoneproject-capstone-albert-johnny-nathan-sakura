@@ -1,4 +1,5 @@
 package entities;
+import java.awt.Point;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -15,6 +16,8 @@ public class Entity {
 	private double width, height, x, y, vx, vy, hp, dmg;
 	private boolean isCircleHitbox;
 	private PImage sprite;
+	private boolean isDead;
+	private boolean isVisible;
 	public double[] bounds; //{topLeftX, topLeftY, windowWidth, windowHeight}
 	
 	/**
@@ -36,6 +39,8 @@ public class Entity {
 		vx = 0;
 		vy = 0;
 		dmg = 0;
+		isDead = false;
+		isVisible = true;
 	}
 	
 	
@@ -266,5 +271,22 @@ public class Entity {
 	}
 	public void act(Entity e) {
 		
+	}
+	public boolean isDead() {
+		return isDead;
+	}
+
+	public boolean isVisble() {
+		return isVisible;
+	}
+
+
+	public void giveBounds(Point topLeft, Point dimensions) {
+		bounds[0] = topLeft.x;
+		bounds[1] = topLeft.y;
+		bounds[2] = dimensions.x - topLeft.x;
+		bounds[3] = dimensions.y - topLeft.y;
+		
+				
 	}
 }
