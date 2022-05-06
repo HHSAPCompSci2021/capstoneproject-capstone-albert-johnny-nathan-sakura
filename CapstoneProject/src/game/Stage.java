@@ -7,6 +7,7 @@ import entities.mobs.Boss;
 import entities.mobs.Goon;
 import entities.mobs.Player;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**A Stage class that contains all stage entities and makes them act
  * @author ayu663
@@ -18,6 +19,7 @@ public class Stage {
 	private Statistics playerStats;
 	private Point topLeft, dimensions;
 	private boolean gameOver, stageComplete;
+	private Background back;
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
 	 * and dimensions width*height.
@@ -45,11 +47,22 @@ public class Stage {
 		playerStats = new Statistics(curPlayer);
 	}
 	
+	/**Sets up the stage with an image using processing
+	 * @param surface PApplet to setup with
+	 */
+	public void setup(PApplet surface) {
+		PImage cloud = surface.createImage(dimensions.x, dimensions.y, surface.RGB);
+		cloud = surface.loadImage("sprites/cloud_tile.jpg");
+		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, dimensions.y);
+	}
+	
 	/**Will visually draw and update the current state of the Stage elements, and the getStatistics
 	 * 
 	 * @param surface PApplet surface to draw on
 	 */
 	public void draw(PApplet surface) {
+		back.draw(surface);
+		back.scroll(10);
 		act();
 		updateStats();
 		for (Entity e : entityList) {

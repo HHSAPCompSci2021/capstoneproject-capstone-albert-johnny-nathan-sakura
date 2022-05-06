@@ -15,19 +15,28 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void setup() {
-		
+		game1.setup(this);
+		game2.setup(this);
 	}
 	
 	/**Draws both games
 	 */
 	public void draw() {
-		if (isPressed(1)) {
+		if (isPressed(27)) {
 			startMenu = true;
 		}
 		if (startMenu) {
-			rect(0,0,100,100);
+			background(90);
+			textSize(40);
+			text("Paused", width/4,height/4,width/2,height/2);
+			textSize(30);
+			text("Press ENTER to start game",width/4,height/3,width/2,height/2*3);
+			if (isPressed(10)) {
+				startMenu = false;
+			}
 		}
 		else {
+			background(100);
 			game1.draw(this);
 			game2.draw(this);
 		}
@@ -41,7 +50,7 @@ public class DrawingSurface extends PApplet {
 
 	public void keyReleased() {
 		while(keys.contains(keyCode))
-			keys.remove(new Integer(keyCode));
+			keys.remove(keys.indexOf(keyCode));
 	}
 	
 	/**Detects if a key is pressed

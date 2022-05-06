@@ -28,8 +28,8 @@ public class Background {
 	 * @param marker
 	 */
 	public void draw(PApplet marker) {
-		marker.image(photo, 0, curCenterY, width, photo.height);
-		marker.image(photo, 0, curCenterY-photo.height);
+		marker.image(photo, x, curCenterY);//, 0, curCenterY, width, photo.height);
+		marker.image(photo, x,  curCenterY+photo.height);//, 0, curCenterY-photo.height, width, photo.height);
 	}
 	
 	/**Changes the y the Background is currently at while scrolling
@@ -37,6 +37,9 @@ public class Background {
 	 * @param y
 	 */
 	public void scroll(int y) {
-		
+		curCenterY+=y;
+		if (curCenterY > y) {
+			curCenterY = 0;
+		}
 	}
 }

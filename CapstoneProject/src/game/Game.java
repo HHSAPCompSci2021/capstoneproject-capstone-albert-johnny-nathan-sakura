@@ -24,7 +24,7 @@ public class Game {
 		stages = new ArrayList<Stage>();
 		if (gameNum == 2) x = width/2;
 		for (int i = 0; i < 4; i++) {
-			stages.add(new Stage(i, x, 0, width/2, height/2));
+			stages.add(new Stage(i, x, 0, width/2, height));
 		}
 		curStage = stages.get(0);
 	}
@@ -38,6 +38,12 @@ public class Game {
 		return false;
 	}
 	
+	/**Sets up the stages
+	 * @param surface PApplet to setup things with
+	 */
+	public void setup(PApplet surface) {
+		for (Stage s : stages) s.setup(surface);
+	}
 	/** Draws the current Game on the PApplet
 	 * @param surface PApplet to draw things on
 	 */
