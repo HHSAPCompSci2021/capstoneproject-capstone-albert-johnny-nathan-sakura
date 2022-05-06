@@ -41,6 +41,7 @@ public class Entity {
 		dmg = 0;
 		isDead = false;
 		isVisible = true;
+		bounds = new double[4];
 	}
 	
 	
