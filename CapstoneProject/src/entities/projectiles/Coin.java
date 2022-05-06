@@ -4,6 +4,11 @@ import entities.Entity;
 import entities.mobs.Player;
 import processing.core.PImage;
 
+/**
+ * this class represents a coin, which can be picked up.
+ * @author Johnny Zhang
+ *
+ */
 public class Coin extends Entity {
 	int value;
 	/**

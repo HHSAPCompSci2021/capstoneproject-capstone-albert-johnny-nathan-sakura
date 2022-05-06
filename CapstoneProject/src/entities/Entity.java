@@ -246,7 +246,7 @@ public class Entity {
 	}
 	/**
 	 * Sets the height
-	 * @param width New height
+	 * @param height New height
 	 */
 	public void setHeight(double height) {
 		this.height = height;

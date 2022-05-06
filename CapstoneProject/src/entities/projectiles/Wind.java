@@ -3,6 +3,12 @@ package entities.projectiles;
 import entities.mobs.Player;
 import processing.core.PImage;
 
+
+/**
+ * this class represents wind, which pushes a player back. 
+ * @author Johnny Zhang
+ *
+ */
 public class Wind extends Projectile {
 	/**
 	 * Creates a new instance of Wind with the properties of Entity

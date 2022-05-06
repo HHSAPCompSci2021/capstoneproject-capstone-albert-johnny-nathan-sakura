@@ -2,15 +2,20 @@ package entities.projectiles;
 import entities.Entity;
 import processing.core.PImage;
 
+/**
+ * This class is a projectile, which collides with entities and damages them
+ * @author Johnny Zhang
+ *
+ */
 public class Projectile extends Entity {
 	/**
-	 * Creates a new instance of Projectile with the properties of Entity
-	 * @param x X-Coordinate
-	 * @param y Y-Coordinate
-	 * @param w Width of hitbox
-	 * @param h Height of hitbox
+	 * Creates a new instance of Projectile
+	 * @param x X-coordinate
+	 * @param y Y-coordinate
+	 * @param w Width of the hitbox
+	 * @param h Height of the hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
+	 * @param image Image of the entity
 	 */
 	public Projectile(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg, PImage image) {
 		super(x, y, w, h, circle, image);
