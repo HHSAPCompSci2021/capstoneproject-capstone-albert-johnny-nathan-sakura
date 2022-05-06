@@ -280,7 +280,7 @@ public class Entity {
 		return isVisible;
 	}
 
-
+	//NullPointer
 	public void giveBounds(Point topLeft, Point dimensions) {
 		bounds[0] = topLeft.x;
 		bounds[1] = topLeft.y;

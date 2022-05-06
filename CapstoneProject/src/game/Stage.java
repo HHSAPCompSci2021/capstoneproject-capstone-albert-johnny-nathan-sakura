@@ -36,7 +36,7 @@ public class Stage {
 		entityList.add(new Boss(0, 0, 0, 0, false, null));
 		
 		for (Entity e : entityList) {
-			e.giveBounds(topLeft, dimensions);
+			//e.giveBounds(topLeft, dimensions);
 		}
 		
 	}

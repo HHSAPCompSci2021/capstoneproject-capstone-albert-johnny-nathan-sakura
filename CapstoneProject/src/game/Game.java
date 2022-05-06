@@ -19,7 +19,7 @@ public class Game {
 		int x = 0;
 		if (gameNum == 2) x = width/2;
 		for (int i = 0; i < 4; i++) {
-			stages.add(new Stage(i, x, 0, width/2, height/2));
+			//stages.add(new Stage(i, x, 0, width/2, height/2));
 		}
 	}
 	
