@@ -3,6 +3,9 @@ package game;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**A Background class that can draw and scroll up smoothly
+ * @author ayu663
+ */
 public class Background {
 	private PImage photo;
 	private int curCenterY;

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import entities.mobs.Player;
 import processing.core.PApplet;
 
+/**A Statistics class that contains a Player p and can display it's statistics
+ * nicely
+ * @author ayu663
+ */
 public class Statistics {
 	private double hp;
 	private boolean[] skillsUsable;

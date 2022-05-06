@@ -8,6 +8,9 @@ import entities.mobs.Goon;
 import entities.mobs.Player;
 import processing.core.PApplet;
 
+/**A Stage class that contains all stage entities and makes them act
+ * @author ayu663
+ */
 public class Stage {
 	private int stageNum;
 	private ArrayList<Entity> entityList;
@@ -16,7 +19,8 @@ public class Stage {
 	private Point topLeft, dimensions;
 	private boolean gameOver, stageComplete;
 	
-	/** Constructs a stage with stage number stageNum, top left corner x, y, and dimensions width*height.
+	/**Constructs a stage with stage number stageNum, top left corner x, y, 
+	 * and dimensions width*height.
 	 * @param stageNum the stage to construct (1-4)
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height) {
@@ -38,7 +42,7 @@ public class Stage {
 		for (Entity e : entityList) {
 			//e.giveBounds(topLeft, dimensions);
 		}
-		
+		playerStats = new Statistics(curPlayer);
 	}
 	
 	/**Will visually draw and update the current state of the Stage elements, and the getStatistics

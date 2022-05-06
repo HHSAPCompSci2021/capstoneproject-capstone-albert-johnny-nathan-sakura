@@ -3,6 +3,10 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 
+/**A game class that contains all menus, stages, and other elements in it's half
+ * of the processing screen
+ * @author ayu663
+ */
 public class Game {
 	private int gameNum;
 	private ArrayList<Stage> stages;
@@ -17,10 +21,12 @@ public class Game {
 	public Game(int gameNum, int width, int height) {
 		this.gameNum = gameNum;
 		int x = 0;
+		stages = new ArrayList<Stage>();
 		if (gameNum == 2) x = width/2;
 		for (int i = 0; i < 4; i++) {
-			//stages.add(new Stage(i, x, 0, width/2, height/2));
+			stages.add(new Stage(i, x, 0, width/2, height/2));
 		}
+		curStage = stages.get(0);
 	}
 	
 	//switches stage
