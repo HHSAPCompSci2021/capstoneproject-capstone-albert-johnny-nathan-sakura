@@ -50,6 +50,7 @@ public class Player extends Entity {
 				i--;
 			}
 		}
+		powerUpDuration -= 1;
 	}
 	
 	/**
