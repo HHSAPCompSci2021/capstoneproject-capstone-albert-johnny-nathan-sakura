@@ -20,12 +20,14 @@ public class Stage {
 	private Point topLeft, dimensions;
 	private boolean gameOver, stageComplete;
 	private Background back;
+	private int curWave;
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
 	 * and dimensions width*height.
 	 * @param stageNum the stage to construct (1-4)
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height) {
+		curWave = 1;
 		gameOver = false;
 		stageComplete = false;
 		topLeft = new Point(x,y);
@@ -34,12 +36,14 @@ public class Stage {
 		entityList = new ArrayList<Entity>();
 		entityList.add(new Player(0, 0, 0, 0, false, null));
 		for (int i = 0; i < 4; i++) {
-		//	entityList.add(new Goon(stageNum));
+		//	entityList.add(new Goon(stageNum)); we need different stageNum for
+			//different enemy movement
 			entityList.add(new Goon(0, 0, 0, 0, false, null));
 		}
 		
 		//entityList.add(new Boss(stageNum));
-		entityList.add(new Boss(0, 0, 0, 0, false, null));
+		//this is accounted in different waives
+		//entityList.add(new Boss(0, 0, 0, 0, false, null));
 		
 		for (Entity e : entityList) {
 			e.giveBounds(topLeft, dimensions);
@@ -113,17 +117,33 @@ public class Stage {
 	
 	private void act() {
 		boolean playerExists = false;
+		boolean entitiesExist = false;
 		for (Entity e : entityList) {
-			if (e.isDead()) entityList.remove(e);
+			if (e.isDead()) {
+				entityList.remove(e);
+				continue;
+			}
 			if (e instanceof Player) {
 				playerExists = true;
 				curPlayer = (Player)e;
 				curPlayer.setEntityList(entityList);
 			} else {
+				entitiesExist = true;
 				e.act();
 			}
 		}
 		if (!playerExists) gameOver = true;
+		
+		if (!entitiesExist) {
+			curWave++;
+			//you can add below another set of if conditions for each stage that
+			//can change up wave number, enemy number, and other properties
+			if (curWave == 3) {
+				//entityList.add(new Boss());
+			} else {
+				//add some regular enemies for each wave
+			}
+		}
 	}
 	
 	/**Returns the current player referenced in Stage
