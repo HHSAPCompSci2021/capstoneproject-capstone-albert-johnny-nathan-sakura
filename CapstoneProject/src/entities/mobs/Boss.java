@@ -11,11 +11,13 @@ public class Boss extends Enemy{
 
 	
 	/**
-	 * Creates a new instance of Boss 
-	 * @param maxHP The HP of the enemy
-	 * @param damage Damage per bullet of the enemy
-	 * @param velocity Velocity of the bullets
-	 * @param isCircle If the hitbox is a circle
+	 * Creates a new instance of Boss
+	 * @param x X-coordinate
+	 * @param y Y-coordinate
+	 * @param w Width of the hitbox
+	 * @param h Height of the hitbox
+	 * @param circle If the hitbox is a circle
+	 * @param image Image of the entity
 	 */
 	public Boss(double x, double y, double w, double h, boolean circle, PImage image) {
 		super(x, y, w, h, circle, image);

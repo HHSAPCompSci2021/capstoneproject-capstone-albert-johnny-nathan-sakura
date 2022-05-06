@@ -80,8 +80,8 @@ public class Stage {
 	
 	/**Forward inputs into the player for movement and skill activation
 	 * 
-	 * @param surface
-	 * @param gameNum
+	 * @param surface Surface
+	 * @param gameNum Game number
 	 */
 	public void giveInputs(DrawingSurface surface, int gameNum) {
 		
