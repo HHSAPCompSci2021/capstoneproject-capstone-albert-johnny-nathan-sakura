@@ -9,8 +9,8 @@ public class DrawingSurface extends PApplet {
 	private boolean startMenu;
 	public DrawingSurface() {
 		keys = new ArrayList<Integer>();
-		game1 = new Game(1);
-		game2 = new Game(2);
+		game1 = new Game(1, width, height);
+		game2 = new Game(2, width, height);
 		startMenu = false;
 	}
 	
@@ -18,6 +18,8 @@ public class DrawingSurface extends PApplet {
 		
 	}
 	
+	/**Draws both games
+	 */
 	public void draw() {
 		if (isPressed(1)) {
 			startMenu = true;
@@ -30,7 +32,7 @@ public class DrawingSurface extends PApplet {
 			game2.draw(this);
 		}
 	}
-
+	
 	public void keyPressed() {
 		keys.add(keyCode);
 		if (key == ESC)  // This prevents a processing program from closing on escape key
@@ -41,7 +43,12 @@ public class DrawingSurface extends PApplet {
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
-
+	
+	/**Detects if a key is pressed
+	 * 
+	 * @param code key number
+	 * @return true if key is pressed
+	 */
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);
 	}
