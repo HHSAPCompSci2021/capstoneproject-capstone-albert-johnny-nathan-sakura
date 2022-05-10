@@ -32,7 +32,7 @@ public class PowerUp extends Entity {
 	 * Gives the PowerUp to the player
 	 * @param e
 	 */
-	public void act(Player e) {
+	public void interact(Player e) {
 		e.setPowerUpDuration(time);
 		e.setPowerUpType(type);
 	}

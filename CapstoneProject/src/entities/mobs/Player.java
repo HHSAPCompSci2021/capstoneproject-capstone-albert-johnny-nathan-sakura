@@ -44,8 +44,8 @@ public class Player extends Entity {
 	public void act() {
 		for (int i = 0; i < entityList.size(); i++) {
 			Entity e = entityList.get(i);
-			if (isTouching(e) && (e instanceof Projectile || e instanceof PowerUp || e instanceof Coin)) {
-				e.act(this);
+			if (isTouching(e)) {
+				e.interact(this);
 				entityList.remove(i);
 				i--;
 			}
