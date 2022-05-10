@@ -29,7 +29,7 @@ public class Coin extends Entity {
 	 * Adds the coins to the player
 	 * @param e The player
 	 */
-	public void act(Player e) {
+	public void interact(Player e) {
 		e.addCoins(value);
 	}
 

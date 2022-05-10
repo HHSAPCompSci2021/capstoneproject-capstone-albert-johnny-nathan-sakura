@@ -29,7 +29,7 @@ public class Wind extends Projectile {
 	 * Pushes the player back 
 	 * @param player The Player
 	 */
-	public void act(Player player) {
+	public void interact(Player player) {
 		player.setvy(player.getvy() - 10);
 	}
 	

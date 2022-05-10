@@ -2,6 +2,7 @@ package entities;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import entities.mobs.Player;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -315,5 +316,11 @@ public class Entity {
 		bounds[3] = dimensions.y - topLeft.y;
 		
 				
+	}
+
+
+	public void interact(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 }

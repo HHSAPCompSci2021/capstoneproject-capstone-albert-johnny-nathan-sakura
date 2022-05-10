@@ -33,7 +33,7 @@ public class Trap extends Bullet {
 	 * Determines the type of trap and applies the effects on the specified Player
 	 * @param player
 	 */
-	public void act(Player player) {
+	public void interact(Player player) {
 		if (type == 1) {
 			player.setHp(player.getHp()-getDmg());
 		}
