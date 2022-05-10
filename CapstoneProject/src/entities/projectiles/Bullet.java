@@ -9,6 +9,7 @@ import processing.core.PImage;
  *
  */
 public class Bullet extends Projectile {
+	public static PImage img;
 	
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
