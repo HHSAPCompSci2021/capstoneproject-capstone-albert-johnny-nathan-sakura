@@ -24,6 +24,7 @@ public class Player extends Entity {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the player sprite
 	 */
+	//can we hard code images and put the constructor as a playerNum?
 	public Player(double x, double y, double w, double h, boolean circle, PImage image) {
 		super(x,y,w,h,circle,image);
 		entityList = new ArrayList<Entity>();

@@ -22,12 +22,14 @@ public class Background {
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		photo.resize(width, height);
 	}
 	/**Draws this Background class from the currentCenter scrolled 
 	 * 
 	 * @param marker
 	 */
 	public void draw(PApplet marker) {
+		marker.image(photo, x,  curCenterY-photo.height);
 		marker.image(photo, x, curCenterY);//, 0, curCenterY, width, photo.height);
 		marker.image(photo, x,  curCenterY+photo.height);//, 0, curCenterY-photo.height, width, photo.height);
 	}
@@ -36,9 +38,9 @@ public class Background {
 	 * 
 	 * @param y
 	 */
-	public void scroll(int y) {
-		curCenterY+=y;
-		if (curCenterY > y) {
+	public void scroll(int yMove) {
+		curCenterY+=yMove;
+		if (curCenterY > this.y+height) {
 			curCenterY = 0;
 		}
 	}

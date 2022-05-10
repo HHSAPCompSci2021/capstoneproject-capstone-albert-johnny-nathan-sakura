@@ -13,11 +13,16 @@ public class Statistics {
 	private boolean[] skillsUsable;
 	private boolean[] trapsUsable;
 	private double progress, coins;
-	
+	private int x,y,width,height;
 	/**Constructing a Statistics class with a Player class 
 	 * 
 	 */
-	public Statistics(Player p) {
+	public Statistics(Player p, int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		
 		//note: put info in player so below methods dont have to be used
 	}
 	

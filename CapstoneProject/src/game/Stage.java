@@ -26,7 +26,7 @@ public class Stage {
 	 * and dimensions width*height.
 	 * @param stageNum the stage to construct (1-4)
 	 */
-	public Stage(int stageNum, int x, int y, int width, int height) {
+	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
 		curWave = 1;
 		gameOver = false;
 		stageComplete = false;
@@ -34,7 +34,10 @@ public class Stage {
 		dimensions = new Point(width, height);
 		this.stageNum = stageNum;
 		entityList = new ArrayList<Entity>();
-		entityList.add(new Player(0, 0, 0, 0, false, null));
+		//entityList.add(new Player(0, 0, 0, 0, false, null));
+		entityList.add(p);
+		//Johnny requested below
+		p.setEntityList(entityList);
 		for (int i = 0; i < 4; i++) {
 		//	entityList.add(new Goon(stageNum)); we need different stageNum for
 			//different enemy movement
@@ -48,7 +51,7 @@ public class Stage {
 		for (Entity e : entityList) {
 			e.giveBounds(topLeft, dimensions);
 		}
-		playerStats = new Statistics(curPlayer);
+		playerStats = new Statistics(curPlayer, x, y+height, width, 200);
 	}
 	
 	/**Sets up the stage with an image using processing
@@ -57,7 +60,8 @@ public class Stage {
 	public void setup(PApplet surface) {
 		PImage cloud = surface.createImage(dimensions.x, dimensions.y, surface.RGB);
 		cloud = surface.loadImage("sprites/cloud_tile.jpg");
-		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, dimensions.y);
+		System.out.println(topLeft.x);
+		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, cloud.height);
 	}
 	
 	/**Will visually draw and update the current state of the Stage elements, and the getStatistics
@@ -65,8 +69,10 @@ public class Stage {
 	 * @param surface PApplet surface to draw on
 	 */
 	public void draw(PApplet surface) {
+		//surface.clear();
+		
 		back.draw(surface);
-		back.scroll(10);
+		back.scroll(5);
 		act();
 		updateStats();
 		for (Entity e : entityList) {
@@ -140,10 +146,14 @@ public class Stage {
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
 				//entityList.add(new Boss());
-			} else {
+			} else if (curWave < 3) {
 				//add some regular enemies for each wave
 			}
 		}
+	}
+	
+	public boolean isDone() {
+		return curWave > 3;
 	}
 	
 	/**Returns the current player referenced in Stage

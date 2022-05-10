@@ -7,14 +7,20 @@ public class DrawingSurface extends PApplet {
 	private ArrayList<Integer> keys;
 	private Game game1, game2;
 	private boolean startMenu;
-	public DrawingSurface() {
+	private boolean pauseMenu;
+	private int newWidth, newHeight;
+	public DrawingSurface(int width1, int height1) {
+		this.newWidth = width1;
+		this.newHeight = height1;
 		keys = new ArrayList<Integer>();
-		game1 = new Game(1, width, height);
-		game2 = new Game(2, width, height);
-		startMenu = false;
+		startMenu = true;
+		pauseMenu = false;
 	}
 	
 	public void setup() {
+		System.out.println(newWidth + " " + newHeight);
+		game1 = new Game(1, newWidth, newHeight);
+		game2 = new Game(2, newWidth, newHeight);
 		game1.setup(this);
 		game2.setup(this);
 	}
@@ -23,22 +29,40 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		if (isPressed(27)) {
-			startMenu = true;
+			pauseMenu = true;
 		}
-		if (startMenu) {
+		if (pauseMenu) {
 			background(90);
 			textSize(40);
 			text("Paused", width/4,height/4,width/2,height/2);
 			textSize(30);
 			text("Press ENTER to start game",width/4,height/3,width/2,height/2*3);
 			if (isPressed(10)) {
+				pauseMenu = false;
+			}
+		}
+		else if (startMenu) {
+			background(200);
+			textSize(40);
+			text("Lunatic's Resolve", width/4,height/4,width/2,height/2);
+			textSize(30);
+			text("Press SPACE to start game",width/4,height/3,width/2,height/2*3);
+			if (isPressed(32)) {
 				startMenu = false;
 			}
 		}
 		else {
+			clear();
+			
+			//somehow add black bars in the game - set the Game's dimensions to 
+			//fit within these black bars
+			//plan: 50 on the left of game1, 50 in middle, 50 on the right of
+			//		game2, 50 on top, 100 at bottom for statistics (within game
+			//		x bounds also)
 			background(100);
-			game1.draw(this);
 			game2.draw(this);
+			game1.draw(this);
+			
 		}
 	}
 	
