@@ -9,8 +9,7 @@ import processing.core.PImage;
  *
  */
 public class Bullet extends Projectile {
-	public static PImage img;
-	
+	private boolean outOfBounds;
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
 	 * @param x X-Coordinate
@@ -23,7 +22,7 @@ public class Bullet extends Projectile {
 	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg,
 			PImage image) {
 		super(x, y, w, h, vx, vy, circle, dmg, image);
-		// TODO Auto-generated constructor stub
+		outOfBounds = false;
 	}
 
 }

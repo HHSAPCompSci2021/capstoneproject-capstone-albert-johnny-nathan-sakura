@@ -84,4 +84,12 @@ public class Player extends Entity {
 	public void setPowerUpDuration(int a) {
 		powerUpDuration = a;
 	}
+	
+	/**
+	 * Uses skill i
+	 * @param i
+	 */
+	public void useSkill(int i) {
+		
+	}
 }
