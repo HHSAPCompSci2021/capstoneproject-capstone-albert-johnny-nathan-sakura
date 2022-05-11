@@ -28,6 +28,8 @@ public class DrawingSurface extends PApplet {
 	/**Draws both games
 	 */
 	public void draw() {
+		game1.giveInputs(this);
+		game2.giveInputs(this);
 		if (isPressed(27)) {
 			pauseMenu = true;
 		}

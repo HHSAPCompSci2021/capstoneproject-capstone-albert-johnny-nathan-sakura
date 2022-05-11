@@ -6,6 +6,7 @@ import entities.Entity;
 import entities.mobs.Boss;
 import entities.mobs.Goon;
 import entities.mobs.Player;
+import entities.projectiles.Projectile;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -36,12 +37,13 @@ public class Stage {
 		entityList = new ArrayList<Entity>();
 		//entityList.add(new Player(0, 0, 0, 0, false, null));
 		entityList.add(p);
+		curPlayer = p;
 		//Johnny requested below
 		p.setEntityList(entityList);
 		for (int i = 0; i < 4; i++) {
 		//	entityList.add(new Goon(stageNum)); we need different stageNum for
 			//different enemy movement
-			entityList.add(new Goon(0, 0, 0, 0, false, null));
+			//entityList.add(new Goon(0, 0, 0, 0, false, null));
 		}
 		
 		//entityList.add(new Boss(stageNum));
@@ -58,6 +60,10 @@ public class Stage {
 	 * @param surface PApplet to setup with
 	 */
 	public void setup(PApplet surface) {
+		for (Entity e : entityList) {
+			e.setup(surface);
+		}
+		System.out.println("setup run");
 		PImage cloud = surface.createImage(dimensions.x, dimensions.y, surface.RGB);
 		cloud = surface.loadImage("sprites/cloud_tile.jpg");
 		System.out.println(topLeft.x);
@@ -75,6 +81,7 @@ public class Stage {
 		back.scroll(5);
 		act();
 		updateStats();
+		System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			if (e.isVisble()) e.draw(surface);
 		}
@@ -96,9 +103,32 @@ public class Stage {
 	public void giveInputs(DrawingSurface surface, int gameNum) {
 		
 		if (gameNum == 1) {
-			if (surface.isPressed(null)) {
-				//bunch of ifs and moves/skill use methods in player
+			if (surface.isPressed(65) || surface.isPressed(97)) {
+				System.out.println("a");
+				curPlayer.move(-5, 0);
 			}
+
+			if (surface.isPressed(68) || surface.isPressed(100)) {
+				System.out.println("d");
+				curPlayer.move(5, 0);
+			}
+
+			if (surface.isPressed(87) || surface.isPressed(119)) {
+				System.out.println("w");
+				curPlayer.move(0, -5);
+			}
+
+			if (surface.isPressed(83) || surface.isPressed(115)) {
+
+				System.out.println("s");
+				curPlayer.move(0, 5);
+			}
+			
+			//curPlayer.shift(surface.isPressed(61) && !surface.isPressed(64) , surface.isPressed(77) && !surface.isPressed(73));
+//			if (surface.isPressed(77)) {
+//				curPlayer.shift(surface.isPressed(61) && !surface.isPressed(64) , surface.isPressed(77) && !surface.isPressed(73))
+//				//bunch of ifs and moves/skill use methods in player
+//			}
 		}
 		if (gameNum == 2) {
 			if (surface.isPressed(null)) {
@@ -124,6 +154,9 @@ public class Stage {
 	private void act() {
 		boolean playerExists = false;
 		boolean entitiesExist = false;
+		
+		entitiesExist = true;
+		
 		for (Entity e : entityList) {
 			if (e.isDead()) {
 				entityList.remove(e);
@@ -133,7 +166,7 @@ public class Stage {
 				playerExists = true;
 				curPlayer = (Player)e;
 				curPlayer.setEntityList(entityList);
-			} else {
+			} else if (!(e instanceof Projectile)) {
 				entitiesExist = true;
 				e.act();
 			}

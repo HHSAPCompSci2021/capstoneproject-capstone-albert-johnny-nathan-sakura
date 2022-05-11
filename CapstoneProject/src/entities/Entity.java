@@ -30,13 +30,13 @@ public class Entity {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the entity
 	 */
-	public Entity(double x, double y, double w, double h, boolean circle, PImage image) {
+	public Entity(double x, double y, double w, double h, boolean circle) {
 		this.x = x; 
 		this.y = y; 
 		this.width = w; 
 		this.height = h; 
 		isCircleHitbox = circle; 
-		sprite = image;
+		//sprite = image;
 		vx = 0;
 		vy = 0;
 		dmg = 0;
@@ -45,7 +45,9 @@ public class Entity {
 		bounds = new double[4];
 	}
 	
-	
+	public void setSprite(PImage image) {
+		sprite = image;
+	}
 	/**Returns whether or not the entity is touching another entity
 	 * @param e The other entity
 	 * @return True if the two entities touch, false otherwise
@@ -163,12 +165,18 @@ public class Entity {
 		}
 	}
 	
+	public void setup(PApplet surface) {
+		
+	}
+	
+	
 	/**
 	 * Draws out the entity
 	 * @param surface The surface to be drawn on
+	 * @pre setSprite must be called first
 	 */
 	public void draw(PApplet surface) {
-
+		surface.image(sprite, (float)x, (float)y);
 	}
 	
 	/**

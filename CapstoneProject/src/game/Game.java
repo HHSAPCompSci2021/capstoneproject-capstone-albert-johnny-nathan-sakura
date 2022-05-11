@@ -21,7 +21,8 @@ public class Game {
 	 * @param height the height of the processing window
 	 */
 	public Game(int gameNum, int width, int height) {
-		Player p = new Player(0, 0, 0, 0, false, null);
+
+		p = new Player(0, 0, 100, 100, false, gameNum);
 		this.gameNum = gameNum;
 		int x = 0;
 		stages = new ArrayList<Stage>();

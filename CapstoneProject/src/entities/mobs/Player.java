@@ -3,18 +3,19 @@ import java.util.ArrayList;
 
 import entities.Entity;
 import entities.projectiles.*;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
  * The Player class represents the two users in the program that interact with the entities 
  */
 public class Player extends Entity {
-	private int playerNum;
 	private int coins;
 	private int powerUpType;
 	private int powerUpDuration;
 	private ArrayList<Entity> entityList;
-	
+	//private PImage image;
+	private int playerNum;
 	/**
 	 * Creates a new instance of Player with the properties of Entity
 	 * @param x X-Coordinate
@@ -25,10 +26,24 @@ public class Player extends Entity {
 	 * @param image Image of the player sprite
 	 */
 	//can we hard code images and put the constructor as a playerNum?
-	public Player(double x, double y, double w, double h, boolean circle, PImage image) {
-		super(x,y,w,h,circle,image);
+	//
+	public Player(double x, double y, double w, double h, boolean circle, int gameNum) {
+		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
+		this.playerNum = gameNum;
 	}
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		temp = (surface.loadImage("sprites/player2.png"));
+		if (playerNum == 1) temp = (surface.loadImage("sprites/player1.png"));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
+	}
+	
+//	public void draw(PApplet surface) {
+//		super.draw(surface);
+//	}
 	
 	/**
 	 * Sets the entity list
@@ -59,10 +74,10 @@ public class Player extends Entity {
 	 * @param y Y-coordinate to move to
 	 */
 	public void move(double x, double y) {
-		setX(x);
-		setY(y);
+		setX(getX() + x);
+		setY(getY()+ y);
 	}
-	
+
 	/**
 	 * Adds coins to the total number of coins
 	 * @param a Coins collected
