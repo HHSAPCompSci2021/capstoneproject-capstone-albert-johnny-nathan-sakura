@@ -17,8 +17,8 @@ public class Projectile extends Entity {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the entity
 	 */
-	public Projectile(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg, PImage image) {
-		super(x, y, w, h, circle, image);
+	public Projectile(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
+		super(x, y, w, h, circle);
 		setvx(vx);
 		setvy(vy);
 		setDmg(dmg);

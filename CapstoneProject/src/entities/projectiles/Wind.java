@@ -19,9 +19,8 @@ public class Wind extends Projectile {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the player sprite
 	 */
-	public Wind(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg,
-			PImage image) {
-		super(x, y, w, h, vx, vy, circle, dmg, image);
+	public Wind(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
+		super(x, y, w, h, vx, vy, circle, dmg);
 		// TODO Auto-generated constructor stub
 	}
 	

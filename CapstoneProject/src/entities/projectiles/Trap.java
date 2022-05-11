@@ -23,9 +23,8 @@ public class Trap extends Bullet {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the player sprite
 	 */
-	public Trap(double x, double y, double w, double h, double vx, double vy, int type, boolean circle, double dmg,
-			PImage image) {
-		super(x, y, w, h, vx, vy, circle, dmg, image);
+	public Trap(double x, double y, double w, double h, double vx, double vy, int type, boolean circle, double dmg) {
+		super(x, y, w, h, vx, vy, circle, dmg);
 		this.type = type;
 	}
 	
