@@ -4,15 +4,11 @@ import entities.Entity;
 import processing.core.PImage;
 
 /**
- * The Enemy class represents an enemy with all the properties of the Entity class, with a damage,
- * bullet velocity, and HP.
+ * The Enemy class represents an enemy with all the properties of the Entity class
  * @author nathangu
  */
 public class Enemy extends Entity{
 	
-	private double maxHP;
-	private double damage;
-	private double velocity;
 	
 	/**
 	 * Creates a new instance of Enemy
@@ -25,10 +21,8 @@ public class Enemy extends Entity{
 	 */
 	public Enemy(double x, double y, double w, double h, boolean circle, PImage image) {
 		super(x, y, w, h, circle, image);
-		damage = 0;
-		maxHP = 1;
-		velocity = 0; 
 	}
+	
 	/**
 	 * Allows the Enemy to fire Bullet
 	 */
@@ -36,12 +30,7 @@ public class Enemy extends Entity{
 		
 	}
 	
-	public double getBulletVelocity() {
-		return velocity;
-	}
-	public void setBulletVelocity(double newVelo) {
-		velocity = newVelo;
-	}
+	
 	
 	public void act() {
 		shoot();

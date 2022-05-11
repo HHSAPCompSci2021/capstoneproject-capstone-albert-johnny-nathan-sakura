@@ -15,10 +15,8 @@ import processing.core.PImage;
 public class Entity {
 	
 	private double width, height, x, y, vx, vy, hp, dmg;
-	private boolean isCircleHitbox;
+	private boolean isCircleHitbox, isDead, isVisible;
 	private PImage sprite;
-	private boolean isDead;
-	private boolean isVisible;
 	public double[] bounds; //{topLeftX, topLeftY, windowWidth, windowHeight}
 	
 	/**
@@ -45,10 +43,13 @@ public class Entity {
 		bounds = new double[4];
 	}
 	
+
 	public void setSprite(PImage image) {
 		sprite = image;
 	}
-	/**Returns whether or not the entity is touching another entity
+
+	/**
+	 * Returns whether or not the entity is touching another entity(based on centers)
 	 * @param e The other entity
 	 * @return True if the two entities touch, false otherwise
 	 */
@@ -326,9 +327,12 @@ public class Entity {
 				
 	}
 
-
+	
+	/**
+	 * Allows interactions between the Player and Entity
+	 * @param player The Player
+	 */
 	public void interact(Player player) {
-		// TODO Auto-generated method stub
-		
+		//uwu owo meow meow nya~
 	}
 }
