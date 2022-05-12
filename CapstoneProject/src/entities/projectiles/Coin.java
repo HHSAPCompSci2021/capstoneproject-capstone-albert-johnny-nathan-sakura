@@ -22,7 +22,7 @@ public class Coin extends Entity {
 	 * @param image Image of the player sprite
 	 */
 	public Coin(double x, double y, double w, double h, boolean circle) {
-		super(x, y, w, h, circle, null);
+		super(x, y, w, h, circle);
 		value = 5;
 	}
 	

@@ -23,7 +23,7 @@ public class PowerUp extends Entity {
 	 * @param image Image of the player sprite
 	 */
 	public PowerUp(double x, double y, double w, double h, int type, boolean circle, PImage image) {
-		super(x, y, w, h, circle, image);
+		super(x, y, w, h, circle);
 		this.type = type;
 		if (type == 1) time = 1;
 	}

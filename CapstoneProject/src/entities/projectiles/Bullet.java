@@ -1,6 +1,7 @@
 
 package entities.projectiles;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -9,7 +10,6 @@ import processing.core.PImage;
  *
  */
 public class Bullet extends Projectile {
-	private boolean outOfBounds;
 	public static PImage img;
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
@@ -22,7 +22,18 @@ public class Bullet extends Projectile {
 	 */
 	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
 		super(x, y, w, h, vx, vy, circle, dmg);
-		outOfBounds = false;
+		this.setHp(1);
+	}
+	
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		System.out.println("loaded image");
+		temp = (surface.loadImage("sprites/projectile-bullet.png"));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 
+	
+	
 }

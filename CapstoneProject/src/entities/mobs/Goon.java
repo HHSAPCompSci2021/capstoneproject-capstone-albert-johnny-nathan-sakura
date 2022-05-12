@@ -28,14 +28,15 @@ public class Goon extends Enemy{
 		shoot();
 	}
 	
+//	/**
+//	 * Removes the bullets out of the window
+//	 */
+//	public void removeOutBullets() {
+//		
+//	}
+	
 	/**
-	 * Removes the bullets out of the window
-	 */
-	public void removeOutBullets() {
-		
-	}
-	/**
-	 * Allows the Goon to move
+	 * Allows the Goon to move and shoot
 	 */
 	public void move() {
 		shootBullet();

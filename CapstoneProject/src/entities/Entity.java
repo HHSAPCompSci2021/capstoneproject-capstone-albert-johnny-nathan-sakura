@@ -34,7 +34,6 @@ public class Entity {
 		this.width = w; 
 		this.height = h; 
 		isCircleHitbox = circle; 
-		//sprite = image;
 		vx = 0;
 		vy = 0;
 		dmg = 0;
@@ -303,6 +302,9 @@ public class Entity {
 	 * @return If the player is dead
 	 */
 	public boolean isDead() {
+		if(hp <= 0) {
+			return true;
+		}
 		return isDead;
 	}
 	

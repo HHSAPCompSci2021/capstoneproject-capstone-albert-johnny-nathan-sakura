@@ -20,7 +20,7 @@ public class Enemy extends Entity{
 	 * @param image Image of the entity
 	 */
 	public Enemy(double x, double y, double w, double h, boolean circle, PImage image) {
-		super(x, y, w, h, circle, image);
+		super(x, y, w, h, circle);
 	}
 	
 	/**

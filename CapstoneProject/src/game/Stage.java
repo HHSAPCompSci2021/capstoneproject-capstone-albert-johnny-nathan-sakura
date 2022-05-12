@@ -85,25 +85,26 @@ public class Stage {
 		updateStats();
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
-			if (e.isVisble()) e.draw(surface);
+			if (e.isVisble()) {
+				e.draw(surface);
+			}
 		}
 	}
 	
-	/**Returns a Statistics object used for drawing outside of this class
-	 * 
+	/**
+	 * Returns a Statistics object used for drawing outside of this class
 	 * @return Statistics the statistics for this player
 	 */
 	public Statistics getStats() {
 		return playerStats;
 	}
 	
-	/**Forward inputs into the player for movement and skill activation
-	 * 
+	/**
+	 * Forward inputs into the player for movement and skill activation
 	 * @param surface Surface
 	 * @param gameNum Game number
 	 */
 	public void giveInputs(DrawingSurface surface, int gameNum) {
-		
 		if (gameNum == 1) {
 			if (surface.isPressed(65) || surface.isPressed(97)) {
 				System.out.println("a");
@@ -125,6 +126,12 @@ public class Stage {
 				System.out.println("s");
 				curPlayer.move(0, 5);
 			}
+			if (surface.isPressed(102) || surface.isPressed(70)) {
+
+				System.out.println("f");
+				curPlayer.shoot(surface);
+			}
+			
 			
 			//curPlayer.shift(surface.isPressed(61) && !surface.isPressed(64) , surface.isPressed(77) && !surface.isPressed(73));
 //			if (surface.isPressed(77)) {
@@ -153,23 +160,29 @@ public class Stage {
 				System.out.println("k");
 				curPlayer.move(0, 5);
 			}
+			if (surface.isPressed(58) || surface.isPressed(59)) {
+				System.out.println(";");
+				curPlayer.shoot(surface);
+			}
 			
 		}
 	}
 	
-	/** Returns true if the stage has been cleared
-	 * 
+	/** 
+	 * Returns true if the stage has been cleared
 	 * @return true if all enemies are dead
 	 */
 	public boolean isCompleted() {
 		return stageComplete;
 	}
-	/** Returns if the game is over
+	/** 
+	 * Returns if the game is over
 	 * @return true if player is dead
 	 */
 	public boolean gameOver() {
 		return gameOver;
 	}
+	
 	
 	private void act() {
 		boolean playerExists = false;
@@ -179,14 +192,15 @@ public class Stage {
 		
 		for (Entity e : entityList) {
 			if (e.isDead()) {
-				entityList.remove(e);
+				entityList.remove(entityList.indexOf(e));
 				continue;
 			}
 			if (e instanceof Player) {
 				playerExists = true;
 				curPlayer = (Player)e;
 				curPlayer.setEntityList(entityList);
-			} else if (!(e instanceof Projectile)) {
+				//if (curPlayer != null)curPlayer.act();
+			} if (!(e instanceof Projectile)) {
 				entitiesExist = true;
 				e.act();
 			}

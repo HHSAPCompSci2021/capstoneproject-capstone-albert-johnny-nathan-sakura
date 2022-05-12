@@ -16,6 +16,7 @@ public class Player extends Entity {
 	private ArrayList<Entity> entityList;
 	//private PImage image;
 	private int playerNum;
+	private int shawtyFramesCD;
 	/**
 	 * Creates a new instance of Player with the properties of Entity
 	 * @param x X-Coordinate
@@ -31,6 +32,7 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
+		this.setHp(100);
 	}
 	
 	public void setup(PApplet surface) {
@@ -57,14 +59,17 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
-		for (int i = 0; i < entityList.size(); i++) {
-			Entity e = entityList.get(i);
-			if (isTouching(e)) {
-				e.interact(this);
-				entityList.remove(i);
-				i--;
-			}
+		if (shawtyFramesCD > 0) {
+			shawtyFramesCD--;
 		}
+//		for (int i = 0; i < entityList.size(); i++) {
+//			Entity e = entityList.get(i);
+//			if (isTouching(e)) {
+//				e.interact(this);
+//				entityList.remove(i);
+//				i--;
+//			}
+//		}
 		powerUpDuration -= 1;
 	}
 	
@@ -129,4 +134,17 @@ public class Player extends Entity {
 	public void useSkill(int i) {
 		
 	}
+	
+	/**
+	 * Allows the player to shoot
+	 */
+	public void shoot(PApplet surface) {
+		if (shawtyFramesCD > 0) return;
+		System.out.println("entityNum: " + entityList.size());
+		Bullet b = new Bullet(this.getX(), this.getY() - 10, 30, 30, 0, -15, true, 1);
+		b.setup(surface);
+		entityList.add(b);
+		shawtyFramesCD = 8;
+	}
+	
 }
