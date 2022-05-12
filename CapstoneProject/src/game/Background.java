@@ -41,7 +41,7 @@ public class Background {
 	public void scroll(int yMove) {
 		curCenterY+=yMove;
 		if (curCenterY > this.y+height) {
-			curCenterY = 0;
+			curCenterY = this.y;
 		}
 	}
 }

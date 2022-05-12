@@ -76,6 +76,28 @@ public class Player extends Entity {
 	public void move(double x, double y) {
 		setX(getX() + x);
 		setY(getY()+ y);
+		System.out.print("P" + playerNum + ":");
+		System.out.println("Bounds: " + bounds[2] + " by " + bounds[3] + " at " + bounds[0] + " " + bounds[1]);
+		double midX = getX()+getWidth()/2;
+		double midY = getY()+getHeight()/2;
+		System.out.println(midX + " " + midY);
+		if (midX > bounds[0] + bounds[2]) {
+			System.out.println("Set X to right side");
+			setX(bounds[0]-getWidth()/2 + bounds[2] );
+		} else
+		if (midX < bounds[0]) {
+			System.out.println("Set X to left side");
+			setX(bounds[0]-getWidth()/2);
+		}
+		
+		if (midY > bounds[1] + bounds[3]) {
+			System.out.println("Set Y to bottom");
+			setY(bounds[1]-getHeight()/2 + bounds[3]);
+		} else 
+		if (midY < bounds[1]) {
+			System.out.println("Set Y to top");
+			setY(bounds[1]-getHeight()/2);
+		}
 	}
 
 	/**

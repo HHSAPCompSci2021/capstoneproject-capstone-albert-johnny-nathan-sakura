@@ -62,8 +62,8 @@ public class DrawingSurface extends PApplet {
 			//		game2, 50 on top, 100 at bottom for statistics (within game
 			//		x bounds also)
 			background(100);
-			game2.draw(this);
 			game1.draw(this);
+			game2.draw(this);
 			
 		}
 	}

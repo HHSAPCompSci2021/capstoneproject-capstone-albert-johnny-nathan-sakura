@@ -321,8 +321,8 @@ public class Entity {
 	public void giveBounds(Point topLeft, Point dimensions) {
 		bounds[0] = topLeft.x;
 		bounds[1] = topLeft.y;
-		bounds[2] = dimensions.x - topLeft.x;
-		bounds[3] = dimensions.y - topLeft.y;
+		bounds[2] = dimensions.x;// - topLeft.x;
+		bounds[3] = dimensions.y;// - topLeft.y;
 		
 				
 	}

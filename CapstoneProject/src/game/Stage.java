@@ -28,6 +28,7 @@ public class Stage {
 	 * @param stageNum the stage to construct (1-4)
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
+		System.out.println(stageNum + " width: " + width);
 		curWave = 1;
 		gameOver = false;
 		stageComplete = false;
@@ -62,6 +63,7 @@ public class Stage {
 	public void setup(PApplet surface) {
 		for (Entity e : entityList) {
 			e.setup(surface);
+			e.giveBounds(topLeft, dimensions);
 		}
 		System.out.println("setup run");
 		PImage cloud = surface.createImage(dimensions.x, dimensions.y, surface.RGB);
@@ -81,7 +83,7 @@ public class Stage {
 		back.scroll(5);
 		act();
 		updateStats();
-		System.out.println("saygiydfiyfiyg: "+ entityList.size());
+		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			if (e.isVisble()) e.draw(surface);
 		}
@@ -131,9 +133,27 @@ public class Stage {
 //			}
 		}
 		if (gameNum == 2) {
-			if (surface.isPressed(null)) {
-				//bunch of ifs and moves/skill use methods in player
+			if (surface.isPressed(74) || surface.isPressed(106)) {
+				System.out.println("j");
+				curPlayer.move(-5, 0);
 			}
+
+			if (surface.isPressed(76) || surface.isPressed(108)) {
+				System.out.println("l");
+				curPlayer.move(5, 0);
+			}
+
+			if (surface.isPressed(73) || surface.isPressed(105)) {
+				System.out.println("i");
+				curPlayer.move(0, -5);
+			}
+
+			if (surface.isPressed(75) || surface.isPressed(107)) {
+
+				System.out.println("k");
+				curPlayer.move(0, 5);
+			}
+			
 		}
 	}
 	
