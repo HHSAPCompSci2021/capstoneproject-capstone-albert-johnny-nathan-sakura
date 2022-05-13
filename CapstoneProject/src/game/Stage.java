@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entities.Entity;
 import entities.mobs.Boss;
+import entities.mobs.Enemy;
 import entities.mobs.Goon;
 import entities.mobs.Player;
 import entities.projectiles.Projectile;
@@ -85,9 +86,9 @@ public class Stage {
 		updateStats();
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
-			if (e.isVisble()) {
+			//if (e.isVisble()) {
 				e.draw(surface);
-			}
+			//}
 		}
 	}
 	
@@ -193,6 +194,8 @@ public class Stage {
 		for (int i = 0; i < entityList.size(); i++) {
 			Entity e = entityList.get(i);
 			if (e.isDead()) {
+
+				if (e instanceof Projectile) System.out.println("didfdsfjdsuifyhdsue");
 				entityList.remove(entityList.indexOf(e));
 				continue;
 			}
@@ -204,11 +207,21 @@ public class Stage {
 			} if (!(e instanceof Projectile)) {
 				entitiesExist = true;
 				e.act();
+			} else {
+				e.act();
 			}
 		}
 		
 		for (int i = 0; i < entityList.size(); i++) {
-			
+			Entity e = entityList.get(i);
+			if (e instanceof Player || e instanceof Enemy) {
+				for (int j = 0; j < entityList.size(); j++) {
+					Entity e2 = entityList.get(i);
+					if (e2 instanceof Projectile) {
+						((Projectile)e2).interact(e);
+					}
+				}
+			}
 		}
 		
 		if (!playerExists) gameOver = true;

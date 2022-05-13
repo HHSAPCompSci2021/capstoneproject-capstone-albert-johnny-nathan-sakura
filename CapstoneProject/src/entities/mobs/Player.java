@@ -132,7 +132,23 @@ public class Player extends Entity {
 	 * @param i
 	 */
 	public void useSkill(int i) {
+		//when i = 0 it is player default skill
 		
+		
+		//when i = 1 it is powerup
+		if (i == 1) {
+			
+		}
+		//when i = 2 it is trap
+		if (i == 2) {
+			if(coins >= 5) {
+				coins -= 5;
+				//activate trap!!!!
+					
+			}
+		}
+		
+		//when i = 3 it is wind
 	}
 	
 	/**
@@ -141,7 +157,7 @@ public class Player extends Entity {
 	public void shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return;
 		System.out.println("entityNum: " + entityList.size());
-		Bullet b = new Bullet(this.getX(), this.getY() - 10, 30, 30, 0, -15, true, 1);
+		Bullet b = new Bullet(this.getX()+getWidth()/2, this.getY()+getHeight()/2 - 40, 30, 30, 0, -15, true, true, 1);
 		b.setup(surface);
 		entityList.add(b);
 		shawtyFramesCD = 8;
