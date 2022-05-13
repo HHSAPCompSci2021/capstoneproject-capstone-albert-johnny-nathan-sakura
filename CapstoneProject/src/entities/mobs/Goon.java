@@ -37,7 +37,7 @@ public class Goon extends Enemy{
 		flag = true;
 		//shotFrequency = frequency;
 		moviewoovie = 10;
-		setHp(250);
+		setHp(100);
 		shawtyFramesCD = 10;
 	}
 	

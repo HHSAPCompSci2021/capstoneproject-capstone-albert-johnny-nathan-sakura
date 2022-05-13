@@ -195,10 +195,6 @@ public class Stage {
 	 * @return true if all enemies are dead
 	 */
 	public boolean isCompleted() {
-		if(curWave > 3) {
-			Boss b = new Boss(100, 100, 100, 100, false, stageNum);
-			entityList.add(b);
-		}
 		return curWave > 3;
 	}
 	/** 
@@ -275,9 +271,17 @@ public class Stage {
 			//you can add below another set of if conditions for each stage that
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
-				//entityList.add(new Boss());
+				Boss b = new Boss(100, 100, 100, 100, false, stageNum);
+				entityList.add(b);
 			} else if (curWave < 3) {
-				//add some regular enemies for each wave
+				Goon g = new Goon(50, 50, 75, 75, false, stageNum, stageNum);
+				entityList.add(g);
+				g = new Goon(75, 75, 75, 75, false, stageNum, stageNum);
+				entityList.add(g);
+				g = new Goon(50, 50, 75, 75, false, stageNum, stageNum);
+				entityList.add(g);
+				g = new Goon(100, 100, 75, 75, false, stageNum, stageNum);
+
 			}
 		}
 	}

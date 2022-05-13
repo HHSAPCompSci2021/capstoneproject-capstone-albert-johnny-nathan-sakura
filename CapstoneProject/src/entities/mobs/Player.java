@@ -167,7 +167,7 @@ public class Player extends Entity {
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -15, true, true, 1);
 		b.setup(surface);
 		entityList.add(b);
-		shawtyFramesCD = 15;
+		shawtyFramesCD = 10;
 	}
 	
 }
