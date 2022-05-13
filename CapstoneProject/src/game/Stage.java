@@ -227,7 +227,7 @@ public class Stage {
 				System.out.println("eva");
 				for (int j = 0; j < entityList.size(); j++) {
 					System.out.println("eva2");
-					Entity e2 = entityList.get(i);
+					Entity e2 = entityList.get(j);
 					if (e2 instanceof Projectile) {
 						System.out.println("neva");
 						if (e.isTouching(e2)) {
