@@ -1,5 +1,6 @@
 package entities.mobs;
 
+import entities.projectiles.Bullet;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -31,7 +32,8 @@ public class Boss extends Enemy{
 	 * Makes the boss shoot a "pattern" bullet
 	 */
 	public void shootPatternBullet() {
-		
+		Bullet b = new Bullet(getX(), getY(), 30, 30, 0, 15, true, false, 10);
+		getDaList().add(b);
 	}
 	/**Sets up the boss with an image
 	 * @param surface PApplet to setup with

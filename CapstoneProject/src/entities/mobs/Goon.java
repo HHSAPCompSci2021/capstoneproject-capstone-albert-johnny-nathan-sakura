@@ -16,6 +16,7 @@ public class Goon extends Enemy{
 	private boolean flag;
 	private int stageNum;
 	private int goonNum;
+	private int shawtyFramesCD;
 	
 	/**
 	 * Creates a new instance of Goon
@@ -31,12 +32,13 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
-		setvx(10);
-		setvy(10);
+		setvx(12);
+		setvy(12);
 		flag = true;
 		//shotFrequency = frequency;
 		moviewoovie = 10;
-		setHp(100);
+		setHp(250);
+		shawtyFramesCD = 10;
 	}
 	
 	
@@ -45,8 +47,8 @@ public class Goon extends Enemy{
 	 * Shoots Bullets
 	 */
 	public void shoot() {
-		Bullet b = new Bullet(getX(), getY(), 30, 30, 0, -15, true, false, 5);
-		//getDaList().add(b);
+		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 15, true, false, 1);
+		getDaList().add(b);
 	}
 	
 	
@@ -58,14 +60,26 @@ public class Goon extends Enemy{
 		
 //		setHp(0);
 		if(0<= moviewoovie && moviewoovie <= 10 && flag) {
+			if (shawtyFramesCD > 0) {
+				shawtyFramesCD--;
+			}
+			if(shawtyFramesCD <= 0) {
+				shoot();
+				shawtyFramesCD = 10;
+			}
 			setX(getX() + getvx());
-			shoot();
 			moviewoovie--;
 		}
 		
 		if(0 >= moviewoovie && moviewoovie > -10 && flag) {
+			if (shawtyFramesCD > 0) {
+				shawtyFramesCD--;
+			}
+			if(shawtyFramesCD <= 0) {
+				shoot();
+				shawtyFramesCD = 10;
+			}
 			setY(getY() + getvy());
-			shoot();
 			moviewoovie--;
 			if(moviewoovie <= -10) {
 				flag = false;
@@ -75,14 +89,26 @@ public class Goon extends Enemy{
 		}
 		
 		if(0<= moviewoovie && moviewoovie <= 10 && !flag) {
+			if (shawtyFramesCD > 0) {
+				shawtyFramesCD--;
+			}
+			if(shawtyFramesCD <= 0) {
+				shoot();
+				shawtyFramesCD = 10;
+			}
 			setX(getX() - getvx());
-			shoot();
 			moviewoovie--;
 		}
 		
 		if(0 >= moviewoovie && moviewoovie > -10 && !flag) {
+			if (shawtyFramesCD > 0) {
+				shawtyFramesCD--;
+			}
+			if(shawtyFramesCD <= 0) {
+				shoot();
+				shawtyFramesCD = 10;
+			}
 			setY(getY() - getvy());
-			shoot();
 			moviewoovie--;
 			if(moviewoovie <= -10) {
 				flag = true;
@@ -102,10 +128,6 @@ public class Goon extends Enemy{
 		temp = (surface.loadImage("sprites/stage" + stageNum + "-" + goonNum+".png"));
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
-		if (moviewoovie <= -10) {
-			moviewoovie = 10;
-			flag = !flag;
-		}
 	}
 
 	

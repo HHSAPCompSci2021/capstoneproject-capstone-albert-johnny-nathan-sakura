@@ -46,6 +46,8 @@ public class Stage {
 		//entityList.add(new Player(0, 0, 0, 0, false, null));
 		entityList.add(p);
 		curPlayer = p;
+		
+		
 		//Johnny requested below
 		p.setEntityList(entityList);
 		entityList.add(new Goon(topLeft.x+50, topLeft.y+50, 100, 100, true, stageNum, 1));
@@ -98,6 +100,7 @@ public class Stage {
 		for (Entity e : entityList) {
 			//if (e.isVisble()) {
 			if (e instanceof Goon) System.out.println("goon drawn");
+			e.setup(surface);
 			e.draw(surface);
 			//}
 		}
@@ -228,9 +231,8 @@ public class Stage {
 				//if (curPlayer != null)curPlayer.act();
 			}
 			if (e instanceof Enemy) {
-
 				entitiesExist = true;
-				((Enemy)e).setEntityList(entityList);
+				((Enemy) e).setEntityList(entityList);
 			}
 			e.act();
 			
