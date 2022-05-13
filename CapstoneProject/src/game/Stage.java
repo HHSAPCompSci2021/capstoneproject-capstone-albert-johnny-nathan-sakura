@@ -74,7 +74,7 @@ public class Stage {
 		PImage cloud = surface.createImage(dimensions.x, dimensions.y, surface.RGB);
 		cloud = surface.loadImage("sprites/cloud_tile.jpg");
 		System.out.println(topLeft.x);
-		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, cloud.height);
+		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, cloud.height, stageNum);
 	}
 	
 	/**Will visually draw and update the current state of the Stage elements, and the getStatistics
