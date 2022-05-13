@@ -9,19 +9,20 @@ import processing.core.PImage;
 public class Background {
 	private PImage photo;
 	private int curCenterY;
-	private int x, y, width, height;
+	private int x, y, width, height, stageNum;
 	
 	/**Constructs a Background class that will scroll up
 	 * 
 	 * @param imagePath 
 	 * @pre imagePath is a valid path for an image on this system
 	 */
-	public Background(PImage photo, int x, int y, int width, int height) {
+	public Background(PImage photo, int x, int y, int width, int height, int stageNum) {
 		this.photo = photo;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.stageNum = stageNum;
 		photo.resize(width, height);
 	}
 	/**Draws this Background class from the currentCenter scrolled 
@@ -29,9 +30,19 @@ public class Background {
 	 * @param marker
 	 */
 	public void draw(PApplet marker) {
+		if (stageNum == 2) {
+			marker.tint(200,100,0);
+		}
+		if (stageNum == 3) {
+			marker.tint(100,200,0);
+		}
+		if (stageNum == 4) {
+			marker.tint(0,100,200);
+		}
 		marker.image(photo, x,  curCenterY-photo.height);
 		marker.image(photo, x, curCenterY);//, 0, curCenterY, width, photo.height);
 		marker.image(photo, x,  curCenterY+photo.height);//, 0, curCenterY-photo.height, width, photo.height);
+		marker.tint(255);
 	}
 	
 	/**Changes the y the Background is currently at while scrolling
