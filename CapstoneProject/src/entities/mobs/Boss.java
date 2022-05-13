@@ -37,7 +37,11 @@ public class Boss extends Enemy{
 	 * @param surface PApplet to setup with
 	 */
 	public void setup(PApplet surface) {
-		
+		PImage temp;
+		System.out.println("loaded image");
+		temp = (surface.loadImage("sprites/stage1-3.png"));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 //	/**
 //	 * Allows the Boss to move

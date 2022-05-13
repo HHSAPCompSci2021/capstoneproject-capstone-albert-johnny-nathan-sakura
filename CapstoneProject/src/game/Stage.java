@@ -192,6 +192,10 @@ public class Stage {
 	 * @return true if all enemies are dead
 	 */
 	public boolean isCompleted() {
+		if(curWave > 3) {
+			Boss b = new Boss(100, 100, 100, 100, false, stageNum);
+			entityList.add(b);
+		}
 		return curWave > 3;
 	}
 	/** 
@@ -222,6 +226,11 @@ public class Stage {
 				curPlayer = (Player)e;
 				curPlayer.setEntityList(entityList);
 				//if (curPlayer != null)curPlayer.act();
+			}
+			if (e instanceof Enemy) {
+
+				entitiesExist = true;
+				((Enemy)e).setEntityList(entityList);
 			}
 			e.act();
 			

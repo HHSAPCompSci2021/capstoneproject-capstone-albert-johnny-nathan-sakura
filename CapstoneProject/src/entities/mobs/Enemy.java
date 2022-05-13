@@ -11,7 +11,8 @@ import processing.core.PImage;
  * @author nathangu
  */
 public class Enemy extends Entity{
-	
+
+	private ArrayList<Entity> daList;
 	
 	/**
 	 * Creates a new instance of Enemy
@@ -32,12 +33,17 @@ public class Enemy extends Entity{
 		
 	}
 	
+	public void setEntityList(ArrayList<Entity> e) {
+		daList = e;
+	}
 	
+	public ArrayList<Entity> getDaList() {
+		return daList;
+	}
 	/**
 	 * Runs an enemy action
 	 */
 	public void act() {
-		shoot();
 		super.act();
 	}
 }

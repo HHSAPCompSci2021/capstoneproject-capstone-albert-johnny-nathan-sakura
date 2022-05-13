@@ -17,7 +17,6 @@ public class Goon extends Enemy{
 	private int stageNum;
 	private int goonNum;
 	
-	
 	/**
 	 * Creates a new instance of Goon
 	 * @param x X-coordinate
@@ -32,24 +31,22 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
+		setvx(10);
+		setvy(10);
+		flag = true;
 		//shotFrequency = frequency;
-		moviewoovie = 15;
+		moviewoovie = 10;
 		setHp(100);
 	}
+	
+	
 	
 	/**
 	 * Shoots Bullets
 	 */
 	public void shoot() {
-		ArrayList<Entity> finalList = new ArrayList<Entity>();
 		Bullet b = new Bullet(getX(), getY(), 30, 30, 0, -15, true, false, 5);
-		Player temp = new Player(0, 0, 0, 0, false, 0);
-		ArrayList<Entity> list = temp.getEntityList();
-		for(Entity e : list) {
-			finalList.add(e);
-		}
-		finalList.add(b);
-		temp.setEntityList(finalList);
+		//getDaList().add(b);
 	}
 	
 	
@@ -57,31 +54,40 @@ public class Goon extends Enemy{
 	 * Allows the Goon to move and shoot
 	 */
 	public void act() {
+//		super.act();
 		
-		
-		//setHp(0);
-		if(0<= moviewoovie && moviewoovie >= 15 && flag) {
+//		setHp(0);
+		if(0<= moviewoovie && moviewoovie <= 10 && flag) {
 			setX(getX() + getvx());
 			shoot();
 			moviewoovie--;
 		}
 		
-		if(0 >= moviewoovie && moviewoovie > -15 && flag) {
-			setX(getY() - getvy());
+		if(0 >= moviewoovie && moviewoovie > -10 && flag) {
+			setY(getY() + getvy());
 			shoot();
 			moviewoovie--;
+			if(moviewoovie <= -10) {
+				flag = false;
+				moviewoovie = 10;
+				
+			}
 		}
 		
-		if(0<= moviewoovie && moviewoovie >= 15 && !flag) {
+		if(0<= moviewoovie && moviewoovie <= 10 && !flag) {
 			setX(getX() - getvx());
 			shoot();
 			moviewoovie--;
 		}
 		
-		if(0 >= moviewoovie && moviewoovie > -15 && !flag) {
-			setX(getY() + getvy());
+		if(0 >= moviewoovie && moviewoovie > -10 && !flag) {
+			setY(getY() - getvy());
 			shoot();
 			moviewoovie--;
+			if(moviewoovie <= -10) {
+				flag = true;
+				moviewoovie = 10;
+			}
 		}	
 	}
 	
@@ -96,8 +102,8 @@ public class Goon extends Enemy{
 		temp = (surface.loadImage("sprites/stage" + stageNum + "-" + goonNum+".png"));
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
-		if (moviewoovie <= -15) {
-			moviewoovie = 15;
+		if (moviewoovie <= -10) {
+			moviewoovie = 10;
 			flag = !flag;
 		}
 	}

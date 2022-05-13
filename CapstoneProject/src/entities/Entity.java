@@ -1,3 +1,6 @@
+
+
+
 package entities;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -171,7 +174,7 @@ public class Entity {
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {
-		
+		setSprite(surface.loadImage("player1.png"));
 	}
 	
 	
