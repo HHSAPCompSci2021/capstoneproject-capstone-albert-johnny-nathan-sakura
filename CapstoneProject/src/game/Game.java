@@ -96,9 +96,17 @@ public class Game {
 		
 	}
 	
+	/**Returns if game is completed (the last Stage is completed)
+	 * 
+	 * @return true if all stages are completed
+	 */
 	public boolean gameCompleted() {
 		return curStageInd >= stages.size();
 	}
+	/**Returns if game is over (stage game over or player is dead)
+	 * 
+	 * @return true if player is dead in stages
+	 */
 	public boolean gameOver() {
 		return curStage.gameOver();
 	}

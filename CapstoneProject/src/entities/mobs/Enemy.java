@@ -17,7 +17,6 @@ public class Enemy extends Entity{
 	 * @param w Width of the hitbox
 	 * @param h Height of the hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the entity
 	 */
 	public Enemy(double x, double y, double w, double h, boolean circle) {
 		super(x, y, w, h, circle);
@@ -31,7 +30,9 @@ public class Enemy extends Entity{
 	}
 	
 	
-	
+	/**Runs an enemy action
+	 * 
+	 */
 	public void act() {
 		shoot();
 		super.act();

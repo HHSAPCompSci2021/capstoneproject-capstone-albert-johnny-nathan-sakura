@@ -28,6 +28,11 @@ public class Stage {
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
 	 * and dimensions width*height.
 	 * @param stagedNum the stage to construct (1-4)
+	 * @param x topLeft x of the stage
+	 * @param y topLeft y of the stage
+	 * @param width width of the stage
+	 * @param height height of the stage
+	 * @param Player p player passed into the stage and to interact there
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
 		System.out.println(stageNum + " width: " + width);
@@ -77,7 +82,7 @@ public class Stage {
 		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, cloud.height, stageNum);
 	}
 	
-	/**Will visually draw and update the current state of the Stage elements, and the getStatistics
+	/**Will visually draw and update the current frame of the Stage elements, and the getStatistics
 	 * 
 	 * @param surface PApplet surface to draw on
 	 */
@@ -112,6 +117,7 @@ public class Stage {
 	 */
 	public void giveInputs(DrawingSurface surface, int gameNum) {
 		if (surface.isPressed(66) || surface.isPressed(98)) {
+			//hard code stage skip
 			curWave +=1;
 		}
 		
@@ -258,10 +264,6 @@ public class Stage {
 				//add some regular enemies for each wave
 			}
 		}
-	}
-	
-	public boolean isDone() {
-		return curWave > 3;
 	}
 	
 	/**Returns the current player referenced in Stage

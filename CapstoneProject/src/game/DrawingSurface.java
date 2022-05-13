@@ -3,6 +3,9 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 
+/**A DrawingSurface class that can draw both games with half the screen
+ * @author ayu663
+ */
 public class DrawingSurface extends PApplet {
 	private ArrayList<Integer> keys;
 	private Game game1, game2;
@@ -11,6 +14,12 @@ public class DrawingSurface extends PApplet {
 	private int newWidth, newHeight;
 	private int whoWon;
 	private boolean gameDone;
+	
+	/**Constructs a DrawingSurface with initalizing the default game with width and height
+	 * 
+	 * @param width1 both games width
+	 * @param height1 each games height
+	 */
 	public DrawingSurface(int width1, int height1) {
 		this.newWidth = width1;
 		this.newHeight = height1;
@@ -19,6 +28,9 @@ public class DrawingSurface extends PApplet {
 		pauseMenu = false;
 	}
 	
+	/**Sets up a DrawingSurface by setting up the game
+	 *
+	 */
 	public void setup() {
 		System.out.println(newWidth + " " + newHeight);
 		game1 = new Game(1, newWidth, newHeight);
@@ -89,13 +101,16 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 	}
-	
+	/**Runned by PApplet whenever key pressed - updates keypressed list
+	 */
 	public void keyPressed() {
 		keys.add(keyCode);
 		if (key == ESC)  // This prevents a processing program from closing on escape key
 			key = 0;
 	}
 
+	/**Runned by PApplet whenever key released - updates keypressed list
+	 */
 	public void keyReleased() {
 		while(keys.contains(keyCode))
 			keys.remove(keys.indexOf(keyCode));
