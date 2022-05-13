@@ -54,9 +54,10 @@ public class Game {
 		if (i <= stages.size() && i > 0) {
 			System.out.println(i);
 			curStage = stages.get(i-1);
-			curStageInd = (i-1);
+			curStageInd++;
 			return true;
 		}
+		curStageInd++;
 		return false;
 	}
 	private boolean nextStage() {
