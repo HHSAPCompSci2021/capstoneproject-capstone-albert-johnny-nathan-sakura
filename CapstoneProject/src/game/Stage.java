@@ -94,13 +94,13 @@ public class Stage {
 		
 		back.draw(surface);
 		back.scroll(5);
-		act();
+		act(surface);
 		updateStats();
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			//if (e.isVisble()) {
 			if (e instanceof Goon) System.out.println("goon drawn");
-			e.setup(surface);
+			//e.setup(surface);
 			e.draw(surface);
 			//}
 		}
@@ -206,7 +206,7 @@ public class Stage {
 	}
 	
 	
-	private void act() {
+	private void act(PApplet surface) {
 		boolean playerExists = false;
 		boolean entitiesExist = false;
 		
@@ -272,15 +272,20 @@ public class Stage {
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
 				Boss b = new Boss(100, 100, 100, 100, false, stageNum);
+				b.setup(surface);
 				entityList.add(b);
 			} else if (curWave < 3) {
 				Goon g = new Goon(50, 50, 75, 75, false, stageNum, stageNum);
+				g.setup(surface);
 				entityList.add(g);
 				g = new Goon(75, 75, 75, 75, false, stageNum, stageNum);
+				g.setup(surface);
 				entityList.add(g);
 				g = new Goon(50, 50, 75, 75, false, stageNum, stageNum);
+				g.setup(surface);
 				entityList.add(g);
 				g = new Goon(100, 100, 75, 75, false, stageNum, stageNum);
+				g.setup(surface);
 
 			}
 		}

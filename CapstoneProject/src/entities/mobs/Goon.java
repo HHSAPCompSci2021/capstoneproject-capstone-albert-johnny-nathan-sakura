@@ -17,7 +17,7 @@ public class Goon extends Enemy{
 	private int stageNum;
 	private int goonNum;
 	private int shawtyFramesCD;
-	
+	private PApplet surface;
 	/**
 	 * Creates a new instance of Goon
 	 * @param x X-coordinate
@@ -48,6 +48,7 @@ public class Goon extends Enemy{
 	 */
 	public void shoot() {
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 15, true, false, 1);
+		b.setup(surface);
 		getDaList().add(b);
 	}
 	
@@ -123,6 +124,7 @@ public class Goon extends Enemy{
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {
+		this.surface = surface;
 		PImage temp;
 		System.out.println("loaded image");
 		temp = (surface.loadImage("sprites/stage" + stageNum + "-" + goonNum+".png"));
