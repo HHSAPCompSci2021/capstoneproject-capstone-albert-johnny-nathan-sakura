@@ -33,6 +33,10 @@ public class Wind extends Projectile {
 		player.setvy(player.getvy() - 10);
 	}
 	
+	/**
+	 * sets up the image
+	 * @param PApplet the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");

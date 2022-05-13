@@ -47,11 +47,18 @@ public class Trap extends Bullet {
 		die();
 	}
 	
+	/**
+	 * deploys a trap
+	 * @param t the type of trap
+	 */
 	public void use(int t) {
 		
 	}
 	
-	
+	/**
+	 * sets up the image for the trap
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");

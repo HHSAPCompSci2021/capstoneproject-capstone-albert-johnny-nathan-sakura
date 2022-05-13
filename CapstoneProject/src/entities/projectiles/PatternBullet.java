@@ -2,6 +2,11 @@ package entities.projectiles;
 
 import java.util.ArrayList;
 
+/**
+ * this class represents a collection of bullets that follow a certain pattern
+ * @author Johnny Zhang
+ *
+ */
 public class PatternBullet {
 	private ArrayList<Bullet> bullets;
 	public PatternBullet(int x, int y, int type, int dmg) {

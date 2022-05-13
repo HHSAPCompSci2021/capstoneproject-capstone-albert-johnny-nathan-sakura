@@ -25,7 +25,10 @@ public class Bullet extends Projectile {
 		this.setHp(1);
 	}
 	
-	
+	/**
+	 * sets up the image for the coin
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");
