@@ -1,5 +1,6 @@
 package entities.projectiles;
 import entities.Entity;
+import entities.mobs.Enemy;
 import entities.mobs.Player;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -33,9 +34,12 @@ public class Projectile extends Entity {
 	 * Causes the Entity hit by the bullet to lose HP
 	 */
 	public void interact(Entity e) {
-		if (fromPlayer == false) {
+		if (fromPlayer == false && e instanceof Player) {
 			e.setHp(e.getHp() - getDmg());
 			die();
+		}
+		if (fromPlayer == true && e instanceof Enemy) {
+			e.setHp(e.getHp() - getDmg());
 		}
 	}
 	

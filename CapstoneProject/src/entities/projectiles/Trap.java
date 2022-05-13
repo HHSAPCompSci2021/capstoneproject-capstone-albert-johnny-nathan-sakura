@@ -47,6 +47,11 @@ public class Trap extends Bullet {
 		die();
 	}
 	
+	public void use(int t) {
+		
+	}
+	
+	
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");
