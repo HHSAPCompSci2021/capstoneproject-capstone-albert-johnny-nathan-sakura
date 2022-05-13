@@ -48,9 +48,9 @@ public class Stage {
 		curPlayer = p;
 		//Johnny requested below
 		p.setEntityList(entityList);
-		entityList.add(new Goon(100, 100, 100, 100, true, stageNum, 1));
-		entityList.add(new Goon(400, 100, 100, 100, true, stageNum, 1));
-		entityList.add(new Goon(250, 250, 100, 100, true, stageNum, 2));
+		entityList.add(new Goon(topLeft.x+50, topLeft.y+50, 100, 100, true, stageNum, 1));
+		entityList.add(new Goon(topLeft.x+350, topLeft.y+50, 100, 100, true, stageNum, 1));
+		entityList.add(new Goon(topLeft.x+200, topLeft.y+200, 100, 100, true, stageNum, 2));
 		for (int i = 0; i < 4; i++) {
 		//	entityList.add(new Goon(stageNum)); we need different stageNum for
 			//different enemy movement
@@ -206,7 +206,7 @@ public class Stage {
 		boolean playerExists = false;
 		boolean entitiesExist = false;
 		
-		entitiesExist = true;
+		//entitiesExist = true;
 		
 		for (int i = 0; i < entityList.size(); i++) {
 			Entity e = entityList.get(i);
@@ -223,12 +223,7 @@ public class Stage {
 				//if (curPlayer != null)curPlayer.act();
 			}
 			e.act();
-//			if (!(e instanceof Projectile)) {
-//				entitiesExist = true;
-//				e.act();
-//			} else {
-//				e.act();
-//			}
+			
 		}
 
 		//entityList removes all projectiles???
@@ -250,6 +245,15 @@ public class Stage {
 						}
 					}
 				}
+			}
+		}
+		for (int i = 0; i < entityList.size(); i++) {
+			Entity e = entityList.get(i);
+			if (e instanceof Enemy) {
+				entitiesExist = true;
+				//e.act();
+			} else {
+				//e.act();
 			}
 		}
 		if (!playerExists) gameOver = true;
