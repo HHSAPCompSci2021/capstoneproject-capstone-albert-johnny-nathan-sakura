@@ -27,7 +27,7 @@ public class Goon extends Enemy{
 		this.stageNum = stageNum;
 		//shotFrequency = frequency;
 		moviewoovie = 15;
-		setHp(1);
+		setHp(20);
 	}
 	
 	/**

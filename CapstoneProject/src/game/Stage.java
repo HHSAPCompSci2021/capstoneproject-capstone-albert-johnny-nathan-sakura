@@ -234,13 +234,13 @@ public class Stage {
 			if (e instanceof Player || e instanceof Enemy) {
 				System.out.println("eva");
 				for (int j = 0; j < entityList.size(); j++) {
-					System.out.println("eva2");
+					//System.out.println("eva2");
 					Entity e2 = entityList.get(j);
 					if (e2 instanceof Projectile) {
 						System.out.println("neva");
 						if (e.isTouching(e2)) {
 							System.out.println("say neva");
-							((Bullet)e2).interact(e);
+							((Projectile)e2).interact(e);
 						}
 					}
 				}
