@@ -5,13 +5,11 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Boss class represent a Boss enemy with the properties of enemy
+ * The Boss class represent a Boss enemy with the properties of Enemy
  * @author nathangu
- *
  */
 public class Boss extends Enemy{
 
-	//private double shotFrequency;
 	private int stageNum;
 	/**
 	 * Creates a new instance of Boss
@@ -25,6 +23,7 @@ public class Boss extends Enemy{
 	public Boss(double x, double y, double w, double h, boolean circle, int stageNum) {
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
+		setHp(1000);
 		//shotFrequency = frequency;
 	}
 	
