@@ -19,16 +19,16 @@ public class Boss extends Enemy{
 	 * @param w Width of the hitbox
 	 * @param h Height of the hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the entity
 	 * @param stageNum the stage # of the boss
 	 */
-	public Boss(double x, double y, double w, double h, boolean circle, PImage image, int stageNum) {
+	public Boss(double x, double y, double w, double h, boolean circle, int stageNum) {
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
 		//shotFrequency = frequency;
 	}
 	
-	/**Makes the boss shoot a "pattern" bullet
+	/**
+	 * Makes the boss shoot a "pattern" bullet
 	 */
 	public void shootPatternBullet() {
 		

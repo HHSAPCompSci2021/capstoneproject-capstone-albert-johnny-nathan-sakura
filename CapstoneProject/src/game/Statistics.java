@@ -14,8 +14,14 @@ public class Statistics {
 	private boolean[] trapsUsable;
 	private double progress, coins;
 	private int x,y,width,height;
-	/**Constructing a Statistics class with a Player class 
-	 * 
+	
+	/**
+	 * Constructing a Statistics class with a Player class 
+	 * @param p The Player
+	 * @param x X-coordinate Statistics box
+	 * @param y Y-coordinate Statistics box
+	 * @param width Width of the Statistics box
+	 * @param height Height of the Statistics box
 	 */
 	public Statistics(Player p, int x, int y, int width, int height) {
 		this.x = x;
@@ -26,53 +32,53 @@ public class Statistics {
 		//note: put info in player so below methods dont have to be used
 	}
 	
-	/**Updates the hp by num amount
-	 * 
+	/**
+	 * Updates the hp by num amount
 	 * @param num positive for adding HP, negative for subtracting
 	 */
 	public void updateHP(double num) {
 		hp += num;
 	}
 	
-	/**Updates the Statistics class to show that a skill is usable
-	 * 
+	/**
+	 * Updates the Statistics class to show that a skill is usable
 	 * @param i number of the skill
-	 * @pre i must be 0 < the number of skills
+	 * @pre i must be 0 less than the number of trap
 	 */
 	public void makeSkillUsable(int i) {
 		skillsUsable[i] = true;
 	}
 	
-	/**Updates the Statistics class to show that a trap is usable
-	 * 
+	/**
+	 * Updates the Statistics class to show that a trap is usable
 	 * @param i number of the trap
-	 * @pre i must be 0 < the number of trap
+	 * @pre i must be 0 less than the number of trap
 	 */
 	public void makeTrapUsable(int i) {
 		trapsUsable[i] = true;
 	}
 	
-	/**Updates the Statistics class to show that a trap is usable
-	 * 
+	/**
+	 * Updates the Statistics class to show that a trap is usable
 	 * @param i number of the trap
-	 * @pre i must be 0 < the number of trap
+	 * @pre i must be 0 less than the number of trap
 	 */
 	public void useSkill(int i) {
 		skillsUsable[i] = false;
 	}
 	
-	/**Updates the Statistics class to show that a trap is usable
-	 * 
+	/**
+	 * Updates the Statistics class to show that a trap is usable
 	 * @param i number of the trap
-	 * @pre i must be 0 < the number of trap
+	 * @pre i must be 0 less than the number of trap
 	 */
 	public void useTrap(int i) {
 		trapsUsable[i] = true;
 	}
 
-	/**Draws out the Statistics in a consise manner
-	 * 
-	 * @param surface
+	/**
+	 * Draws out the Statistics in a concise manner
+	 * @param surface The surface to draw on
 	 */
 	public void draw(PApplet surface) {
 		//some cool design 

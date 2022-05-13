@@ -12,6 +12,8 @@ public class Goon extends Enemy{
 	private boolean flag;
 	private int stageNum;
 	private int goonNum;
+	
+	
 	/**
 	 * Creates a new instance of Goon
 	 * @param x X-coordinate
@@ -19,7 +21,8 @@ public class Goon extends Enemy{
 	 * @param w Width of the hitbox
 	 * @param h Height of the hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the entity
+	 * @param stageNum The stage number
+	 * @param goonNum The Goon number
 	 */
 	public Goon(double x, double y, double w, double h, boolean circle, int stageNum, int goonNum) {
 		super(x, y, w, h, circle);
@@ -37,12 +40,6 @@ public class Goon extends Enemy{
 		shoot();
 	}
 	
-//	/**
-//	 * Removes the bullets out of the window
-//	 */
-//	public void removeOutBullets() {
-//		
-//	}
 	
 	/**
 	 * Allows the Goon to move and shoot
@@ -67,11 +64,10 @@ public class Goon extends Enemy{
 		
 		
 		shootBullet();
-		//act();
 	}
 	
 	/**
-	 * sets up the image for the goon
+	 * Sets up the image for the Goon
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {

@@ -20,10 +20,10 @@ public class PowerUp extends Entity {
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
+	 * @param type The type
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
 	 */
-	public PowerUp(double x, double y, double w, double h, int type, boolean circle, PImage image) {
+	public PowerUp(double x, double y, double w, double h, int type, boolean circle) {
 		super(x, y, w, h, circle);
 		this.type = type;
 		if (type == 1) time = 1;
@@ -31,7 +31,7 @@ public class PowerUp extends Entity {
 	
 	/**
 	 * Gives the PowerUp to the player
-	 * @param e
+	 * @param e The Player receiving the PowerUp
 	 */
 	public void interact(Player e) {
 		e.setPowerUpDuration(time);
@@ -40,8 +40,8 @@ public class PowerUp extends Entity {
 	}
 	
 	/**
-	 * sets up the image for the entity
-	 * @param surface the drawing surface
+	 * Sets up the image for the PowerUp
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		PImage temp;

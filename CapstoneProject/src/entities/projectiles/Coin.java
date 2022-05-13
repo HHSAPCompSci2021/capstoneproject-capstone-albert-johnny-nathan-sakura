@@ -11,8 +11,7 @@ import processing.core.PImage;
  *
  */
 public class Coin extends Entity {
-	int value;
-	PImage img;
+	private int value;
 	/**
 	 * Creates a new instance of Coin with the properties of Entity
 	 * @param x X-Coordinate
@@ -20,7 +19,6 @@ public class Coin extends Entity {
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
 	 */
 	public Coin(double x, double y, double w, double h, boolean circle) {
 		super(x, y, w, h, circle);
@@ -37,7 +35,7 @@ public class Coin extends Entity {
 	}
 	
 	/**
-	 * sets up the image for the coin
+	 * Sets up the image for the coin
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {

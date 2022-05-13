@@ -21,8 +21,11 @@ public class Trap extends Bullet {
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
+	 * @param vx X velocity
+	 * @param vy Y velocity
+	 * @param type The type of trap
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
+	 * @param dmg Damage of the Trap
 	 */
 	public Trap(double x, double y, double w, double h, double vx, double vy, int type, boolean circle, double dmg) {
 		super(x, y, w, h, vx, vy, circle, false,  dmg);
@@ -31,7 +34,7 @@ public class Trap extends Bullet {
 	
 	/**
 	 * Determines the type of trap and applies the effects on the specified Player
-	 * @param player
+	 * @param player The Player that receives the trap effects
 	 */
 	public void interact(Player player) {
 		if (type == 1) {
@@ -48,7 +51,7 @@ public class Trap extends Bullet {
 	}
 	
 	/**
-	 * deploys a trap
+	 * Deploys a trap
 	 * @param t the type of trap
 	 */
 	public void use(int t) {
@@ -56,8 +59,8 @@ public class Trap extends Bullet {
 	}
 	
 	/**
-	 * sets up the image for the trap
-	 * @param surface the drawing surface
+	 * Sets up the image for the trap
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		PImage temp;

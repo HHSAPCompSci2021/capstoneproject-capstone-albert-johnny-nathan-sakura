@@ -15,8 +15,8 @@ public class DrawingSurface extends PApplet {
 	private int whoWon;
 	private boolean gameDone;
 	
-	/**Constructs a DrawingSurface with initalizing the default game with width and height
-	 * 
+	/**
+	 * Constructs a DrawingSurface with initalizing the default game with width and height
 	 * @param width1 both games width
 	 * @param height1 each games height
 	 */
@@ -28,8 +28,8 @@ public class DrawingSurface extends PApplet {
 		pauseMenu = false;
 	}
 	
-	/**Sets up a DrawingSurface by setting up the game
-	 *
+	/**
+	 * Sets up a DrawingSurface by setting up the game
 	 */
 	public void setup() {
 		System.out.println(newWidth + " " + newHeight);
@@ -39,7 +39,8 @@ public class DrawingSurface extends PApplet {
 		game2.setup(this);
 	}
 	
-	/**Draws both games
+	/**
+	 * Draws both games
 	 */
 	public void draw() {
 		game1.giveInputs(this);
@@ -101,7 +102,8 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 	}
-	/**Runned by PApplet whenever key pressed - updates keypressed list
+	/**
+	 * Run by PApplet whenever key pressed - updates keypressed list
 	 */
 	public void keyPressed() {
 		keys.add(keyCode);
@@ -109,7 +111,8 @@ public class DrawingSurface extends PApplet {
 			key = 0;
 	}
 
-	/**Runned by PApplet whenever key released - updates keypressed list
+	/**
+	 * Run by PApplet whenever key released - updates keypressed list
 	 */
 	public void keyReleased() {
 		while(keys.contains(keyCode))

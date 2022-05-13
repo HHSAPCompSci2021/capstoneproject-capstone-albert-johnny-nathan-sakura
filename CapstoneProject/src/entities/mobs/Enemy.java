@@ -30,8 +30,8 @@ public class Enemy extends Entity{
 	}
 	
 	
-	/**Runs an enemy action
-	 * 
+	/**
+	 * Runs an enemy action
 	 */
 	public void act() {
 		shoot();

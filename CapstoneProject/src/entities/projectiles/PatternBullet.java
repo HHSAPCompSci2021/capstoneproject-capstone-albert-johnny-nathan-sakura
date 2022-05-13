@@ -13,8 +13,8 @@ public class PatternBullet {
 	 * Creates a new instance of Bullet with the properties of Entity
 	 * @param x X-Coordinate
 	 * @param y Y-Coordinate
-	 * @param type: the type of bullet
-	 * @param dmg: the damage of the bullet
+	 * @param type The type of bullet
+	 * @param dmg The damage of the bullet
 	 */
 	public PatternBullet(int x, int y, int type, int dmg) {
 		bullets = new ArrayList<Bullet>();

@@ -17,8 +17,10 @@ public class Wind extends Projectile {
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
+	 * @param vx X velocity
+	 * @param vy Y velocity
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
+	 * @param dmg Damage of the Wind
 	 */
 	public Wind(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
 		super(x, y, w, h, vx, vy, circle, false, dmg);
@@ -34,8 +36,8 @@ public class Wind extends Projectile {
 	}
 	
 	/**
-	 * sets up the image
-	 * @param PApplet the drawing surface
+	 * Sets up the image
+	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {
 		PImage temp;

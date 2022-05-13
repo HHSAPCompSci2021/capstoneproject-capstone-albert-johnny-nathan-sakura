@@ -17,8 +17,11 @@ public class Bullet extends Projectile {
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
-	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
+	 * @param vx X velocity
+	 * @param vy Y velocity
+	 * @param circle If hitbox a circle
+	 * @param p If the Bullet is from the Player
+	 * @param dmg Damage of the Bullet
 	 */
 	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, boolean p, double dmg) {
 		super(x, y, w, h, vx, vy, circle, p, dmg);
@@ -26,7 +29,7 @@ public class Bullet extends Projectile {
 	}
 	
 	/**
-	 * sets up the image for the coin
+	 * Sets up the image for the Bullet
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {

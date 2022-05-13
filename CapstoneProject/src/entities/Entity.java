@@ -26,7 +26,6 @@ public class Entity {
 	 * @param w Width of the hitbox
 	 * @param h Height of the hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the entity
 	 */
 	public Entity(double x, double y, double w, double h, boolean circle) {
 		this.x = x; 
@@ -43,7 +42,7 @@ public class Entity {
 	}
 	
 	/**Sets up the sprite of an Entity with an image
-	 * @param PImage sprite to draw
+	 * @param image sprite to draw
 	 */
 	public void setSprite(PImage image) {
 		sprite = image;
@@ -299,7 +298,7 @@ public class Entity {
 	
 	/**
 	 * Causes the entity to act
-	 * @param e
+	 * @param e The Entity
 	 */
 	public void act(Entity e) {
 		

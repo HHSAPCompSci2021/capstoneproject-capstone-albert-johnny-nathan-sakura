@@ -18,8 +18,11 @@ public class Projectile extends Entity {
 	 * @param y Y-coordinate
 	 * @param w Width of the hitbox
 	 * @param h Height of the hitbox
+	 * @param vx X velocity
+	 * @param vy Y velocity
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the entity
+	 * @param p If the Projectile is from the Player
+	 * @param dmg Damage of the Projectile
 	 */
 	public Projectile(double x, double y, double w, double h, double vx, double vy, boolean circle, boolean p, double dmg) {
 		super(x, y, w, h, circle);
@@ -33,6 +36,7 @@ public class Projectile extends Entity {
 	
 	/**
 	 * Causes the Entity hit by the bullet to lose HP
+	 * @param e Entity that is interacted with
 	 */
 	public void interact(Entity e) {
 		System.out.println("interact");
@@ -47,8 +51,8 @@ public class Projectile extends Entity {
 	}
 	
 	/**
-	 * checks if the projectile is out of bounds
-	 * @return boolean if the projectile is out of bounds
+	 * Checks if the Projectile is out of bounds
+	 * @return boolean If the Projectile is out of bounds, return true, false otherwise
 	 */
 	public boolean outOfBounds() {
 		if (getX() < -10 || getX() > 1210 || getY() < -10 || getY() > 910) {

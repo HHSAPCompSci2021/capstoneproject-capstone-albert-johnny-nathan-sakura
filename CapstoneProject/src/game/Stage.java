@@ -27,12 +27,12 @@ public class Stage {
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
 	 * and dimensions width*height.
-	 * @param stagedNum the stage to construct (1-4)
+	 * @param stageNum the stage to construct (1-4)
 	 * @param x topLeft x of the stage
 	 * @param y topLeft y of the stage
 	 * @param width width of the stage
 	 * @param height height of the stage
-	 * @param Player p player passed into the stage and to interact there
+	 * @param p player passed into the stage and to interact there
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
 		System.out.println(stageNum + " width: " + width);
@@ -67,7 +67,8 @@ public class Stage {
 		playerStats = new Statistics(curPlayer, x, y+height, width, 200);
 	}
 	
-	/**Sets up the stage with an image using processing
+	/**
+	 * Sets up the stage with an image using processing
 	 * @param surface PApplet to setup with
 	 */
 	public void setup(PApplet surface) {
@@ -82,8 +83,8 @@ public class Stage {
 		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, cloud.height, stageNum);
 	}
 	
-	/**Will visually draw and update the current frame of the Stage elements, and the getStatistics
-	 * 
+	/**
+	 * Will visually draw and update the current frame of the Stage elements, and the getStatistics
 	 * @param surface PApplet surface to draw on
 	 */
 	public void draw(PApplet surface) {
@@ -270,8 +271,8 @@ public class Stage {
 		}
 	}
 	
-	/**Returns the current player referenced in Stage
-	 * 
+	/**
+	 * Returns the current player referenced in Stage
 	 * @return Player current Player character
 	 */
 	public Player getPlayer() {

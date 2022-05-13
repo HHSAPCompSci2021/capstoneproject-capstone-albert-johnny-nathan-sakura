@@ -14,9 +14,9 @@ public class Player extends Entity {
 	private int powerUpType;
 	private int powerUpDuration;
 	private ArrayList<Entity> entityList;
-	//private PImage image;
 	private int playerNum;
 	private int shawtyFramesCD;
+	
 	/**
 	 * Creates a new instance of Player with the properties of Entity
 	 * @param x X-Coordinate
@@ -24,10 +24,8 @@ public class Player extends Entity {
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param image Image of the player sprite
+	 * @param gameNum The game number
 	 */
-	//can we hard code images and put the constructor as a playerNum?
-	//
 	public Player(double x, double y, double w, double h, boolean circle, int gameNum) {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
@@ -133,7 +131,7 @@ public class Player extends Entity {
 	
 	/**
 	 * Uses skill i
-	 * @param i
+	 * @param i Skill number
 	 */
 	public void useSkill(int i) {
 		//when i = 0 it is player default skill
@@ -157,6 +155,7 @@ public class Player extends Entity {
 	
 	/**
 	 * Allows the player to shoot
+	 * @param surface The surface drawn on
 	 */
 	public void shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return;

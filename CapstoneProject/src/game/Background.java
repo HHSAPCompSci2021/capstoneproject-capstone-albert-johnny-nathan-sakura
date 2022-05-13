@@ -14,11 +14,11 @@ public class Background {
 	/**Constructs a Background class that will scroll up
 	 * 
 	 * @param photo PImage to draw
-	 * @param x x of the Background
-	 * @param y y of the Background
-	 * @param width width of the Background
-	 * @param height height of the Background
-	 * @param stageNum current Stage #
+	 * @param x X-coordinate of the Background
+	 * @param y Y-coordinate of the Background
+	 * @param width Width of the Background
+	 * @param height Height of the Background
+	 * @param stageNum Current Stage number
 	 * @pre photo is a valid PImage 
 	 */
 	public Background(PImage photo, int x, int y, int width, int height, int stageNum) {
@@ -30,9 +30,9 @@ public class Background {
 		this.stageNum = stageNum;
 		photo.resize(width, height);
 	}
-	/**Draws this Background class from the currentCenter scrolled 
-	 * 
-	 * @param marker to draw on
+	/**
+	 * Draws this Background class from the currentCenter scrolled 
+	 * @param marker To draw on
 	 */
 	public void draw(PApplet marker) {
 		if (stageNum == 2) {
@@ -50,9 +50,9 @@ public class Background {
 		marker.tint(255);
 	}
 	
-	/**Changes the y the Background is currently at while scrolling
-	 * 
-	 * @param y to move
+	/**
+	 * Changes the y the Background is currently at while scrolling
+	 * @param yMove Y value to move
 	 */
 	public void scroll(int yMove) {
 		curCenterY+=yMove;
