@@ -1,6 +1,7 @@
 package entities.projectiles;
 
 import entities.mobs.Player;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 
@@ -20,7 +21,7 @@ public class Wind extends Projectile {
 	 * @param image Image of the player sprite
 	 */
 	public Wind(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
-		super(x, y, w, h, vx, vy, circle, dmg);
+		super(x, y, w, h, vx, vy, circle, false, dmg);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -30,6 +31,14 @@ public class Wind extends Projectile {
 	 */
 	public void interact(Player player) {
 		player.setvy(player.getvy() - 10);
+	}
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		System.out.println("loaded image");
+		temp = (surface.loadImage("sprites/projectile-wind.png"));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 	
 }

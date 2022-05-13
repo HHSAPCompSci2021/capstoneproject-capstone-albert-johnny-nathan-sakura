@@ -2,6 +2,7 @@ package entities.projectiles;
 
 import entities.Entity;
 import entities.mobs.Player;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -32,6 +33,15 @@ public class Coin extends Entity {
 	 */
 	public void interact(Player e) {
 		e.addCoins(value);
+		die();
+	}
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		System.out.println("loaded image");
+		temp = (surface.loadImage("sprites/entity-coin.png"));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 	
 }

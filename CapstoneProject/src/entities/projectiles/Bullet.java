@@ -20,8 +20,8 @@ public class Bullet extends Projectile {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the player sprite
 	 */
-	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
-		super(x, y, w, h, vx, vy, circle, dmg);
+	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, boolean p, double dmg) {
+		super(x, y, w, h, vx, vy, circle, p, dmg);
 		this.setHp(1);
 	}
 	

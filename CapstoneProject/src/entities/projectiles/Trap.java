@@ -2,6 +2,7 @@ package entities.projectiles;
 
 import entities.Entity;
 import entities.mobs.Player;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -24,7 +25,7 @@ public class Trap extends Bullet {
 	 * @param image Image of the player sprite
 	 */
 	public Trap(double x, double y, double w, double h, double vx, double vy, int type, boolean circle, double dmg) {
-		super(x, y, w, h, vx, vy, circle, dmg);
+		super(x, y, w, h, vx, vy, circle, false,  dmg);
 		this.type = type;
 	}
 	
@@ -43,5 +44,17 @@ public class Trap extends Bullet {
 		if (type == 3) {
 			player.addCoins(-10);
 		}
+		die();
+	}
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		System.out.println("loaded image");
+		String str = "sprites/trap-";
+		str += type;
+		str += ".png";
+		temp = (surface.loadImage(str));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 }

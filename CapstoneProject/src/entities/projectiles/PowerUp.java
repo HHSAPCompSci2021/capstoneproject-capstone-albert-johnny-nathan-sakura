@@ -2,6 +2,7 @@ package entities.projectiles;
 
 import entities.Entity;
 import entities.mobs.Player;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -35,6 +36,18 @@ public class PowerUp extends Entity {
 	public void interact(Player e) {
 		e.setPowerUpDuration(time);
 		e.setPowerUpType(type);
+		e.die();
+	}
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		System.out.println("loaded image");
+		String str = "sprites/powerup-";
+		str += type;
+		str += ".png";
+		temp = (surface.loadImage(str));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 
 }

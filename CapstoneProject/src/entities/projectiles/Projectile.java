@@ -1,5 +1,7 @@
 package entities.projectiles;
 import entities.Entity;
+import entities.mobs.Player;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -8,6 +10,7 @@ import processing.core.PImage;
  *
  */
 public class Projectile extends Entity {
+	private boolean fromPlayer;
 	/**
 	 * Creates a new instance of Projectile
 	 * @param x X-coordinate
@@ -17,11 +20,12 @@ public class Projectile extends Entity {
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the entity
 	 */
-	public Projectile(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
+	public Projectile(double x, double y, double w, double h, double vx, double vy, boolean circle, boolean p, double dmg) {
 		super(x, y, w, h, circle);
 		setvx(vx);
 		setvy(vy);
 		setDmg(dmg);
+		fromPlayer = p;
 	}
 	
 	
@@ -29,13 +33,34 @@ public class Projectile extends Entity {
 	 * Causes the Entity hit by the bullet to lose HP
 	 */
 	public void interact(Entity e) {
-		e.setHp(e.getHp() - getDmg());
+		if (fromPlayer == false) {
+			e.setHp(e.getHp() - getDmg());
+			die();
+		}
 	}
 	
+	public boolean outOfBounds() {
+		if (getX() < -10 || getX() > 1210 || getY() < -10 || getY() > 910) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public void act() {
 		setX(getX()+getvx());
 		setY(getY()+getvy());
+		if (outOfBounds()) {
+			die();
+		}
+	}
+	
+	public void setup(PApplet surface) {
+		PImage temp;
+		System.out.println("loaded image");
+		temp = (surface.loadImage("sprites/projectile.png"));
+		temp.resize((int)getWidth(), (int)getHeight());
+		setSprite(temp);
 	}
 
 }

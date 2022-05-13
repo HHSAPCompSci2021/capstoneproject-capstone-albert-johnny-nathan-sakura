@@ -337,4 +337,8 @@ public class Entity {
 	public void interact(Player player) {
 		//uwu owo meow meow nya~
 	}
+	
+	public void die() {
+		isDead = true;
+	}
 }
