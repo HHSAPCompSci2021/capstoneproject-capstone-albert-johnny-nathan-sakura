@@ -9,6 +9,8 @@ public class DrawingSurface extends PApplet {
 	private boolean startMenu;
 	private boolean pauseMenu;
 	private int newWidth, newHeight;
+	private int whoWon;
+	private boolean gameDone;
 	public DrawingSurface(int width1, int height1) {
 		this.newWidth = width1;
 		this.newHeight = height1;
@@ -30,6 +32,7 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		game1.giveInputs(this);
 		game2.giveInputs(this);
+		
 		if (isPressed(27)) {
 			pauseMenu = true;
 		}
@@ -52,6 +55,10 @@ public class DrawingSurface extends PApplet {
 			if (isPressed(32)) {
 				startMenu = false;
 			}
+		} else if (gameDone) {
+			background(100);
+			text("Player " + whoWon + " won!!", width/4,height/4,width/2,height/2);
+			
 		}
 		else {
 			clear();
@@ -64,7 +71,22 @@ public class DrawingSurface extends PApplet {
 			background(100);
 			game1.draw(this);
 			game2.draw(this);
-			
+			if (game1.gameOver()) {
+				whoWon = 2;
+				gameDone = true;
+			}
+			if (game2.gameOver()) {
+				whoWon = 1;
+				gameDone = true;
+			}
+			if (game1.gameCompleted()) {
+				whoWon = 1;
+				gameDone = true;
+			}
+			if (game2.gameCompleted()) {
+				whoWon = 2;
+				gameDone = true;
+			}
 		}
 	}
 	

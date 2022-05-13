@@ -13,6 +13,7 @@ public class Game {
 	private int gameNum;
 	private ArrayList<Stage> stages;
 	private Stage curStage;
+	private int curStageInd;
 	private Statistics playerStats;
 	private Point dimensions, topLeft;
 	private Player p;
@@ -41,7 +42,7 @@ public class Game {
 		} else {
 			//System.out.println("game1x is " + x);
 		}
-		for (int i = 0; i < 4; i++) {
+		for (int i = 1; i < 4; i++) {
 			stages.add(new Stage(i, x+50, 0+50, width/2-50-50, height-200-50,p)); //100 on the bottom saved for statistics
 		}
 		curStage = stages.get(0);
@@ -50,14 +51,16 @@ public class Game {
 	
 	//switches stage
 	private boolean switchStage(int i) {
-		if (i < stages.size() && i > 0) {
+		if (i <= stages.size() && i > 0) {
+			System.out.println(i);
 			curStage = stages.get(i-1);
+			curStageInd = (i-1);
 			return true;
 		}
 		return false;
 	}
 	private boolean nextStage() {
-		return switchStage(stages.indexOf(curStage)+1);
+		return switchStage(stages.indexOf(curStage)+2);
 	}
 	
 	/**Sets up the stages
@@ -70,8 +73,9 @@ public class Game {
 	 * @param surface PApplet to draw things on
 	 */
 	public void draw(PApplet surface) {
-		if (curStage.isDone()) {
-			nextStage();
+		if (curStage.isCompleted()) {
+			System.out.println(nextStage());
+			return;
 		}
 		playerStats = curStage.getStats();
 		curStage.draw(surface);
@@ -92,6 +96,12 @@ public class Game {
 		
 	}
 	
+	public boolean gameCompleted() {
+		return curStageInd >= stages.size();
+	}
+	public boolean gameOver() {
+		return curStage.gameOver();
+	}
 	
 	/**Forwards player inputs into Player class stored in current stage
 	 * 

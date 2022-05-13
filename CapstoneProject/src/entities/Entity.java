@@ -42,7 +42,9 @@ public class Entity {
 		bounds = new double[4];
 	}
 	
-
+	/**Sets up the sprite of an Entity with an image
+	 * @param PImage sprite to draw
+	 */
 	public void setSprite(PImage image) {
 		sprite = image;
 	}

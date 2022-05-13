@@ -43,7 +43,9 @@ public class Stage {
 		curPlayer = p;
 		//Johnny requested below
 		p.setEntityList(entityList);
-		entityList.add(new Goon(100, 100, 100, 100, true, 1));
+		entityList.add(new Goon(100, 100, 100, 100, true, stageNum, 1));
+		entityList.add(new Goon(400, 100, 100, 100, true, stageNum, 1));
+		entityList.add(new Goon(250, 250, 100, 100, true, stageNum, 2));
 		for (int i = 0; i < 4; i++) {
 		//	entityList.add(new Goon(stageNum)); we need different stageNum for
 			//different enemy movement
@@ -109,6 +111,12 @@ public class Stage {
 	 * @param gameNum Game number
 	 */
 	public void giveInputs(DrawingSurface surface, int gameNum) {
+		if (surface.isPressed(66) || surface.isPressed(98)) {
+			curWave +=1;
+		}
+		
+		
+		
 		if (gameNum == 1) {
 			if (surface.isPressed(65) || surface.isPressed(97)) {
 				System.out.println("a");
@@ -177,7 +185,7 @@ public class Stage {
 	 * @return true if all enemies are dead
 	 */
 	public boolean isCompleted() {
-		return stageComplete;
+		return curWave > 3;
 	}
 	/** 
 	 * Returns if the game is over
