@@ -1,6 +1,9 @@
 package entities.mobs;
 
+import java.util.ArrayList;
+
 import entities.Entity;
+import entities.projectiles.Bullet;
 import processing.core.PImage;
 
 /**

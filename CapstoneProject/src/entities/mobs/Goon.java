@@ -1,5 +1,9 @@
 package entities.mobs;
 
+import java.util.ArrayList;
+
+import entities.Entity;
+import entities.projectiles.Bullet;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -36,8 +40,16 @@ public class Goon extends Enemy{
 	/**
 	 * Shoots Bullets
 	 */
-	public void shootBullet() {
-		shoot();
+	public void shoot() {
+		ArrayList<Entity> finalList = new ArrayList<Entity>();
+		Bullet b = new Bullet(getX(), getY(), 30, 30, 0, -15, true, false, 5);
+		Player temp = new Player(0, 0, 0, 0, false, 0);
+		ArrayList<Entity> list = temp.getEntityList();
+		for(Entity e : list) {
+			finalList.add(e);
+		}
+		finalList.add(b);
+		temp.setEntityList(finalList);
 	}
 	
 	
@@ -45,26 +57,34 @@ public class Goon extends Enemy{
 	 * Allows the Goon to move and shoot
 	 */
 	public void act() {
+		
+		
 		//setHp(0);
 		if(0<= moviewoovie && moviewoovie >= 15 && flag) {
 			setX(getX() + getvx());
+			shoot();
+			moviewoovie--;
 		}
 		
 		if(0 >= moviewoovie && moviewoovie > -15 && flag) {
 			setX(getY() - getvy());
+			shoot();
+			moviewoovie--;
 		}
 		
 		if(0<= moviewoovie && moviewoovie >= 15 && !flag) {
 			setX(getX() - getvx());
+			shoot();
+			moviewoovie--;
 		}
 		
 		if(0 >= moviewoovie && moviewoovie > -15 && !flag) {
 			setX(getY() + getvy());
-		}
-		
-		
-		shootBullet();
+			shoot();
+			moviewoovie--;
+		}	
 	}
+	
 	
 	/**
 	 * Sets up the image for the Goon

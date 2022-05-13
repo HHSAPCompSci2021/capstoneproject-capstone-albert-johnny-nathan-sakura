@@ -97,7 +97,7 @@ public class Stage {
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			//if (e.isVisble()) {
-			if (e instanceof Goon) System.out.println("goon drwan");
+			if (e instanceof Goon) System.out.println("goon drawn");
 			e.draw(surface);
 			//}
 		}

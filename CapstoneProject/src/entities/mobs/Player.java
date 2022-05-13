@@ -57,6 +57,10 @@ public class Player extends Entity {
 		entityList = e;
 	}
 	
+	public ArrayList<Entity> getEntityList(){
+		return entityList;
+	}
+	
 	/**
 	 * Allows the player to interact with the surrounding Entities
 	 */
