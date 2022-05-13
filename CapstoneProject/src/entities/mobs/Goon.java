@@ -19,10 +19,11 @@ public class Goon extends Enemy{
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the entity
 	 */
-	public Goon(double x, double y, double w, double h, boolean circle, double frequency, PImage image) {
-		super(x, y, w, h, circle, image);
+	public Goon(double x, double y, double w, double h, boolean circle, double frequency) {
+		super(x, y, w, h, circle);
 		shotFrequency = frequency;
 		moviewoovie = 15;
+		setHp(1);
 	}
 	
 	/**
@@ -61,7 +62,7 @@ public class Goon extends Enemy{
 		
 		
 		shootBullet();
-		act();
+		//act();
 	}
 	
 	public void setup(PApplet surface) {
@@ -70,7 +71,7 @@ public class Goon extends Enemy{
 		temp = (surface.loadImage("sprites/stage1-1.png"));
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
-		if(moviewoovie <= -15) {
+		if (moviewoovie <= -15) {
 			moviewoovie = 15;
 			flag = !flag;
 		}

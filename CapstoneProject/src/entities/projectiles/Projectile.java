@@ -26,6 +26,7 @@ public class Projectile extends Entity {
 		setvx(vx);
 		setvy(vy);
 		setDmg(dmg);
+		this.setHp(1);
 		fromPlayer = p;
 	}
 	
@@ -34,11 +35,13 @@ public class Projectile extends Entity {
 	 * Causes the Entity hit by the bullet to lose HP
 	 */
 	public void interact(Entity e) {
+		System.out.println("interact");
 		if (fromPlayer == false && e instanceof Player) {
 			e.setHp(e.getHp() - getDmg());
 			die();
 		}
 		if (fromPlayer == true && e instanceof Enemy) {
+			System.out.println("drain");
 			e.setHp(e.getHp() - getDmg());
 		}
 	}

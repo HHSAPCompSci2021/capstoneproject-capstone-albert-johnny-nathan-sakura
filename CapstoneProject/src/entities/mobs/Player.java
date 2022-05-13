@@ -62,14 +62,14 @@ public class Player extends Entity {
 		if (shawtyFramesCD > 0) {
 			shawtyFramesCD--;
 		}
-		for (int i = 0; i < entityList.size(); i++) {
-			Entity e = entityList.get(i);
-			if (e != this && isTouching(e)) {
-				e.interact(this);
-				entityList.remove(i);
-				i--;
-			}
-		}
+//		for (int i = 0; i < entityList.size(); i++) {
+//			Entity e = entityList.get(i);
+//			if (e != this && isTouching(e)) {
+//				e.interact(this);
+//				entityList.remove(i);
+//				i--;
+//			}
+//		}
 		powerUpDuration -= 1;
 	}
 	

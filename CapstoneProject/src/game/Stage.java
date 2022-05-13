@@ -7,6 +7,7 @@ import entities.mobs.Boss;
 import entities.mobs.Enemy;
 import entities.mobs.Goon;
 import entities.mobs.Player;
+import entities.projectiles.Bullet;
 import entities.projectiles.Projectile;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -42,6 +43,7 @@ public class Stage {
 		curPlayer = p;
 		//Johnny requested below
 		p.setEntityList(entityList);
+		entityList.add(new Goon(100, 100, 100, 100, true, 1));
 		for (int i = 0; i < 4; i++) {
 		//	entityList.add(new Goon(stageNum)); we need different stageNum for
 			//different enemy movement
@@ -87,7 +89,8 @@ public class Stage {
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			//if (e.isVisble()) {
-				e.draw(surface);
+			if (e instanceof Goon) System.out.println("goon drwan");
+			e.draw(surface);
 			//}
 		}
 	}
@@ -195,7 +198,7 @@ public class Stage {
 			Entity e = entityList.get(i);
 			if (e.isDead()) {
 
-				if (e instanceof Projectile) System.out.println("didfdsfjdsuifyhdsue");
+				//if (e instanceof Projectile) System.out.println("didfdsfjdsuifyhdsue");
 				entityList.remove(entityList.indexOf(e));
 				continue;
 			}
@@ -204,26 +207,37 @@ public class Stage {
 				curPlayer = (Player)e;
 				curPlayer.setEntityList(entityList);
 				//if (curPlayer != null)curPlayer.act();
-			} if (!(e instanceof Projectile)) {
-				entitiesExist = true;
-				e.act();
-			} else {
-				e.act();
 			}
+			e.act();
+//			if (!(e instanceof Projectile)) {
+//				entitiesExist = true;
+//				e.act();
+//			} else {
+//				e.act();
+//			}
 		}
+
+		//entityList removes all projectiles???
 		
+		System.out.println(entityList.size());
+		for (Entity e : entityList) if (e instanceof Projectile) System.out.println("proj exists");
 		for (int i = 0; i < entityList.size(); i++) {
 			Entity e = entityList.get(i);
 			if (e instanceof Player || e instanceof Enemy) {
+				System.out.println("eva");
 				for (int j = 0; j < entityList.size(); j++) {
+					System.out.println("eva2");
 					Entity e2 = entityList.get(i);
 					if (e2 instanceof Projectile) {
-						((Projectile)e2).interact(e);
+						System.out.println("neva");
+						if (e.isTouching(e2)) {
+							System.out.println("say neva");
+							((Bullet)e2).interact(e);
+						}
 					}
 				}
 			}
 		}
-		
 		if (!playerExists) gameOver = true;
 		
 		if (!entitiesExist) {

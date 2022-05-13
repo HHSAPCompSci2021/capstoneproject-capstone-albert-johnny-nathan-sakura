@@ -19,7 +19,7 @@ public class Enemy extends Entity{
 	 * @param circle If the hitbox is a circle
 	 * @param image Image of the entity
 	 */
-	public Enemy(double x, double y, double w, double h, boolean circle, PImage image) {
+	public Enemy(double x, double y, double w, double h, boolean circle) {
 		super(x, y, w, h, circle);
 	}
 	

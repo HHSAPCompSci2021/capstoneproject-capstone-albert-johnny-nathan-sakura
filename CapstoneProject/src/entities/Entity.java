@@ -330,13 +330,13 @@ public class Entity {
 	}
 
 	
-	/**
-	 * Allows interactions between the Player and Entity
-	 * @param player The Player
-	 */
-	public void interact(Player player) {
-		//uwu owo meow meow nya~
-	}
+//	/**
+//	 * Allows interactions between the Player and Entity
+//	 * @param player The Player
+//	 */
+//	public void interact(Player player) {
+//		//uwu owo meow meow nya~
+//	}
 	
 	public void die() {
 		isDead = true;

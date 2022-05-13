@@ -20,7 +20,7 @@ public class Boss extends Enemy{
 	 * @param image Image of the entity
 	 */
 	public Boss(double x, double y, double w, double h, boolean circle, PImage image, double frequency) {
-		super(x, y, w, h, circle, image);
+		super(x, y, w, h, circle);
 		shotFrequency = frequency;
 	}
 	
