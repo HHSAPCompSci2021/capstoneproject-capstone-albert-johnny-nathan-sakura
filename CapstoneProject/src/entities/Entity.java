@@ -167,6 +167,10 @@ public class Entity {
 		}
 	}
 	
+	/**
+	 * sets up the image for the entity
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		
 	}

@@ -39,6 +39,10 @@ public class PowerUp extends Entity {
 		e.die();
 	}
 	
+	/**
+	 * sets up the image for the entity
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");

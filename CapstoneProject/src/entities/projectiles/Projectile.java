@@ -46,6 +46,10 @@ public class Projectile extends Entity {
 		}
 	}
 	
+	/**
+	 * checks if the projectile is out of bounds
+	 * @return boolean if the projectile is out of bounds
+	 */
 	public boolean outOfBounds() {
 		if (getX() < -10 || getX() > 1210 || getY() < -10 || getY() > 910) {
 			return true;
@@ -54,6 +58,9 @@ public class Projectile extends Entity {
 		}
 	}
 	
+	/**
+	 * moves the projectile
+	 */
 	public void act() {
 		System.out.println("cri");
 		setX(getX()+getvx());
@@ -64,6 +71,10 @@ public class Projectile extends Entity {
 		}
 	}
 	
+	/**
+	 * sets up the image for the trap
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");

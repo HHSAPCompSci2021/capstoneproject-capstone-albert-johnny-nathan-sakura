@@ -35,6 +35,10 @@ public class Player extends Entity {
 		this.setHp(100);
 	}
 	
+	/**
+	 * sets up the image for the player
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		temp = (surface.loadImage("sprites/player2.png"));

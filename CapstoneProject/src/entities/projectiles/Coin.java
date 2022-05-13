@@ -36,6 +36,10 @@ public class Coin extends Entity {
 		die();
 	}
 	
+	/**
+	 * sets up the image for the coin
+	 * @param surface the drawing surface
+	 */
 	public void setup(PApplet surface) {
 		PImage temp;
 		System.out.println("loaded image");
