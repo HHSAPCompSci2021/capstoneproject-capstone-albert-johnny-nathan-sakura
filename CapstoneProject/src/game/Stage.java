@@ -25,7 +25,7 @@ public class Stage {
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
 	 * and dimensions width*height.
-	 * @param stageNum the stage to construct (1-4)
+	 * @param stagedNum the stage to construct (1-4)
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
 		System.out.println(stageNum + " width: " + width);
@@ -190,7 +190,8 @@ public class Stage {
 		
 		entitiesExist = true;
 		
-		for (Entity e : entityList) {
+		for (int i = 0; i < entityList.size(); i++) {
+			Entity e = entityList.get(i);
 			if (e.isDead()) {
 				entityList.remove(entityList.indexOf(e));
 				continue;
@@ -205,6 +206,11 @@ public class Stage {
 				e.act();
 			}
 		}
+		
+		for (int i = 0; i < entityList.size(); i++) {
+			
+		}
+		
 		if (!playerExists) gameOver = true;
 		
 		if (!entitiesExist) {
