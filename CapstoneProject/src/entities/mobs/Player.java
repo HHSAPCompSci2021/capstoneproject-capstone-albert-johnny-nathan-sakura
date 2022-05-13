@@ -141,7 +141,7 @@ public class Player extends Entity {
 	public void shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return;
 		System.out.println("entityNum: " + entityList.size());
-		Bullet b = new Bullet(this.getX(), this.getY() - 10, 30, 30, 0, -15, true, 1);
+		Bullet b = new Bullet(this.getX(), this.getY() - 10, 30, 30, 0, -15, true, true, 1);
 		b.setup(surface);
 		entityList.add(b);
 		shawtyFramesCD = 8;
