@@ -52,6 +52,7 @@ public class Projectile extends Entity {
 	}
 	
 	public void act() {
+		System.out.println("cri");
 		setX(getX()+getvx());
 		setY(getY()+getvy());
 		if (outOfBounds()) {
