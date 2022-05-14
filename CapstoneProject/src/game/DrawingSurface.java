@@ -32,6 +32,7 @@ public class DrawingSurface extends PApplet {
 	 * Sets up a DrawingSurface by setting up the game
 	 */
 	public void setup() {
+		textFont(createFont("fonts/redalert1.ttf",30));
 		System.out.println(newWidth + " " + newHeight);
 		game1 = new Game(1, newWidth, newHeight);
 		game2 = new Game(2, newWidth, newHeight);

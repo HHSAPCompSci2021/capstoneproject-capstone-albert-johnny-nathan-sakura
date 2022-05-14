@@ -14,6 +14,7 @@ public class Statistics {
 	private boolean[] trapsUsable;
 	private double progress, coins;
 	private int x,y,width,height;
+	private Player p;
 	
 	/**
 	 * Constructing a Statistics class with a Player class 
@@ -26,12 +27,26 @@ public class Statistics {
 	public Statistics(Player p, int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
+		this.p = p;
 		this.width = width;
 		this.height = height;
 		
 		//note: put info in player so below methods dont have to be used
 	}
 	
+	/**
+	 * Draws out the Statistics in a concise manner
+	 * @param surface The surface to draw on
+	 */
+	public void draw(PApplet surface) {
+		System.out.println("iambeingdrawn at " +x + " " + y);
+		//surface.fill(200);
+		///surface.rect(x, y, width, height);
+		surface.fill(225);
+		surface.text("HP: " + p.getHp(), x, y, width, height);
+//		surface.text("HP: " + p.getHp(), x, y, width, height);
+//		surface.text("HP: " + p.getHp(), x, y, width, height);
+	}
 	/**
 	 * Updates the hp by num amount
 	 * @param num positive for adding HP, negative for subtracting
@@ -76,11 +91,5 @@ public class Statistics {
 		trapsUsable[i] = true;
 	}
 
-	/**
-	 * Draws out the Statistics in a concise manner
-	 * @param surface The surface to draw on
-	 */
-	public void draw(PApplet surface) {
-		//some cool design 
-	}
+
 }

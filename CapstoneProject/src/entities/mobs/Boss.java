@@ -54,7 +54,7 @@ public class Boss extends Enemy{
 		this.surface = surface;
 		PImage temp;
 		System.out.println("loaded image");
-		temp = (surface.loadImage("sprites/stage1-3.png"));
+		temp = (surface.loadImage("sprites/stage" + stageNum + "-3.png"));
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
 	}

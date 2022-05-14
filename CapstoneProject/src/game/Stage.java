@@ -24,6 +24,7 @@ public class Stage {
 	private boolean gameOver, stageComplete;
 	private Background back;
 	private int curWave;
+	private Boss b;
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
 	 * and dimensions width*height.
@@ -46,7 +47,7 @@ public class Stage {
 		//entityList.add(new Player(0, 0, 0, 0, false, null));
 		entityList.add(p);
 		curPlayer = p;
-		
+		b = null;
 		
 		//Johnny requested below
 		p.setEntityList(entityList);
@@ -95,7 +96,7 @@ public class Stage {
 		back.draw(surface);
 		back.scroll(5);
 		act(surface);
-		updateStats();
+		///updateStats();
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			//if (e.isVisble()) {
@@ -103,6 +104,13 @@ public class Stage {
 			//e.setup(surface);
 			e.draw(surface);
 			//}
+		}
+		if (b!=null) {
+			surface.fill(225);
+			surface.text("BOSS HP: " + b.getHp(), topLeft.x, topLeft.y, dimensions.x, dimensions.y);
+		} else {
+			surface.fill(225);
+			surface.text("Current Wave: " + curWave + "/3", topLeft.x, topLeft.y, dimensions.x, dimensions.y);
 		}
 	}
 	
@@ -273,6 +281,7 @@ public class Stage {
 			if (curWave == 3) {
 				Boss b = new Boss(topLeft.x+100, topLeft.y+100, 100, 100, false, stageNum);
 				b.setup(surface);
+				this.b = b;
 				entityList.add(b);
 			} else if (curWave < 3) {
 				Goon g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 1);
