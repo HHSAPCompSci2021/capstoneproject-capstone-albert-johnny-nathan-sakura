@@ -271,21 +271,22 @@ public class Stage {
 			//you can add below another set of if conditions for each stage that
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
-				Boss b = new Boss(100, 100, 100, 100, false, stageNum);
+				Boss b = new Boss(topLeft.x+100, topLeft.y+100, 100, 100, false, stageNum);
 				b.setup(surface);
 				entityList.add(b);
 			} else if (curWave < 3) {
-				Goon g = new Goon(50, 50, 75, 75, false, stageNum, stageNum);
+				Goon g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				entityList.add(g);
-				g = new Goon(75, 75, 75, 75, false, stageNum, stageNum);
+				g = new Goon(topLeft.x+75, topLeft.y+75, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				entityList.add(g);
-				g = new Goon(50, 50, 75, 75, false, stageNum, stageNum);
+				g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				entityList.add(g);
-				g = new Goon(100, 100, 75, 75, false, stageNum, stageNum);
+				g = new Goon(topLeft.x+100, topLeft.y+100, 75, 75, false, stageNum, 2);
 				g.setup(surface);
+				entityList.add(g);
 
 			}
 		}

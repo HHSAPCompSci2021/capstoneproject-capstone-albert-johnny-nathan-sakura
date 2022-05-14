@@ -11,6 +11,8 @@ import processing.core.PImage;
 public class Boss extends Enemy{
 
 	private int stageNum;
+	private PApplet surface;
+	private int shawtyFramesCD;
 	/**
 	 * Creates a new instance of Boss
 	 * @param x X-coordinate
@@ -25,6 +27,7 @@ public class Boss extends Enemy{
 		this.stageNum = stageNum;
 		setHp(1000);
 		//shotFrequency = frequency;
+		shawtyFramesCD = 10;
 	}
 	
 	/**
@@ -32,12 +35,23 @@ public class Boss extends Enemy{
 	 */
 	public void shootPatternBullet() {
 		Bullet b = new Bullet(getX(), getY(), 30, 30, 0, 15, true, false, 10);
+		b.setup(surface);
 		getDaList().add(b);
+	}
+	
+	public void act() {
+		if (shawtyFramesCD == 0) {
+			shootPatternBullet();
+			shawtyFramesCD = 10;
+		} else {
+			shawtyFramesCD--;
+		}
 	}
 	/**Sets up the boss with an image
 	 * @param surface PApplet to setup with
 	 */
 	public void setup(PApplet surface) {
+		this.surface = surface;
 		PImage temp;
 		System.out.println("loaded image");
 		temp = (surface.loadImage("sprites/stage1-3.png"));

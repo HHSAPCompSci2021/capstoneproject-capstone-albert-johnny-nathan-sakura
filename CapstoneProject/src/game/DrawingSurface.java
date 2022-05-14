@@ -69,8 +69,10 @@ public class DrawingSurface extends PApplet {
 				startMenu = false;
 			}
 		} else if (gameDone) {
-			background(100);
-			text("Player " + whoWon + " won!!", width/4,height/4,width/2,height/2);
+			background(225);
+			fill(0, 95, 143);
+			if (whoWon == 1) fill(130, 7, 0);
+			text("Player " + whoWon + " won!!", width/2-100,height/2,width,height);
 			
 		}
 		else {

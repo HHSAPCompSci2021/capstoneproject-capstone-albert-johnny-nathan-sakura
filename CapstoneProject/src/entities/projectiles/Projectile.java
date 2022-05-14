@@ -42,11 +42,12 @@ public class Projectile extends Entity {
 		System.out.println("interact");
 		if (fromPlayer == false && e instanceof Player) {
 			e.setHp(e.getHp() - getDmg());
-			die();
+			setHp(0);
 		}
 		if (fromPlayer == true && e instanceof Enemy) {
 			System.out.println("drain");
 			e.setHp(e.getHp() - getDmg());
+			setHp(0);
 		}
 	}
 	

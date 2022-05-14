@@ -30,7 +30,7 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
-		this.setHp(100);
+		this.setHp(100000);
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class Player extends Entity {
 	public void shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return;
 		System.out.println("entityNum: " + entityList.size());
-		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -15, true, true, 1);
+		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -15, true, true, 1000);
 		b.setup(surface);
 		entityList.add(b);
 		shawtyFramesCD = 10;
