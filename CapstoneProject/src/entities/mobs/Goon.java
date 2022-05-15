@@ -18,6 +18,8 @@ public class Goon extends Enemy{
 	private int goonNum;
 	private int shawtyFramesCD;
 	private PApplet surface;
+	private int seconds; 
+	
 	/**
 	 * Creates a new instance of Goon
 	 * @param x X-coordinate
@@ -32,12 +34,13 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
-		setvx(12);
+		setvx(14);
 		setvy(12);
 		flag = true;
 		//shotFrequency = frequency;
 		moviewoovie = 10;
 		setHp(100);
+		seconds = 10;
 		shawtyFramesCD = 20;
 		if (goonNum == 2) {
 			shawtyFramesCD = 10;
@@ -63,42 +66,42 @@ public class Goon extends Enemy{
 //		super.act();
 		
 //		setHp(0);
-		if(0<= moviewoovie && moviewoovie <= 10 && flag) {
+		if(0<= moviewoovie && moviewoovie <= seconds && flag) {
 			if (shawtyFramesCD > 0) {
 				shawtyFramesCD--;
 			}
 			if(shawtyFramesCD <= 0) {
 				shoot();
-				shawtyFramesCD = 10;
+				shawtyFramesCD = seconds;
 			}
 			setX(getX() + getvx());
 			moviewoovie--;
 		}
 		
-		if(0 >= moviewoovie && moviewoovie > -10 && flag) {
+		if(0 >= moviewoovie && moviewoovie > -seconds && flag) {
 			if (shawtyFramesCD > 0) {
 				shawtyFramesCD--;
 			}
 			if(shawtyFramesCD <= 0) {
 				shoot();
-				shawtyFramesCD = 10;
+				shawtyFramesCD = seconds;
 			}
 			setY(getY() + getvy());
 			moviewoovie--;
-			if(moviewoovie <= -10) {
+			if(moviewoovie <= -seconds) {
 				flag = false;
-				moviewoovie = 10;
+				moviewoovie = seconds;
 				
 			}
 		}
 		
-		if(0<= moviewoovie && moviewoovie <= 10 && !flag) {
+		if(0<= moviewoovie && moviewoovie <= seconds && !flag) {
 			if (shawtyFramesCD > 0) {
 				shawtyFramesCD--;
 			}
 			if(shawtyFramesCD <= 0) {
 				shoot();
-				shawtyFramesCD = 10;
+				shawtyFramesCD = seconds;
 			}
 			setX(getX() - getvx());
 			moviewoovie--;
@@ -121,11 +124,35 @@ public class Goon extends Enemy{
 		}	
 	}
 	
+	/**
+	 * Sets the number of seconds for the movement
+	 * @param sec Amount of time
+	 */
+	public void setSeconds(int sec) {
+		seconds = sec;
+	}
+	
+	/**
+	 * Sets the X-coordinate velocity
+	 * @param d
+	 */
+	public void setXMovement(double d) {
+		setvx(d);
+	}
+	
+	/**
+	 * Sets the X-coordinate velocity
+	 * @param d
+	 */
+	public void setYMovement(double d) {
+		setvy(d);
+	}
+	
 	
 	/**
 	 * Sets up the image for the Goon
 	 * @param surface the drawing surface
-	 */
+	*/
 	public void setup(PApplet surface) {
 		this.surface = surface;
 		PImage temp;
