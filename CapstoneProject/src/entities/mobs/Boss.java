@@ -31,17 +31,17 @@ public class Boss extends Enemy{
 		frames = 0;
 		if (stageNum == 1) {
 			movement = new double[4][2];
-			movement[0][0] = -3;
+			movement[0][0] = -11;
 			movement[0][1] = 0;
-			movement[3][0] = 3;
+			movement[3][0] = 11;
 			movement[3][1] = 0;
 		}
 		if (stageNum == 2) {
 			movement = new double[4][2];
-			movement[0][0] = -5;
+			movement[0][0] = -6;
 			movement[0][1] = 0;
-			movement[3][0] = 5;
-			movement[3][1] = 0;
+			movement[3][0] = 6;
+			movement[3][1] = -0;
 		}
 		if (stageNum == 3) {
 			movement = new double[4][2];
@@ -68,92 +68,31 @@ public class Boss extends Enemy{
 		//constructor! i have made some examples you dont need
 		//all these if statements in act
 		frames++;
-		if(stageNum == 1) {
-			if (frames == 20) {
-				frames = 0;
-				curInd++;
-				if (curInd >= movement.length) {
-					curInd = 0;
-				}
-				
-				double vx = movement[curInd][0]; 
-				double vy = movement[curInd][1];
-//				if(curInd % 2 == 0) {
-//					vy = 10;
-//				}
-//				if(curInd % 2 != 0) {
-//					vy = -10;
-//				}
-				shoot();	
-				setvx(vx);
-				setvy(vy);
-			}
-			if(frames % 4 == 0) {
-				shoot();
-			}
-			setX(getvx() + getX());
-			setY(getvy() + getY());
+		if(frames % 6 == 0) {
+			shootPatternBullet();
 		}
-	if(stageNum == 2) {
-		if (frames == 35) {
+		if (frames == 15) {
 			frames = 0;
 			curInd++;
 			if (curInd >= movement.length) {
 				curInd = 0;
 			}
 			
-			movement[0][0] = 12;
-			movement[3][0] = -12;
 			double vx = movement[curInd][0]; 
 			double vy = movement[curInd][1];
-//			if(curInd % 3 == 0) {
-//				vy = 12;
+//			if(curInd % 2 == 0) {
+//				vy = 10;
 //			}
-//			if(curInd % 3 != 0) {
-//				vy = -12;
-//			}	
-			shoot();
+//			if(curInd % 2 != 0) {
+//				vy = -10;
+//			}
+			shoot();	
 			setvx(vx);
 			setvy(vy);
 		}
-		if(frames % 4 == 0) {
-			shoot();
-		}
+		
 		setX(getvx() + getX());
 		setY(getvy() + getY());
-	}
-	
-	if(stageNum == 3) {
-		if (frames == 40) {
-			frames = 0;
-			curInd++;
-			if (curInd >= movement.length) {
-				curInd = 0;
-			}
-			
-			
-			double vx = movement[curInd][0]; 
-			double vy = movement[curInd][1];
-//			if(curInd % 3 == 0) {
-//				vx -= 2;
-//				vy -= 12;
-//			}
-//			if(curInd % 3 != 0) {
-//				vx += 2;
-//				vy += 2;
-//				
-//			}
-			shoot();
-			setvx(vx);
-			setvy(vy);
-		}
-		if(frames % 4 == 0) {
-			shoot();
-		}
-		setX(getvx() + getX());
-		setY(getvy() + getY());
-	}
-
 	}
 	
 	
