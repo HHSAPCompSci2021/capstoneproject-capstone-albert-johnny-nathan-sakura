@@ -8,6 +8,7 @@ import entities.mobs.Enemy;
 import entities.mobs.Goon;
 import entities.mobs.Player;
 import entities.projectiles.Bullet;
+import entities.projectiles.PowerUp;
 import entities.projectiles.Projectile;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -260,6 +261,13 @@ public class Stage {
 							((Projectile)e2).interact(e);
 						}
 					}
+					else if (e2 instanceof PowerUp && e instanceof Player) {
+						System.out.println("neva");
+						if (e.isTouching(e2)) {
+							System.out.println("say neva2");
+							((PowerUp)e2).interact((Player)e);
+						}
+					}
 				}
 			}
 		}
@@ -281,23 +289,43 @@ public class Stage {
 			if (curWave == 3) {
 				Boss b = new Boss(topLeft.x+100, topLeft.y+100, 100, 100, false, stageNum);
 				b.setup(surface);
+				b.giveBounds(topLeft, dimensions);
 				this.b = b;
 				entityList.add(b);
 			} else if (curWave < 3) {
 				Goon g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
+				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 				g = new Goon(topLeft.x+75, topLeft.y+75, 75, 75, false, stageNum, 1);
 				g.setup(surface);
+				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 				g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 2);
 				g.setup(surface);
+				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 				g = new Goon(topLeft.x+100, topLeft.y+100, 75, 75, false, stageNum, 2);
 				g.setup(surface);
+				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 
 			}
+			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, 1, true);
+			PowerUp p1 = new PowerUp(topLeft.x+200, topLeft.y+300, 50, 50, 2, true);
+//			PowerUp p2 = new PowerUp(topLeft.x+200, topLeft.y+400, 50, 50, 3, true);
+//			PowerUp p3 = new PowerUp(topLeft.x+200, topLeft.y+500, 50, 50, 4, true);
+//			PowerUp p4 = new PowerUp(topLeft.x+200, topLeft.y+600, 50, 50, 5, true);
+			p.setup(surface);
+			p1.setup(surface);
+//			p2.setup(surface);
+//			p3.setup(surface);
+//			p4.setup(surface);
+			entityList.add(p);
+			entityList.add(p1);
+//			entityList.add(p2);
+//			entityList.add(p3);
+//			entityList.add(p4);
 		}
 	}
 	

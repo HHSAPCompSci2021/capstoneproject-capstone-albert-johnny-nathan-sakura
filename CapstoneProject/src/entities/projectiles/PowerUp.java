@@ -27,6 +27,7 @@ public class PowerUp extends Entity {
 		super(x, y, w, h, circle);
 		this.type = type;
 		if (type == 1) time = 1;
+		setHp(1);
 	}
 	
 	/**
@@ -36,7 +37,7 @@ public class PowerUp extends Entity {
 	public void interact(Player e) {
 		e.setPowerUpDuration(time);
 		e.setPowerUpType(type);
-		e.die();
+		die();
 	}
 	
 	/**
@@ -45,8 +46,8 @@ public class PowerUp extends Entity {
 	 */
 	public void setup(PApplet surface) {
 		PImage temp;
-		System.out.println("loaded image");
-		String str = "sprites/powerup-";
+		System.out.println("loaded power up image");
+		String str = "sprites/entity-powerup-";
 		str += type;
 		str += ".png";
 		temp = (surface.loadImage(str));

@@ -16,6 +16,7 @@ public class Player extends Entity {
 	private ArrayList<Entity> entityList;
 	private int playerNum;
 	private int shawtyFramesCD;
+	private boolean multishot;
 	
 	/**
 	 * Creates a new instance of Player with the properties of Entity
@@ -65,6 +66,16 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
+		if (powerUpDuration > 0) {
+			if (powerUpType == 1) {
+				this.setHp(42069);
+				powerUpType = 0;
+			} else if (powerUpType == 2) {
+				multishot = true;
+				powerUpType = 0;
+			}
+		}
+
 		if (shawtyFramesCD > 0) {
 			shawtyFramesCD--;
 		}
@@ -76,7 +87,7 @@ public class Player extends Entity {
 //				i--;
 //			}
 //		}
-		powerUpDuration -= 1;
+		if (powerUpDuration > 0) powerUpDuration -= 1;
 	}
 	
 	/**
@@ -167,6 +178,15 @@ public class Player extends Entity {
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, 1000);
 		b.setup(surface);
 		entityList.add(b);
+		if (multishot) {
+
+			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0.5, -7.98435971134, true, true, 1000);
+			b1.setup(surface);
+			entityList.add(b1);
+			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -0.5, -7.98435971134, true, true, 1000);
+			b2.setup(surface);
+			entityList.add(b2);
+		}
 		shawtyFramesCD = 10;
 	}
 	
