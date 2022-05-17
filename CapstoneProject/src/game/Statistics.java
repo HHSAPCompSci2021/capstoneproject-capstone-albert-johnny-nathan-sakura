@@ -43,7 +43,21 @@ public class Statistics {
 		//surface.fill(200);
 		///surface.rect(x, y, width, height);
 		surface.fill(225);
-		surface.text("HP: " + p.getHp(), x, y, width, height);
+		String s = "HP: " + p.getHp() + "\nPowerups: \n";
+		if (p.multishotActive()) {
+			s+="Multishot, ";
+		}
+		if (p.penetrateActive()) {
+			s+="Penetrate, ";
+		}
+		if (p.rateIncreaseActive()) {
+			s+="Increased Rate, ";
+		}
+		if (p.dmgIncreaseActive()) {
+			s+="Increased Damage, ";
+		}
+		s = s.substring(0, s.length()-2);
+		surface.text(s, x, y, width, height);
 //		surface.text("HP: " + p.getHp(), x, y, width, height);
 //		surface.text("HP: " + p.getHp(), x, y, width, height);
 	}
