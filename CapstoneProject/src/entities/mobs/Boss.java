@@ -12,7 +12,9 @@ public class Boss extends Enemy{
 
 	private int stageNum;
 	private PApplet surface;
-	private int shawtyFramesCD;
+	private double[][] movement;
+	private int curInd;
+	private int frames;
 	/**
 	 * Creates a new instance of Boss
 	 * @param x X-coordinate
@@ -26,8 +28,12 @@ public class Boss extends Enemy{
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
 		setHp(5000);
-		//shotFrequency = frequency;
-		shawtyFramesCD = 10;
+		frames = 0;
+		movement = new double[4][2];
+		movement[0][0] = -10;
+		movement[0][1] = 10;
+		movement[3][0] = 10;
+		movement[3][1] = 10;
 	}
 	
 	/**
@@ -40,13 +46,98 @@ public class Boss extends Enemy{
 	}
 	
 	public void act() {
-		if (shawtyFramesCD == 0) {
-			shootPatternBullet();
-			shawtyFramesCD = 10;
-		} else {
-			shawtyFramesCD--;
+		frames++;
+		if(stageNum == 1) {
+			if (frames == 20) {
+				frames = 0;
+				curInd++;
+				if (curInd >= movement.length) {
+					curInd = 0;
+				}
+				
+				double vx = movement[curInd][0]; 
+				double vy = movement[curInd][1];
+				if(curInd % 2 == 0) {
+					vy = 10;
+				}
+				if(curInd % 2 != 0) {
+					vy = -10;
+				}
+				shoot();	
+				setvx(vx);
+				setvy(vy);
+			}
+			if(frames % 4 == 0) {
+				shoot();
+			}
+			setX(getvx() + getX());
+			setY(getvy() + getY());
 		}
+	if(stageNum == 2) {
+		if (frames == 35) {
+			frames = 0;
+			curInd++;
+			if (curInd >= movement.length) {
+				curInd = 0;
+			}
+			
+			movement[0][0] = 12;
+			movement[3][0] = -12;
+			double vx = movement[curInd][0]; 
+			double vy = movement[curInd][1];
+			if(curInd % 3 == 0) {
+				vy = 12;
+			}
+			if(curInd % 3 != 0) {
+				vy = -12;
+			}	
+			shoot();
+			setvx(vx);
+			setvy(vy);
+		}
+		if(frames % 4 == 0) {
+			shoot();
+		}
+		setX(getvx() + getX());
+		setY(getvy() + getY());
 	}
+	
+	if(stageNum == 3) {
+		if (frames == 40) {
+			frames = 0;
+			curInd++;
+			if (curInd >= movement.length) {
+				curInd = 0;
+			}
+			
+			
+			double vx = movement[curInd][0]; 
+			double vy = movement[curInd][1];
+			if(curInd % 3 == 0) {
+				vx -= 2;
+				vy -= 12;
+			}
+			if(curInd % 3 != 0) {
+				vx += 2;
+				vy += 2;
+				
+			}
+			shoot();
+			setvx(vx);
+			setvy(vy);
+		}
+		if(frames % 4 == 0) {
+			shoot();
+		}
+		setX(getvx() + getX());
+		setY(getvy() + getY());
+	}
+
+	}
+	
+	
+	
+	
 	/**Sets up the boss with an image
 	 * @param surface PApplet to setup with
 	 */

@@ -18,8 +18,7 @@ public class Goon extends Enemy{
 	private int goonNum;
 	private PApplet surface;
 	private long frames;
-	private Point2D[] movement;
-	private double[][] movement2;
+	private double[][] movement;
 	private int curInd;
 	/**
 	 * Creates a new instance of Goon
@@ -40,12 +39,11 @@ public class Goon extends Enemy{
 //		setvx(10);
 //		setvy(10);		
 		frames = 0;
-		movement = new Point2D[5];
-		movement2 = new double[4][2];
-		movement2[0][0] = -10;
-		movement2[0][1] = 10;
-		movement2[3][0] = 10;
-		movement2[3][1] = 10;
+		movement = new double[4][2];
+		movement[0][0] = -10;
+		movement[0][1] = 10;
+		movement[3][0] = 10;
+		movement[3][1] = 10;
 		curInd = 1;
 //		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
 //		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
@@ -76,12 +74,12 @@ public class Goon extends Enemy{
 			if (frames == 10) {
 				frames = 0;
 				curInd++;
-				if (curInd >= movement2.length) {
+				if (curInd >= movement.length) {
 					curInd = 0;
 				}
 				
-				double vx = movement2[curInd][0]; 
-				double vy = movement2[curInd][1];
+				double vx = movement[curInd][0]; 
+				double vy = movement[curInd][1];
 				if(curInd % 2 == 0) {
 					vy = 10;
 				}
@@ -99,15 +97,15 @@ public class Goon extends Enemy{
 		if (frames == 5) {
 			frames = 0;
 			curInd++;
-			if (curInd >= movement2.length) {
+			if (curInd >= movement.length) {
 				curInd = 0;
 			}
 			
-			movement2[0][0] = 12;
-			movement2[3][0] = -12;
+			movement[0][0] = 12;
+			movement[3][0] = -12;
 
-			double vx = movement2[curInd][0]; 
-			double vy = movement2[curInd][1];
+			double vx = movement[curInd][0]; 
+			double vy = movement[curInd][1];
 			if(curInd % 3 == 0) {
 				vy = 12;
 			}
@@ -126,20 +124,20 @@ public class Goon extends Enemy{
 		if (frames == 8) {
 			frames = 0;
 			curInd++;
-			if (curInd >= movement2.length) {
+			if (curInd >= movement.length) {
 				curInd = 0;
 			}
 			
 			
-			double vx = movement2[curInd][0]; 
-			double vy = movement2[curInd][1];
-			if(curInd % 2 == 0) {
+			double vx = movement[curInd][0]; 
+			double vy = movement[curInd][1];
+			if(curInd % 3 == 0) {
 				vx -= 2;
 				vy -= 13;
 			}
-			if(curInd % 2 != 0) {
+			if(curInd % 3 != 0) {
 				vx += 2;
-				vy += 2;
+				vy += 3;
 				
 			}			
 			setvx(vx);
