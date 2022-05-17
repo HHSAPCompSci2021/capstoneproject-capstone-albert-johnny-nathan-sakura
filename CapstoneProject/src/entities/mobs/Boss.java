@@ -15,6 +15,7 @@ public class Boss extends Enemy{
 	private double[][] movement;
 	private int curInd;
 	private int frames;
+	private int counter;
 	/**
 	 * Creates a new instance of Boss
 	 * @param x X-coordinate
@@ -29,26 +30,32 @@ public class Boss extends Enemy{
 		this.stageNum = stageNum;
 		setHp(5000);
 		frames = 0;
+		movement = new double[4][2];
 		if (stageNum == 1) {
-			movement = new double[4][2];
-			movement[0][0] = -11;
-			movement[0][1] = 0;
-			movement[3][0] = 11;
-			movement[3][1] = 0;
+			movement[0][0] = -50;
+			movement[0][1] = 1;
+			movement[3][0] = 50;
+			movement[3][1] = -1;
 		}
 		if (stageNum == 2) {
-			movement = new double[4][2];
-			movement[0][0] = -6;
-			movement[0][1] = 0;
-			movement[3][0] = 6;
-			movement[3][1] = -0;
+			movement[0][0] = -10;		
+			movement[0][1] = 8 ;		
+			movement[1][0] = 10;		
+			movement[1][1] = 8;		
+			movement[2][0] = 10;
+			movement[2][1] = -8;
+			movement[3][0] = -10;
+			movement[3][1] = -8;	
 		}
 		if (stageNum == 3) {
-			movement = new double[4][2];
-			movement[0][0] = -10;
-			movement[0][1] = 0;
-			movement[3][0] = 10;
-			movement[3][1] = 0;
+			movement[0][0] = 13;
+			movement[0][1] = -7;
+			movement[1][0] = -13;
+			movement[1][1] = -7;
+			movement[2][0] = -13;
+			movement[2][1] = 7;
+			movement[3][0] = 13;
+			movement[3][1] = 7;
 		}
 		
 		
@@ -67,30 +74,30 @@ public class Boss extends Enemy{
 		//hey nathan! you can change movements based on stageNum/goonNum in the 
 		//constructor! i have made some examples you dont need
 		//all these if statements in act
-		frames++;
-		if(frames % 6 == 0) {
-			shootPatternBullet();
-		}
-		if (frames == 15) {
-			frames = 0;
+		frames++;	
+		if (frames % (stageNum * 6) == 0) {
+			counter++;
 			curInd++;
 			if (curInd >= movement.length) {
 				curInd = 0;
 			}
 			
-			double vx = movement[curInd][0]; 
+			double vx = movement[curInd][0];
 			double vy = movement[curInd][1];
-//			if(curInd % 2 == 0) {
-//				vy = 10;
-//			}
-//			if(curInd % 2 != 0) {
-//				vy = -10;
-//			}
-			shoot();	
+			double chance = Math.random();
+			if(counter == 1 || (chance < 0.5 && stageNum == 3)) {
+				movement[curInd][1] = -vy;
+				movement[curInd][0] = -vx;
+				counter = 0;
+				if(stageNum == 3) {
+					shootPatternBullet();
+				}
+			}
 			setvx(vx);
 			setvy(vy);
+			shootPatternBullet();
+			frames = 0;
 		}
-		
 		setX(getvx() + getX());
 		setY(getvy() + getY());
 	}
@@ -109,10 +116,4 @@ public class Boss extends Enemy{
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
 	}
-//	/**
-//	 * Allows the Boss to move
-//	 */
-//	public void move() {
-//		act();
-//	}
 }
