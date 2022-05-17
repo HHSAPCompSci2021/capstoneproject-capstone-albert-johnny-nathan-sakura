@@ -1,5 +1,7 @@
 package entities.mobs;
 
+import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import entities.Entity;
@@ -12,14 +14,11 @@ import processing.core.PImage;
  */
 public class Goon extends Enemy{
 	//private double shotFrequency;
-	private int moviewoovie;
-	private boolean flag;
 	private int stageNum;
 	private int goonNum;
-	private int shawtyFramesCD;
 	private PApplet surface;
-	private int seconds; 
-	
+	private long frames;
+	private Point2D[] movement;
 	/**
 	 * Creates a new instance of Goon
 	 * @param x X-coordinate
@@ -34,17 +33,17 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
-		setvx(14);
-		setvy(12);
-		flag = true;
-		//shotFrequency = frequency;
-		moviewoovie = 10;
-		setHp(100);
-		seconds = 10;
-		shawtyFramesCD = 20;
-		if (goonNum == 2) {
-			shawtyFramesCD = 10;
-		}
+		setHp(2500);
+		setvx(10);
+		setvy(10);		
+		frames = 0;
+		movement = new Point2D[5];
+		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
+		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
+		movement[2] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + bounds[3] + 200);
+		movement[3] = new Point2D.Double(bounds[0] + 200, bounds[1] + bounds[3] + 200);
+		movement[4] = new Point2D.Double((bounds[0] + bounds[2]) / 2 + 200, (bounds[1] + bounds[3]) / 2 + 200);
+		
 	}
 	
 	
@@ -63,74 +62,81 @@ public class Goon extends Enemy{
 	 * Allows the Goon to move and shoot
 	 */
 	public void act() {
-//		super.act();
-		
-//		setHp(0);
-		if(0<= moviewoovie && moviewoovie <= seconds && flag) {
-			if (shawtyFramesCD > 0) {
-				shawtyFramesCD--;
-			}
-			if(shawtyFramesCD <= 0) {
-				shoot();
-				shawtyFramesCD = seconds;
-			}
-			setX(getX() + getvx());
-			moviewoovie--;
+	//	super.act();
+		frames++;
+		if(frames == 3) {
+			frames = 0;
+			int index = (int) (Math.random() * movement.length);
+			double x = movement[index].getX();
+			double y = movement[index].getY();
+			setvx((x - getX()) / 5);
+			setvy((y - getY()) / 5);
+			setX(getvx() + getX());
+			setY(getvy() + getY());
+			shoot();
+			
 		}
-		
-		if(0 >= moviewoovie && moviewoovie > -seconds && flag) {
-			if (shawtyFramesCD > 0) {
-				shawtyFramesCD--;
-			}
-			if(shawtyFramesCD <= 0) {
-				shoot();
-				shawtyFramesCD = seconds;
-			}
-			setY(getY() + getvy());
-			moviewoovie--;
-			if(moviewoovie <= -seconds) {
-				flag = false;
-				moviewoovie = seconds;
-				
-			}
-		}
-		
-		if(0<= moviewoovie && moviewoovie <= seconds && !flag) {
-			if (shawtyFramesCD > 0) {
-				shawtyFramesCD--;
-			}
-			if(shawtyFramesCD <= 0) {
-				shoot();
-				shawtyFramesCD = seconds;
-			}
-			setX(getX() - getvx());
-			moviewoovie--;
-		}
-		
-		if(0 >= moviewoovie && moviewoovie > -10 && !flag) {
-			if (shawtyFramesCD > 0) {
-				shawtyFramesCD--;
-			}
-			if(shawtyFramesCD <= 0) {
-				shoot();
-				shawtyFramesCD = 10;
-			}
-			setY(getY() - getvy());
-			moviewoovie--;
-			if(moviewoovie <= -10) {
-				flag = true;
-				moviewoovie = 10;
-			}
-		}	
+////		super.act();
+//		
+////		setHp(0);
+//		if(0<= moviewoovie && moviewoovie <= seconds && flag) {
+//			if (shawtyFramesCD > 0) {
+//				shawtyFramesCD--;
+//			}
+//			if(shawtyFramesCD <= 0) {
+//				shoot();
+//				shawtyFramesCD = seconds;
+//			}
+//			setX(getX() + getvx());
+//			moviewoovie--;
+//		}
+//		
+//		if(0 >= moviewoovie && moviewoovie > -seconds && flag) {
+//			if (shawtyFramesCD > 0) {
+//				shawtyFramesCD--;
+//			}
+//			if(shawtyFramesCD <= 0) {
+//				shoot();
+//				shawtyFramesCD = seconds;
+//			}
+//			setY(getY() + getvy());
+//			moviewoovie--;
+//			if(moviewoovie <= -seconds) {
+//				flag = false;
+//				moviewoovie = seconds;
+//				
+//			}
+//		}
+//		
+//		if(0<= moviewoovie && moviewoovie <= seconds && !flag) {
+//			if (shawtyFramesCD > 0) {
+//				shawtyFramesCD--;
+//			}
+//			if(shawtyFramesCD <= 0) {
+//				shoot();
+//				shawtyFramesCD = seconds;
+//			}
+//			setX(getX() - getvx());
+//			moviewoovie--;
+//		}
+//		
+//		if(0 >= moviewoovie && moviewoovie > -10 && !flag) {
+//			if (shawtyFramesCD > 0) {
+//				shawtyFramesCD--;
+//			}
+//			if(shawtyFramesCD <= 0) {
+//				shoot();
+//				shawtyFramesCD = 10;
+//			}
+//			setY(getY() - getvy());
+//			moviewoovie--;
+//			if(moviewoovie <= -10) {
+//				flag = true;
+//				moviewoovie = 10;
+//			}
+//		}	
 	}
-	
-	/**
-	 * Sets the number of seconds for the movement
-	 * @param sec Amount of time
-	 */
-	public void setSeconds(int sec) {
-		seconds = sec;
-	}
+
 	
 	/**
 	 * Sets the X-coordinate velocity

@@ -25,7 +25,7 @@ public class Boss extends Enemy{
 	public Boss(double x, double y, double w, double h, boolean circle, int stageNum) {
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
-		setHp(1000);
+		setHp(5000);
 		//shotFrequency = frequency;
 		shawtyFramesCD = 10;
 	}
