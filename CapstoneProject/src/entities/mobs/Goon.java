@@ -132,13 +132,13 @@ public class Goon extends Enemy{
 			
 			double vx = movement2[curInd][0]; 
 			double vy = movement2[curInd][1];
-			if(curInd % 2 == 0) {
+			if(curInd % 3 == 0) {
 				vx -= 2;
 				vy -= 13;
 			}
-			if(curInd % 2 != 0) {
+			if(curInd % 3 != 0) {
 				vx += 2;
-				vy += 2;
+				vy += 3;
 				
 			}			
 			setvx(vx);
