@@ -23,7 +23,7 @@ public class Bullet extends Projectile {
 	 * @param dmg Damage of the Bullet
 	 */
 	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, boolean p, double dmg) {
-		super(x, y, 30, 30, vx, vy, circle, p, dmg);
+		super(x, y, 10, 30, vx, vy, circle, p, dmg);
 		this.setHp(1);
 	}
 	
