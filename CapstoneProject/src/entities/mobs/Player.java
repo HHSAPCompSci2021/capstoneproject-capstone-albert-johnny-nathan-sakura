@@ -34,12 +34,12 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
-		this.setHp(100);
+		this.setHp(1000);
 		multishot = false;
 		resetCD = 10;
 		
 		//hello this is the new damage
-		bulletDMG = 100;
+		bulletDMG = 1000;
 	}
 	
 	/**
@@ -88,12 +88,13 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
+		System.out.println(bounds[0] + " " + bounds[1] + " " + bounds[2] + " " +bounds[3]);
 		if (delay <= 0) {
 			multishot = false;
 			penetrate = false;
 			resetCD = 10;
 			//dmg here also
-			bulletDMG = 100;
+			bulletDMG = 1000;
 		} else {
 			delay--;
 		}

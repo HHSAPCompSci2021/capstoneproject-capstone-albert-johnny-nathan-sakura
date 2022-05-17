@@ -39,12 +39,35 @@ public class Goon extends Enemy{
 //		setvx(10);
 //		setvy(10);		
 		frames = 0;
-		movement = new double[4][2];
-		movement[0][0] = -10;
-		movement[0][1] = 10;
-		movement[3][0] = 10;
-		movement[3][1] = 10;
-		curInd = 1;
+		if (goonNum == 1) {
+			movement = new double[6][2];
+			movement[0][0] = -5;
+			movement[0][1] = 0;
+			movement[3][0] = 5;
+			movement[3][1] = 0;
+		}
+		if (goonNum == 2) {
+			movement = new double[4][2];
+			movement[0][0] = -10;
+			movement[0][1] = 10;
+			movement[1][0] = 10;
+			movement[1][1] = 10;
+			movement[2][0] = 10;
+			movement[2][1] = -10;
+			movement[3][0] = -10;
+			movement[3][1] = -10;
+		}
+//		movement[1][0] = 5;
+//		movement[1][1] = 5;
+//		movement[1][0] = 0;
+//		movement[1][1] = 10;
+//		movement[3][0] = -5;
+//		movement[3][1] = -5;
+//		movement[4][0] = -10;
+//		movement[4][1] = -10;
+//		movement[5][0] = 0;
+//		movement[5][1] = -5;
+		curInd = 0;
 //		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
 //		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
 //		movement[2] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + bounds[3] + 200);
@@ -59,7 +82,7 @@ public class Goon extends Enemy{
 	 * Shoots Bullets
 	 */
 	public void shoot() {
-		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 5, true, false, 1);
+		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 30, 30, 0, 5, true, false, 1);
 		b.setup(surface);
 		getDaList().add(b);
 	}
@@ -80,12 +103,12 @@ public class Goon extends Enemy{
 				
 				double vx = movement[curInd][0]; 
 				double vy = movement[curInd][1];
-				if(curInd % 2 == 0) {
-					vy = 10;
-				}
-				if(curInd % 2 != 0) {
-					vy = -10;
-				}			
+//				if(curInd % 2 == 0) {
+//					vy = 10;
+//				}
+//				if(curInd % 2 != 0) {
+//					vy = -10;
+//				}			
 				setvx(vx);
 				setvy(vy);
 				shoot();	
@@ -100,18 +123,20 @@ public class Goon extends Enemy{
 			if (curInd >= movement.length) {
 				curInd = 0;
 			}
-			
-			movement[0][0] = 12;
-			movement[3][0] = -12;
+			//hey nathan! you can change movements based on stageNum in the 
+			//constructor! i have made some examples you dont need
+			//all these if statements in act
+//			movement[0][0] = 12;
+//			movement[3][0] = -12;
 
 			double vx = movement[curInd][0]; 
 			double vy = movement[curInd][1];
-			if(curInd % 3 == 0) {
-				vy = 12;
-			}
-			if(curInd % 3 != 0) {
-				vy = -12;
-			}			
+//			if(curInd % 3 == 0) {
+//				vy = 12;
+//			}
+//			if(curInd % 3 != 0) {
+//				vy = -12;
+//			}			
 			setvx(vx);
 			setvy(vy);
 			shoot();	
@@ -131,15 +156,15 @@ public class Goon extends Enemy{
 			
 			double vx = movement[curInd][0]; 
 			double vy = movement[curInd][1];
-			if(curInd % 3 == 0) {
-				vx -= 2;
-				vy -= 13;
-			}
-			if(curInd % 3 != 0) {
-				vx += 2;
-				vy += 3;
-				
-			}			
+//			if(curInd % 3 == 0) {
+//				vx -= 2;
+//				vy -= 13;
+//			}
+//			if(curInd % 3 != 0) {
+//				vx += 2;
+//				vy += 3;
+//				
+//			}			
 			setvx(vx);
 			setvy(vy);
 			shoot();	

@@ -73,11 +73,11 @@ public class Projectile extends Entity {
 	 * moves the projectile
 	 */
 	public void act() {
-		System.out.println("cri");
+		//System.out.println("cri");
 		setX(getX()+getvx());
 		setY(getY()+getvy());
 		if (outOfBounds()) {
-			System.out.println("die");
+			//System.out.println("die");
 			die();
 		}
 	}

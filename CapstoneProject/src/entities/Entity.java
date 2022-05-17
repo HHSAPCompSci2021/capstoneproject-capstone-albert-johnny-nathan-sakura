@@ -335,8 +335,8 @@ public class Entity {
 	public void giveBounds(Point2D topLeft, Point2D dimensions) {
 		bounds[0] = topLeft.getX();
 		bounds[1] = topLeft.getY();
-		bounds[2] = dimensions.getX() - topLeft.getX();
-		bounds[3] = dimensions.getY() - topLeft.getY();
+		bounds[2] = dimensions.getX();
+		bounds[3] = dimensions.getY();
 		
 				
 	}

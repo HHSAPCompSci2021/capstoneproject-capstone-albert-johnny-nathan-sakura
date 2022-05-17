@@ -39,7 +39,7 @@ public class Statistics {
 	 * @param surface The surface to draw on
 	 */
 	public void draw(PApplet surface) {
-		System.out.println("iambeingdrawn at " +x + " " + y);
+		//System.out.println("iambeingdrawn at " +x + " " + y);
 		//surface.fill(200);
 		///surface.rect(x, y, width, height);
 		surface.fill(225);

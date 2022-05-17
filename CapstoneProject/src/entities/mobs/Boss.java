@@ -29,11 +29,29 @@ public class Boss extends Enemy{
 		this.stageNum = stageNum;
 		setHp(5000);
 		frames = 0;
-		movement = new double[4][2];
-		movement[0][0] = -10;
-		movement[0][1] = 10;
-		movement[3][0] = 10;
-		movement[3][1] = 10;
+		if (stageNum == 1) {
+			movement = new double[4][2];
+			movement[0][0] = -3;
+			movement[0][1] = 0;
+			movement[3][0] = 3;
+			movement[3][1] = 0;
+		}
+		if (stageNum == 2) {
+			movement = new double[4][2];
+			movement[0][0] = -5;
+			movement[0][1] = 0;
+			movement[3][0] = 5;
+			movement[3][1] = 0;
+		}
+		if (stageNum == 3) {
+			movement = new double[4][2];
+			movement[0][0] = -10;
+			movement[0][1] = 0;
+			movement[3][0] = 10;
+			movement[3][1] = 0;
+		}
+		
+		
 	}
 	
 	/**
@@ -46,6 +64,9 @@ public class Boss extends Enemy{
 	}
 	
 	public void act() {
+		//hey nathan! you can change movements based on stageNum/goonNum in the 
+		//constructor! i have made some examples you dont need
+		//all these if statements in act
 		frames++;
 		if(stageNum == 1) {
 			if (frames == 20) {
@@ -57,12 +78,12 @@ public class Boss extends Enemy{
 				
 				double vx = movement[curInd][0]; 
 				double vy = movement[curInd][1];
-				if(curInd % 2 == 0) {
-					vy = 10;
-				}
-				if(curInd % 2 != 0) {
-					vy = -10;
-				}
+//				if(curInd % 2 == 0) {
+//					vy = 10;
+//				}
+//				if(curInd % 2 != 0) {
+//					vy = -10;
+//				}
 				shoot();	
 				setvx(vx);
 				setvy(vy);
@@ -85,12 +106,12 @@ public class Boss extends Enemy{
 			movement[3][0] = -12;
 			double vx = movement[curInd][0]; 
 			double vy = movement[curInd][1];
-			if(curInd % 3 == 0) {
-				vy = 12;
-			}
-			if(curInd % 3 != 0) {
-				vy = -12;
-			}	
+//			if(curInd % 3 == 0) {
+//				vy = 12;
+//			}
+//			if(curInd % 3 != 0) {
+//				vy = -12;
+//			}	
 			shoot();
 			setvx(vx);
 			setvy(vy);
@@ -113,15 +134,15 @@ public class Boss extends Enemy{
 			
 			double vx = movement[curInd][0]; 
 			double vy = movement[curInd][1];
-			if(curInd % 3 == 0) {
-				vx -= 2;
-				vy -= 12;
-			}
-			if(curInd % 3 != 0) {
-				vx += 2;
-				vy += 2;
-				
-			}
+//			if(curInd % 3 == 0) {
+//				vx -= 2;
+//				vy -= 12;
+//			}
+//			if(curInd % 3 != 0) {
+//				vx += 2;
+//				vy += 2;
+//				
+//			}
 			shoot();
 			setvx(vx);
 			setvy(vy);

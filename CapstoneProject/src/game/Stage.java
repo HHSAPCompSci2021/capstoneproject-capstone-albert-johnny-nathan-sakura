@@ -42,6 +42,7 @@ public class Stage {
 		gameOver = false;
 		stageComplete = false;
 		topLeft = new Point(x,y);
+		System.out.println(width);
 		dimensions = new Point(width, height);
 		this.stageNum = stageNum;
 		entityList = new ArrayList<Entity>();
@@ -66,6 +67,7 @@ public class Stage {
 		//entityList.add(new Boss(0, 0, 0, 0, false, null));
 		
 		for (Entity e : entityList) {
+			System.out.println(topLeft.x + " " + topLeft.y + " " + dimensions.x + " " + dimensions.y);
 			e.giveBounds(topLeft, dimensions);
 		}
 		playerStats = new Statistics(curPlayer, x, y+height, width, 200);
@@ -246,7 +248,7 @@ public class Stage {
 		//entityList removes all projectiles???
 		
 		//System.out.println(entityList.size());
-		for (Entity e : entityList) if (e instanceof Projectile) System.out.println("proj exists");
+		//for (Entity e : entityList) if (e instanceof Projectile) System.out.println("proj exists");
 		for (int i = 0; i < entityList.size(); i++) {
 			Entity e = entityList.get(i);
 			if (e instanceof Player || e instanceof Enemy) {
@@ -298,35 +300,35 @@ public class Stage {
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
-				g = new Goon(topLeft.x+75, topLeft.y+75, 75, 75, false, stageNum, 1);
+				g = new Goon(topLeft.x+300, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
-				g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 2);
+				g = new Goon(topLeft.x+50, topLeft.y+200, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
-				g = new Goon(topLeft.x+100, topLeft.y+100, 75, 75, false, stageNum, 2);
+				g = new Goon(topLeft.x+300, topLeft.y+200, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 
 			}
-			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, 1, true);
-			PowerUp p1 = new PowerUp(topLeft.x+200, topLeft.y+300, 50, 50, 2, true);
-			PowerUp p2 = new PowerUp(topLeft.x+200, topLeft.y+400, 50, 50, 3, true);
-			PowerUp p3 = new PowerUp(topLeft.x+200, topLeft.y+500, 50, 50, 4, true);
-			PowerUp p4 = new PowerUp(topLeft.x+200, topLeft.y+600, 50, 50, 5, true);
+			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, (int)(Math.random()*5)+1, true);
+//			PowerUp p1 = new PowerUp(topLeft.x+200, topLeft.y+300, 50, 50, 2, true);
+//			PowerUp p2 = new PowerUp(topLeft.x+200, topLeft.y+400, 50, 50, 3, true);
+//			PowerUp p3 = new PowerUp(topLeft.x+200, topLeft.y+500, 50, 50, 4, true);
+//			PowerUp p4 = new PowerUp(topLeft.x+200, topLeft.y+600, 50, 50, 5, true);
 			p.setup(surface);
-			p1.setup(surface);
-			p2.setup(surface);
-			p3.setup(surface);
-			p4.setup(surface);
+//			p1.setup(surface);
+//			p2.setup(surface);
+//			p3.setup(surface);
+//			p4.setup(surface);
 			entityList.add(p);
-			entityList.add(p1);
-			entityList.add(p2);
-			entityList.add(p3);
-			entityList.add(p4);
+//			entityList.add(p1);
+//			entityList.add(p2);
+//			entityList.add(p3);
+//			entityList.add(p4);
 		}
 	}
 	
