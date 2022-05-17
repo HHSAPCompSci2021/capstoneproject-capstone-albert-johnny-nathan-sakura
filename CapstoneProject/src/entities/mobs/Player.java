@@ -19,6 +19,7 @@ public class Player extends Entity {
 	private int resetCD;
 	private boolean multishot, penetrate;
 	private long delay;
+	private int bulletDMG;
 	
 	/**
 	 * Creates a new instance of Player with the properties of Entity
@@ -36,6 +37,9 @@ public class Player extends Entity {
 		this.setHp(100000);
 		multishot = false;
 		resetCD = 10;
+		
+		//hello this is the new damage
+		bulletDMG = 100;
 	}
 	
 	/**
@@ -48,6 +52,20 @@ public class Player extends Entity {
 		if (playerNum == 1) temp = (surface.loadImage("sprites/player1.png"));
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
+	}
+	
+	public boolean multishotActive() {
+		return multishot;
+	}
+	public boolean penetrateActive() {
+		return penetrate;
+	}
+	public boolean rateIncreaseActive() {
+		return resetCD == 5;
+	}
+
+	public boolean dmgIncreaseActive() {
+		return bulletDMG == 500;
 	}
 	
 //	public void draw(PApplet surface) {
@@ -74,6 +92,8 @@ public class Player extends Entity {
 			multishot = false;
 			penetrate = false;
 			resetCD = 10;
+			//dmg here also
+			bulletDMG = 100;
 		} else {
 			delay--;
 		}
@@ -98,6 +118,12 @@ public class Player extends Entity {
 			if (powerUpType == 4) {
 				System.out.println("RUN SMOKEY!");
 				resetCD = 5;
+				powerUpType = 0;
+				delay = 300;
+			}
+			if (powerUpType == 5) {
+				System.out.println("Shinderu!");
+				bulletDMG = 500;
 				powerUpType = 0;
 				delay = 300;
 			}
@@ -202,17 +228,17 @@ public class Player extends Entity {
 	public void shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return;
 		System.out.println("entityNum: " + entityList.size());
-		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, 1000);
+		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, bulletDMG);
 		b.setup(surface);
 		b.setPenetrate(penetrate);
 		entityList.add(b);
 		if (multishot) {
 
-			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 1, -6, true, true, 1000);
+			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 1, -6, true, true, bulletDMG);
 			b1.setup(surface);
 			b1.setPenetrate(penetrate);
 			entityList.add(b1);
-			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -1, -6, true, true, 1000);
+			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -1, -6, true, true, bulletDMG);
 			b2.setup(surface);
 			b2.setPenetrate(penetrate);
 			entityList.add(b2);
