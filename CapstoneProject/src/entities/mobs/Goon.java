@@ -41,10 +41,10 @@ public class Goon extends Enemy{
 		frames = 0;
 		movement = new Point2D[5];
 		movement2 = new double[4][2];
-		movement2[0][0] = -5;
-		movement2[0][1] = 0;
-		movement2[3][0] = 5;
-		movement2[3][1] = 0;
+		movement2[0][0] = -10;
+		movement2[0][1] = 10;
+		movement2[3][0] = 10;
+		movement2[3][1] = 10;
 		curInd = 1;
 //		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
 //		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
@@ -72,22 +72,23 @@ public class Goon extends Enemy{
 	public void act() {
 	//	super.act();
 		frames++;
-		if (frames == 3) {
+		if (frames == 10) {
 			frames = 0;
-			//int index = (int) (Math.random() * movement.length);
 			curInd++;
 			if (curInd >= movement2.length) {
 				curInd = 0;
 			}
+			
 			double vx = movement2[curInd][0]; 
 			double vy = movement2[curInd][1];
+			if(curInd % 2 == 0) {
+				vy = 10;
+			}
+			if(curInd % 2 != 0) {
+				vy = -10;
+			}			
 			setvx(vx);
 			setvy(vy);
-//			double x = movement[index].getX();
-////			double y = movement[index].getY();
-//			setvx((x - getX()) / 5);
-//			setvy((y - getY()) / 5);
-
 			shoot();	
 		}
 		setX(getvx() + getX());
