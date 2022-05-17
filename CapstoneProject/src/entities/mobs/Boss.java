@@ -28,7 +28,7 @@ public class Boss extends Enemy{
 	public Boss(double x, double y, double w, double h, boolean circle, int stageNum) {
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
-		setHp(5000);
+		setHp(100000);
 		frames = 0;
 		movement = new double[4][2];
 		if (stageNum == 1) {
