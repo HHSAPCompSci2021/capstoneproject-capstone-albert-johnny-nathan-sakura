@@ -10,6 +10,7 @@ import entities.mobs.Player;
 import entities.projectiles.Bullet;
 import entities.projectiles.PowerUp;
 import entities.projectiles.Projectile;
+import entities.projectiles.Trap;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -164,6 +165,34 @@ public class Stage {
 				System.out.println("f");
 				curPlayer.shoot(surface);
 			}
+			//traps
+			if (surface.isPressed((int)'n') || surface.isPressed((int)'N')) {
+				System.out.println("z");
+				//activate trap on p1 side
+				Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
+				t.setup(surface);
+				t.giveBounds(topLeft, dimensions);
+				entityList.add(t);
+
+				Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 1, false, 0);
+				t1.setup(surface);
+				t1.giveBounds(topLeft, dimensions);
+				entityList.add(t1);
+
+				Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
+				t2.setup(surface);
+				t2.giveBounds(topLeft, dimensions);
+				entityList.add(t2);
+				
+			}
+			if (surface.isPressed((int)'m') || surface.isPressed((int)'M')) {
+				System.out.println("x");
+				//activate trap on p1 side
+			}
+			if (surface.isPressed((int)',') || surface.isPressed((int)'<')) {
+				System.out.println(",");
+				//activate trap on p1 side
+			}
 			
 			
 			//curPlayer.shift(surface.isPressed(61) && !surface.isPressed(64) , surface.isPressed(77) && !surface.isPressed(73));
@@ -198,6 +227,21 @@ public class Stage {
 				curPlayer.shoot(surface);
 			}
 			
+			
+			//traps
+
+			if (surface.isPressed((int)'z') || surface.isPressed((int)'Z')) {
+				System.out.println("z");
+				//activate trap on p2 side
+			}
+			if (surface.isPressed((int)'x') || surface.isPressed((int)'X')) {
+				System.out.println("x");
+				//activate trap on p2 side
+			}
+			if (surface.isPressed((int)'c') || surface.isPressed((int)'C')) {
+				System.out.println("c");
+				//activate trap on p2 side
+			}
 		}
 	}
 	
@@ -314,7 +358,7 @@ public class Stage {
 				entityList.add(g);
 
 			}
-			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, (int)(Math.random()*5)+1, true);
+			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, ((int)(Math.random()*5.0))+1, true);
 //			PowerUp p1 = new PowerUp(topLeft.x+200, topLeft.y+300, 50, 50, 2, true);
 //			PowerUp p2 = new PowerUp(topLeft.x+200, topLeft.y+400, 50, 50, 3, true);
 //			PowerUp p3 = new PowerUp(topLeft.x+200, topLeft.y+500, 50, 50, 4, true);
