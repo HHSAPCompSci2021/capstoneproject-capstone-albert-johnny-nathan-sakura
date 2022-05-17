@@ -13,7 +13,6 @@ import processing.core.PImage;
  * The class Goon class represents an Enemy
  */
 public class Goon extends Enemy{
-	//private double shotFrequency;
 	private int stageNum;
 	private int goonNum;
 	private PApplet surface;
