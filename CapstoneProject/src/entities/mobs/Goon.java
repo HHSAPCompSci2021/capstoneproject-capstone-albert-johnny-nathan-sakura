@@ -70,22 +70,48 @@ public class Goon extends Enemy{
 	 * Allows the Goon to move and shoot
 	 */
 	public void act() {
-	//	super.act();
 		frames++;
-		if (frames == 10) {
+		if(stageNum == 1) {
+			if (frames == 10) {
+				frames = 0;
+				curInd++;
+				if (curInd >= movement2.length) {
+					curInd = 0;
+				}
+				
+				double vx = movement2[curInd][0]; 
+				double vy = movement2[curInd][1];
+				if(curInd % 2 == 0) {
+					vy = 10;
+				}
+				if(curInd % 2 != 0) {
+					vy = -10;
+				}			
+				setvx(vx);
+				setvy(vy);
+				shoot();	
+			}
+			setX(getvx() + getX());
+			setY(getvy() + getY());
+		}
+	if(stageNum == 2) {
+		if (frames == 5) {
 			frames = 0;
 			curInd++;
 			if (curInd >= movement2.length) {
 				curInd = 0;
 			}
 			
+			movement2[0][0] = 12;
+			movement2[3][0] = -12;
+
 			double vx = movement2[curInd][0]; 
 			double vy = movement2[curInd][1];
-			if(curInd % 2 == 0) {
-				vy = 10;
+			if(curInd % 3 == 0) {
+				vy = 12;
 			}
-			if(curInd % 2 != 0) {
-				vy = -10;
+			if(curInd % 3 != 0) {
+				vy = -12;
 			}			
 			setvx(vx);
 			setvy(vy);
@@ -93,66 +119,38 @@ public class Goon extends Enemy{
 		}
 		setX(getvx() + getX());
 		setY(getvy() + getY());
-////		super.act();
-//		
-////		setHp(0);
-//		if(0<= moviewoovie && moviewoovie <= seconds && flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = seconds;
-//			}
-//			setX(getX() + getvx());
-//			moviewoovie--;
-//		}
-//		
-//		if(0 >= moviewoovie && moviewoovie > -seconds && flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = seconds;
-//			}
-//			setY(getY() + getvy());
-//			moviewoovie--;
-//			if(moviewoovie <= -seconds) {
-//				flag = false;
-//				moviewoovie = seconds;
-//				
-//			}
-//		}
-//		
-//		if(0<= moviewoovie && moviewoovie <= seconds && !flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = seconds;
-//			}
-//			setX(getX() - getvx());
-//			moviewoovie--;
-//		}
-//		
-//		if(0 >= moviewoovie && moviewoovie > -10 && !flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = 10;
-//			}
-//			setY(getY() - getvy());
-//			moviewoovie--;
-//			if(moviewoovie <= -10) {
-//				flag = true;
-//				moviewoovie = 10;
-//			}
-//		}	
 	}
+	
+	if(stageNum == 3) {
+		if (frames == 8) {
+			frames = 0;
+			curInd++;
+			if (curInd >= movement2.length) {
+				curInd = 0;
+			}
+			
+			
+			double vx = movement2[curInd][0]; 
+			double vy = movement2[curInd][1];
+			if(curInd % 2 == 0) {
+				vx -= 2;
+				vy -= 13;
+			}
+			if(curInd % 2 != 0) {
+				vx += 2;
+				vy += 2;
+				
+			}			
+			setvx(vx);
+			setvy(vy);
+			shoot();	
+		}
+		setX(getvx() + getX());
+		setY(getvy() + getY());
+	}
+}
+	
+		
 
 	
 	/**
