@@ -12,6 +12,7 @@ import processing.core.PImage;
  */
 public class Projectile extends Entity {
 	private boolean fromPlayer;
+	private boolean penetrate;
 	/**
 	 * Creates a new instance of Projectile
 	 * @param x X-coordinate
@@ -42,12 +43,16 @@ public class Projectile extends Entity {
 		System.out.println("interact");
 		if (fromPlayer == false && e instanceof Player) {
 			e.setHp(e.getHp() - getDmg());
-			setHp(0);
+			if (penetrate == false) {
+				setHp(0);
+			}
 		}
 		if (fromPlayer == true && e instanceof Enemy) {
 			System.out.println("drain");
 			e.setHp(e.getHp() - getDmg());
-			setHp(0);
+			if (penetrate == false) {
+				setHp(0);
+			}
 		}
 	}
 	
@@ -86,6 +91,14 @@ public class Projectile extends Entity {
 		temp = (surface.loadImage("sprites/projectile.png"));
 		temp.resize((int)getWidth(), (int)getHeight());
 		setSprite(temp);
+	}
+	
+	/**
+	 * setter for penetrate
+	 * @param b
+	 */
+	public void setPenetrate(boolean b) {
+		penetrate = b;
 	}
 
 }
