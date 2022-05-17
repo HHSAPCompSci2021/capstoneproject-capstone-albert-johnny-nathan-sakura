@@ -11,6 +11,7 @@ import processing.core.PImage;
  *
  */
 public class Projectile extends Entity {
+	private static PImage thisSprite;
 	private boolean fromPlayer;
 	private boolean penetrate;
 	/**
@@ -40,7 +41,7 @@ public class Projectile extends Entity {
 	 * @param e Entity that is interacted with
 	 */
 	public void interact(Entity e) {
-		System.out.println("interact");
+		//System.out.println("interact");
 		if (fromPlayer == false && e instanceof Player) {
 			e.setHp(e.getHp() - getDmg());
 			if (penetrate == false) {
@@ -48,7 +49,7 @@ public class Projectile extends Entity {
 			}
 		}
 		if (fromPlayer == true && e instanceof Enemy) {
-			System.out.println("drain");
+			//System.out.println("drain");
 			e.setHp(e.getHp() - getDmg());
 			if (penetrate == false) {
 				setHp(0);
@@ -86,11 +87,13 @@ public class Projectile extends Entity {
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {
-		PImage temp;
-		System.out.println("loaded image");
-		temp = (surface.loadImage("sprites/projectile.png"));
-		temp.resize((int)getWidth(), (int)getHeight());
-		setSprite(temp);
+		//PImage temp;
+		if (thisSprite == null) {
+			System.out.println("loaded image");
+			thisSprite = (surface.loadImage("sprites/projectile.png"));
+			thisSprite.resize((int)getWidth(), (int)getHeight());
+		}
+		setSprite(thisSprite);
 	}
 	
 	/**

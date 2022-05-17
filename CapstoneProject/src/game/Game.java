@@ -30,7 +30,7 @@ public class Game {
 	 * @param height the height of the processing window
 	 */
 	public Game(int gameNum, int width, int height) {
-		System.out.println(gameNum + " width: " + width);
+		//System.out.println(gameNum + " width: " + width);
 		dimensions = new Point(width/2,height);
 		p = null;
 		if (gameNum == 1) p = new Player(width/4-50, height/4*3-50, 100, 100, false, gameNum);
@@ -54,7 +54,7 @@ public class Game {
 	//switches stage
 	private boolean switchStage(int i) {
 		if (i <= stages.size() && i > 0) {
-			System.out.println(i);
+			//System.out.println(i);
 			curStage = stages.get(i-1);
 			curStageInd++;
 			return true;

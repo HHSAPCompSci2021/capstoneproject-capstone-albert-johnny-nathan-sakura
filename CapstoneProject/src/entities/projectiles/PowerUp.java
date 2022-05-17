@@ -14,6 +14,7 @@ public class PowerUp extends Entity {
 	//1 = heal, 2 = multi, 3 = pierce, 4 = rate, 5 = dmg, 6 = hp
 	int time;
 	int type;
+	private static PImage thisSprite;
 	/**
 	 * Creates a new instance of PowerUp with the properties of Entity
 	 * @param x X-Coordinate
@@ -46,14 +47,16 @@ public class PowerUp extends Entity {
 	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
-		PImage temp;
-		System.out.println("loaded power up image");
-		String str = "sprites/entity-powerup-";
-		str += type;
-		str += ".png";
-		temp = (surface.loadImage(str));
-		temp.resize((int)getWidth(), (int)getHeight());
-		setSprite(temp);
+		//PImage temp;
+		if (thisSprite == null) {
+			System.out.println("loaded power up image");
+			String str = "sprites/entity-powerup-";
+			str += type;
+			str += ".png";
+			thisSprite = (surface.loadImage(str));
+			thisSprite.resize((int)getWidth(), (int)getHeight());
+		}
+		setSprite(thisSprite);
 	}
 
 }

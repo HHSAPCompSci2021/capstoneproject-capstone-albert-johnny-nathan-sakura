@@ -18,8 +18,7 @@ public class Goon extends Enemy{
 	private int goonNum;
 	private PApplet surface;
 	private long frames;
-	private Point2D[] movement;
-	private double[][] movement2;
+	private double[][] movement;
 	private int curInd;
 	/**
 	 * Creates a new instance of Goon
@@ -35,16 +34,16 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
+		//har dcode
 		setHp(2500);
 //		setvx(10);
 //		setvy(10);		
 		frames = 0;
-		movement = new Point2D[5];
-		movement2 = new double[4][2];
-		movement2[0][0] = -10;
-		movement2[0][1] = 10;
-		movement2[3][0] = 10;
-		movement2[3][1] = 10;
+		movement = new double[4][2];
+		movement[0][0] = -10;
+		movement[0][1] = 10;
+		movement[3][0] = 10;
+		movement[3][1] = 10;
 		curInd = 1;
 //		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
 //		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
@@ -60,7 +59,7 @@ public class Goon extends Enemy{
 	 * Shoots Bullets
 	 */
 	public void shoot() {
-		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 15, true, false, 1);
+		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 5, true, false, 1);
 		b.setup(surface);
 		getDaList().add(b);
 	}
@@ -70,22 +69,48 @@ public class Goon extends Enemy{
 	 * Allows the Goon to move and shoot
 	 */
 	public void act() {
-	//	super.act();
 		frames++;
-		if (frames == 10) {
+		if(stageNum == 1) {
+			if (frames == 10) {
+				frames = 0;
+				curInd++;
+				if (curInd >= movement.length) {
+					curInd = 0;
+				}
+				
+				double vx = movement[curInd][0]; 
+				double vy = movement[curInd][1];
+				if(curInd % 2 == 0) {
+					vy = 10;
+				}
+				if(curInd % 2 != 0) {
+					vy = -10;
+				}			
+				setvx(vx);
+				setvy(vy);
+				shoot();	
+			}
+			setX(getvx() + getX());
+			setY(getvy() + getY());
+		}
+	if(stageNum == 2) {
+		if (frames == 5) {
 			frames = 0;
 			curInd++;
-			if (curInd >= movement2.length) {
+			if (curInd >= movement.length) {
 				curInd = 0;
 			}
 			
-			double vx = movement2[curInd][0]; 
-			double vy = movement2[curInd][1];
-			if(curInd % 2 == 0) {
-				vy = 10;
+			movement[0][0] = 12;
+			movement[3][0] = -12;
+
+			double vx = movement[curInd][0]; 
+			double vy = movement[curInd][1];
+			if(curInd % 3 == 0) {
+				vy = 12;
 			}
-			if(curInd % 2 != 0) {
-				vy = -10;
+			if(curInd % 3 != 0) {
+				vy = -12;
 			}			
 			setvx(vx);
 			setvy(vy);
@@ -93,66 +118,43 @@ public class Goon extends Enemy{
 		}
 		setX(getvx() + getX());
 		setY(getvy() + getY());
-////		super.act();
-//		
-////		setHp(0);
-//		if(0<= moviewoovie && moviewoovie <= seconds && flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = seconds;
-//			}
-//			setX(getX() + getvx());
-//			moviewoovie--;
-//		}
-//		
-//		if(0 >= moviewoovie && moviewoovie > -seconds && flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = seconds;
-//			}
-//			setY(getY() + getvy());
-//			moviewoovie--;
-//			if(moviewoovie <= -seconds) {
-//				flag = false;
-//				moviewoovie = seconds;
-//				
-//			}
-//		}
-//		
-//		if(0<= moviewoovie && moviewoovie <= seconds && !flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = seconds;
-//			}
-//			setX(getX() - getvx());
-//			moviewoovie--;
-//		}
-//		
-//		if(0 >= moviewoovie && moviewoovie > -10 && !flag) {
-//			if (shawtyFramesCD > 0) {
-//				shawtyFramesCD--;
-//			}
-//			if(shawtyFramesCD <= 0) {
-//				shoot();
-//				shawtyFramesCD = 10;
-//			}
-//			setY(getY() - getvy());
-//			moviewoovie--;
-//			if(moviewoovie <= -10) {
-//				flag = true;
-//				moviewoovie = 10;
-//			}
-//		}	
 	}
+	
+	if(stageNum == 3) {
+		if (frames == 8) {
+			frames = 0;
+			curInd++;
+			if (curInd >= movement.length) {
+				curInd = 0;
+			}
+			
+			
+			double vx = movement[curInd][0]; 
+			double vy = movement[curInd][1];
+			if(curInd % 3 == 0) {
+				vx -= 2;
+				vy -= 13;
+			}
+			if(curInd % 3 != 0) {
+				vx += 2;
+				vy += 3;
+				
+			}			
+			setvx(vx);
+			setvy(vy);
+			shoot();	
+		}
+		setX(getvx() + getX());
+		setY(getvy() + getY());
+	}
+}
+	public void draw(PApplet surface) {
+		surface.tint(255, (float)(1.0*(getHp())/2500*125)+100);
+		surface.tint((int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125);
+		super.draw(surface);
+		surface.noTint();
+	}
+		
 
 	
 	/**

@@ -51,7 +51,10 @@ public class Entity {
 	public void setSprite(PImage image) {
 		sprite = image;
 	}
-
+	
+	public boolean spriteExists() {
+		return sprite != null;
+	}
 	/**
 	 * Returns whether or not the entity is touching another entity(based on centers)
 	 * @param e The other entity
