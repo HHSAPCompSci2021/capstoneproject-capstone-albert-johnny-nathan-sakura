@@ -3,6 +3,7 @@
 
 package entities;
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import entities.mobs.Player;
@@ -328,11 +329,11 @@ public class Entity {
 	 * @param topLeft Point on the top left corner
 	 * @param dimensions Point on the bottom right corner
 	 */
-	public void giveBounds(Point topLeft, Point dimensions) {
-		bounds[0] = topLeft.x;
-		bounds[1] = topLeft.y;
-		bounds[2] = dimensions.x;// - topLeft.x;
-		bounds[3] = dimensions.y;// - topLeft.y;
+	public void giveBounds(Point2D topLeft, Point2D dimensions) {
+		bounds[0] = topLeft.getX();
+		bounds[1] = topLeft.getY();
+		bounds[2] = dimensions.getX() - topLeft.getX();
+		bounds[3] = dimensions.getY() - topLeft.getY();
 		
 				
 	}
