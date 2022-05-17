@@ -27,6 +27,7 @@ public class PowerUp extends Entity {
 		super(x, y, w, h, circle);
 		this.type = type;
 		if (type == 1) time = 1;
+		time = 1;
 		setHp(1);
 	}
 	

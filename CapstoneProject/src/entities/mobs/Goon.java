@@ -19,6 +19,8 @@ public class Goon extends Enemy{
 	private PApplet surface;
 	private long frames;
 	private Point2D[] movement;
+	private double[][] movement2;
+	private int curInd;
 	/**
 	 * Creates a new instance of Goon
 	 * @param x X-coordinate
@@ -34,15 +36,21 @@ public class Goon extends Enemy{
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
 		setHp(2500);
-		setvx(10);
-		setvy(10);		
+//		setvx(10);
+//		setvy(10);		
 		frames = 0;
 		movement = new Point2D[5];
-		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
-		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
-		movement[2] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + bounds[3] + 200);
-		movement[3] = new Point2D.Double(bounds[0] + 200, bounds[1] + bounds[3] + 200);
-		movement[4] = new Point2D.Double((bounds[0] + bounds[2]) / 2 + 200, (bounds[1] + bounds[3]) / 2 + 200);
+		movement2 = new double[4][2];
+		movement2[0][0] = -5;
+		movement2[0][1] = 0;
+		movement2[3][0] = 5;
+		movement2[3][1] = 0;
+		curInd = 1;
+//		movement[0] = new Point2D.Double(bounds[0] + 200, bounds[1] + 200);
+//		movement[1] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + 200);
+//		movement[2] = new Point2D.Double(bounds[0] + bounds[2] + 200, bounds[1] + bounds[3] + 200);
+//		movement[3] = new Point2D.Double(bounds[0] + 200, bounds[1] + bounds[3] + 200);
+//		movement[4] = new Point2D.Double((bounds[0] + bounds[2]) / 2 + 200, (bounds[1] + bounds[3]) / 2 + 200);
 		
 	}
 	
@@ -64,18 +72,26 @@ public class Goon extends Enemy{
 	public void act() {
 	//	super.act();
 		frames++;
-		if(frames == 3) {
+		if (frames == 3) {
 			frames = 0;
-			int index = (int) (Math.random() * movement.length);
-			double x = movement[index].getX();
-			double y = movement[index].getY();
-			setvx((x - getX()) / 5);
-			setvy((y - getY()) / 5);
-			setX(getvx() + getX());
-			setY(getvy() + getY());
-			shoot();
-			
+			//int index = (int) (Math.random() * movement.length);
+			curInd++;
+			if (curInd >= movement2.length) {
+				curInd = 0;
+			}
+			double vx = movement2[curInd][0]; 
+			double vy = movement2[curInd][1];
+			setvx(vx);
+			setvy(vy);
+//			double x = movement[index].getX();
+////			double y = movement[index].getY();
+//			setvx((x - getX()) / 5);
+//			setvy((y - getY()) / 5);
+
+			shoot();	
 		}
+		setX(getvx() + getX());
+		setY(getvy() + getY());
 ////		super.act();
 //		
 ////		setHp(0);

@@ -32,6 +32,7 @@ public class Player extends Entity {
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
 		this.setHp(100000);
+		multishot = false;
 	}
 	
 	/**
@@ -70,7 +71,9 @@ public class Player extends Entity {
 			if (powerUpType == 1) {
 				this.setHp(42069);
 				powerUpType = 0;
-			} else if (powerUpType == 2) {
+			} 
+			if (powerUpType == 2) {
+				System.out.println("HEY HEY!");
 				multishot = true;
 				powerUpType = 0;
 			}
@@ -180,10 +183,10 @@ public class Player extends Entity {
 		entityList.add(b);
 		if (multishot) {
 
-			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0.5, -7.98435971134, true, true, 1000);
+			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 1, -6, true, true, 1000);
 			b1.setup(surface);
 			entityList.add(b1);
-			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -0.5, -7.98435971134, true, true, 1000);
+			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -1, -6, true, true, 1000);
 			b2.setup(surface);
 			entityList.add(b2);
 		}
