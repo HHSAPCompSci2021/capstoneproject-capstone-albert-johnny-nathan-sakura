@@ -10,6 +10,7 @@ import processing.core.PImage;
  *
  */
 public class Bullet extends Projectile {
+	private static PImage thisSprite;
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
 	 * @param x X-Coordinate
@@ -32,11 +33,13 @@ public class Bullet extends Projectile {
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {
-		PImage temp;
-		System.out.println("loaded image");
-		temp = (surface.loadImage("sprites/projectile-bullet.png"));
-		temp.resize((int)getWidth(), (int)getHeight());
-		setSprite(temp);
+		//PImage temp;
+		if (thisSprite == null) {
+			System.out.println("loaded image");
+			thisSprite = (surface.loadImage("sprites/projectile-bullet.png"));
+			thisSprite.resize((int)getWidth(), (int)getHeight());
+		}
+		setSprite(thisSprite);
 	}
 
 	

@@ -34,7 +34,7 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
-		this.setHp(1000);
+		this.setHp(100);
 		multishot = false;
 		resetCD = 10;
 		
@@ -104,25 +104,25 @@ public class Player extends Entity {
 				powerUpType = 0;
 			} 
 			if (powerUpType == 2) {
-				System.out.println("HEY HEY!");
+				//System.out.println("HEY HEY!");
 				multishot = true;
 				powerUpType = 0;
 				delay = 300;//5 seconds in frames
 			}
 			if (powerUpType == 3) {
-				System.out.println("ITS ME DIO!");
+				//System.out.println("ITS ME DIO!");
 				penetrate = true;
 				powerUpType = 0;
 				delay = 300;
 			}
 			if (powerUpType == 4) {
-				System.out.println("RUN SMOKEY!");
+				//System.out.println("RUN SMOKEY!");
 				resetCD = 5;
 				powerUpType = 0;
 				delay = 300;
 			}
 			if (powerUpType == 5) {
-				System.out.println("Shinderu!");
+				//System.out.println("Shinderu!");
 				bulletDMG = 500;
 				powerUpType = 0;
 				delay = 300;
@@ -151,26 +151,26 @@ public class Player extends Entity {
 	public void move(double x, double y) {
 		setX(getX() + x);
 		setY(getY()+ y);
-		System.out.print("P" + playerNum + ":");
-		System.out.println("Bounds: " + bounds[2] + " by " + bounds[3] + " at " + bounds[0] + " " + bounds[1]);
+		//System.out.print("P" + playerNum + ":");
+		//System.out.println("Bounds: " + bounds[2] + " by " + bounds[3] + " at " + bounds[0] + " " + bounds[1]);
 		double midX = getX()+getWidth()/2;
 		double midY = getY()+getHeight()/2;
-		System.out.println(midX + " " + midY);
+		//System.out.println(midX + " " + midY);
 		if (midX > bounds[0] + bounds[2]) {
-			System.out.println("Set X to right side");
+			//System.out.println("Set X to right side");
 			setX(bounds[0]-getWidth()/2 + bounds[2] );
 		} else
 		if (midX < bounds[0]) {
-			System.out.println("Set X to left side");
+			//System.out.println("Set X to left side");
 			setX(bounds[0]-getWidth()/2);
 		}
 		
 		if (midY > bounds[1] + bounds[3]) {
-			System.out.println("Set Y to bottom");
+			//System.out.println("Set Y to bottom");
 			setY(bounds[1]-getHeight()/2 + bounds[3]);
 		} else 
 		if (midY < bounds[1]) {
-			System.out.println("Set Y to top");
+			//System.out.println("Set Y to top");
 			setY(bounds[1]-getHeight()/2);
 		}
 	}
@@ -227,7 +227,7 @@ public class Player extends Entity {
 	 */
 	public void shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return;
-		System.out.println("entityNum: " + entityList.size());
+		//System.out.println("entityNum: " + entityList.size());
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, bulletDMG);
 		b.setup(surface);
 		b.setPenetrate(penetrate);

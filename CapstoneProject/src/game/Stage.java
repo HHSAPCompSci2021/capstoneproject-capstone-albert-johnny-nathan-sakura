@@ -37,7 +37,7 @@ public class Stage {
 	 * @param p player passed into the stage and to interact there
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
-		System.out.println(stageNum + " width: " + width);
+		//System.out.println(stageNum + " width: " + width);
 		curWave = 1;
 		gameOver = false;
 		stageComplete = false;
@@ -80,10 +80,10 @@ public class Stage {
 			e.setup(surface);
 			e.giveBounds(topLeft, dimensions);
 		}
-		System.out.println("setup run");
+		//System.out.println("setup run");
 		PImage cloud = surface.createImage(dimensions.x, dimensions.y, surface.RGB);
 		cloud = surface.loadImage("sprites/cloud_tile.jpg");
-		System.out.println(topLeft.x);
+		//System.out.println(topLeft.x);
 		back = new Background(cloud, topLeft.x, topLeft.y, dimensions.x, cloud.height, stageNum);
 	}
 	
@@ -245,26 +245,26 @@ public class Stage {
 
 		//entityList removes all projectiles???
 		
-		System.out.println(entityList.size());
+		//System.out.println(entityList.size());
 		for (Entity e : entityList) if (e instanceof Projectile) System.out.println("proj exists");
 		for (int i = 0; i < entityList.size(); i++) {
 			Entity e = entityList.get(i);
 			if (e instanceof Player || e instanceof Enemy) {
-				System.out.println("eva");
+				//System.out.println("eva");
 				for (int j = 0; j < entityList.size(); j++) {
 					//System.out.println("eva2");
 					Entity e2 = entityList.get(j);
 					if (e2 instanceof Projectile) {
-						System.out.println("neva");
+						//System.out.println("neva");
 						if (e.isTouching(e2)) {
-							System.out.println("say neva");
+							//System.out.println("say neva");
 							((Projectile)e2).interact(e);
 						}
 					}
 					else if (e2 instanceof PowerUp && e instanceof Player) {
-						System.out.println("neva");
+						//System.out.println("neva");
 						if (e.isTouching(e2)) {
-							System.out.println("say neva2");
+							//System.out.println("say neva2");
 							((PowerUp)e2).interact((Player)e);
 						}
 					}
@@ -316,17 +316,17 @@ public class Stage {
 			PowerUp p1 = new PowerUp(topLeft.x+200, topLeft.y+300, 50, 50, 2, true);
 			PowerUp p2 = new PowerUp(topLeft.x+200, topLeft.y+400, 50, 50, 3, true);
 			PowerUp p3 = new PowerUp(topLeft.x+200, topLeft.y+500, 50, 50, 4, true);
-//			PowerUp p4 = new PowerUp(topLeft.x+200, topLeft.y+600, 50, 50, 5, true);
+			PowerUp p4 = new PowerUp(topLeft.x+200, topLeft.y+600, 50, 50, 5, true);
 			p.setup(surface);
 			p1.setup(surface);
 			p2.setup(surface);
 			p3.setup(surface);
-//			p4.setup(surface);
+			p4.setup(surface);
 			entityList.add(p);
 			entityList.add(p1);
 			entityList.add(p2);
 			entityList.add(p3);
-//			entityList.add(p4);
+			entityList.add(p4);
 		}
 	}
 	

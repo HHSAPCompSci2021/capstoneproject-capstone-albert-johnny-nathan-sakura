@@ -59,7 +59,7 @@ public class Goon extends Enemy{
 	 * Shoots Bullets
 	 */
 	public void shoot() {
-		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 15, true, false, 1);
+		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 25, 30, 30, 0, 5, true, false, 1);
 		b.setup(surface);
 		getDaList().add(b);
 	}
@@ -150,7 +150,7 @@ public class Goon extends Enemy{
 }
 	public void draw(PApplet surface) {
 		surface.tint(255, (float)(1.0*(getHp())/2500*125)+100);
-		//surface.tint((int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125);
+		surface.tint((int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125);
 		super.draw(surface);
 		surface.noTint();
 	}
