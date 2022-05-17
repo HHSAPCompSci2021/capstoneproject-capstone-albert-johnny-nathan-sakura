@@ -16,7 +16,9 @@ public class Player extends Entity {
 	private ArrayList<Entity> entityList;
 	private int playerNum;
 	private int shawtyFramesCD;
-	private boolean multishot;
+	private int resetCD;
+	private boolean multishot, penetrate;
+	private long delay;
 	
 	/**
 	 * Creates a new instance of Player with the properties of Entity
@@ -33,6 +35,7 @@ public class Player extends Entity {
 		this.playerNum = gameNum;
 		this.setHp(100000);
 		multishot = false;
+		resetCD = 10;
 	}
 	
 	/**
@@ -67,6 +70,14 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
+		if (delay <= 0) {
+			multishot = false;
+			penetrate = false;
+			resetCD = 10;
+		} else {
+			delay--;
+		}
+		
 		if (powerUpDuration > 0) {
 			if (powerUpType == 1) {
 				this.setHp(42069);
@@ -76,9 +87,22 @@ public class Player extends Entity {
 				System.out.println("HEY HEY!");
 				multishot = true;
 				powerUpType = 0;
+				delay = 300;//5 seconds in frames
+			}
+			if (powerUpType == 3) {
+				System.out.println("ITS ME DIO!");
+				penetrate = true;
+				powerUpType = 0;
+				delay = 300;
+			}
+			if (powerUpType == 4) {
+				System.out.println("RUN SMOKEY!");
+				resetCD = 5;
+				powerUpType = 0;
+				delay = 300;
 			}
 		}
-
+		
 		if (shawtyFramesCD > 0) {
 			shawtyFramesCD--;
 		}
@@ -180,17 +204,20 @@ public class Player extends Entity {
 		System.out.println("entityNum: " + entityList.size());
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, 1000);
 		b.setup(surface);
+		b.setPenetrate(penetrate);
 		entityList.add(b);
 		if (multishot) {
 
 			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 1, -6, true, true, 1000);
 			b1.setup(surface);
+			b1.setPenetrate(penetrate);
 			entityList.add(b1);
 			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -1, -6, true, true, 1000);
 			b2.setup(surface);
+			b2.setPenetrate(penetrate);
 			entityList.add(b2);
 		}
-		shawtyFramesCD = 10;
+		shawtyFramesCD = resetCD;
 	}
 	
 }
