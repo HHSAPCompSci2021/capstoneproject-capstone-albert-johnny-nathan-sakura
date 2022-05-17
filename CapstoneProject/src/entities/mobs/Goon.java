@@ -60,26 +60,68 @@ public class Goon extends Enemy{
 			
 		}
 		if (stageNum == 2) {
-			movement = new double[4][2];
-			movement[0][0] = -12;		
-			movement[0][1] = 10;		
-			movement[1][0] = 12;		
-			movement[1][1] = 10;		
-			movement[2][0] = 8;
-			movement[2][1] = -10;
-			movement[3][0] = -8;
-			movement[3][1] = -10;
-		}
+			if(goonNum == 1) {
+				movement[0][0] = -6;		
+				movement[0][1] = 10 ;		
+				movement[1][0] = 6;		
+				movement[1][1] = 10;		
+				movement[2][0] = 6;
+				movement[2][1] = -10;
+				movement[3][0] = -6;
+				movement[3][1] = -10;	
+			}
+			if(goonNum == 2) {
+				movement[0][0] = -4;		
+				movement[0][1] = 10 ;		
+				movement[1][0] = 6;		
+				movement[1][1] = 10;		
+				movement[2][0] = -6;
+				movement[2][1] = -10;
+				movement[3][0] = -4;
+				movement[3][1] = -10;	
+			}
+			if(goonNum == 3) {
+				movement[0][0] = -6;		
+				movement[0][1] = 8 ;		
+				movement[1][0] = 6;		
+				movement[1][1] = 8;		
+				movement[2][0] = 6;
+				movement[2][1] = -8;
+				movement[3][0] = -6;
+				movement[3][1] = -8;	
+			}
+					}
 		if (stageNum == 3) {
-			movement = new double[4][2];
-			movement[0][0] = -10;
-			movement[0][1] = 10;
-			movement[1][0] = 10;
-			movement[1][1] = 10;
-			movement[2][0] = 10;
-			movement[2][1] = -10;
-			movement[3][0] = -10;
-			movement[3][1] = -10;
+			if(goonNum == 1) {
+				movement[0][0] = -5;
+				movement[0][1] = 10;
+				movement[1][0] = 5;
+				movement[1][1] = 10;
+				movement[2][0] = 5;
+				movement[2][1] = -10;
+				movement[3][0] = -5;
+				movement[3][1] = -10;
+			}
+			if(goonNum == 2) {
+				movement[0][0] = 5;
+				movement[0][1] = -10;
+				movement[1][0] = -10;
+				movement[1][1] = -10;
+				movement[2][0] = -5;
+				movement[2][1] = 10;
+				movement[3][0] = 15;
+				movement[3][1] = 10;
+			}
+			if(goonNum == 3) {
+				movement[0][0] = 5;
+				movement[0][1] = -10;
+				movement[1][0] = -10;
+				movement[1][1] = -10;
+				movement[2][0] = -5;
+				movement[2][1] = 10;
+				movement[3][0] = 15;
+				movement[3][1] = 10;
+			}
 		}
 		curInd = 0;
 	}
@@ -117,7 +159,6 @@ public class Goon extends Enemy{
 		frames++;	
 		if (frames % 10 == 0) {
 			counter++;
-			frames = 0;
 			curInd++;
 			if (curInd >= movement.length) {
 				curInd = 0;
@@ -127,12 +168,13 @@ public class Goon extends Enemy{
 			double vy = movement[curInd][1];
 			if(counter == 1) {
 				movement[curInd][1] = -vy;
+				movement[curInd][0] = -vx;
 				counter = 0;
 			}
-			
 			setvx(vx);
 			setvy(vy);
-			shoot();	
+			shoot();
+			frames = 0;
 		}
 		setX(getvx() + getX());
 		setY(getvy() + getY());
