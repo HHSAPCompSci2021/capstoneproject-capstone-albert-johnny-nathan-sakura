@@ -35,6 +35,7 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
+		//har dcode
 		setHp(2500);
 //		setvx(10);
 //		setvy(10);		
@@ -149,7 +150,12 @@ public class Goon extends Enemy{
 		setY(getvy() + getY());
 	}
 }
-	
+	public void draw(PApplet surface) {
+		surface.tint(255, (float)(1.0*(getHp())/2500*125)+100);
+		//surface.tint((int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125);
+		super.draw(surface);
+		surface.noTint();
+	}
 		
 
 	

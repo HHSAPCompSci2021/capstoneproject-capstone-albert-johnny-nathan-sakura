@@ -52,9 +52,9 @@ public class Stage {
 		
 		//Johnny requested below
 		p.setEntityList(entityList);
-		entityList.add(new Goon(topLeft.x+50, topLeft.y+50, 100, 100, true, stageNum, 1));
-		entityList.add(new Goon(topLeft.x+350, topLeft.y+50, 100, 100, true, stageNum, 1));
-		entityList.add(new Goon(topLeft.x+200, topLeft.y+200, 100, 100, true, stageNum, 2));
+		entityList.add(new Goon(topLeft.x+50, topLeft.y+50, 100, 100, false, stageNum, 1));
+		entityList.add(new Goon(topLeft.x+350, topLeft.y+50, 100, 100, false, stageNum, 1));
+		entityList.add(new Goon(topLeft.x+200, topLeft.y+200, 100, 100, false, stageNum, 2));
 		for (int i = 0; i < 4; i++) {
 		//	entityList.add(new Goon(stageNum)); we need different stageNum for
 			//different enemy movement
@@ -293,6 +293,7 @@ public class Stage {
 				this.b = b;
 				entityList.add(b);
 			} else if (curWave < 3) {
+				
 				Goon g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
