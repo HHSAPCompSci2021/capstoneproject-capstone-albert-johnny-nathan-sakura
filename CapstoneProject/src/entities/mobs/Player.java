@@ -34,7 +34,7 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
-		this.setHp(1000);
+		this.setHp(100);
 		multishot = false;
 		resetCD = 10;
 		

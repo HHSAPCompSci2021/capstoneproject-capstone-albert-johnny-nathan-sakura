@@ -24,7 +24,7 @@ public class Bullet extends Projectile {
 	 * @param dmg Damage of the Bullet
 	 */
 	public Bullet(double x, double y, double w, double h, double vx, double vy, boolean circle, boolean p, double dmg) {
-		super(x, y, 10, 30, vx, vy, circle, p, dmg);
+		super(x, y, w, h, vx, vy, circle, p, dmg);
 		this.setHp(1);
 	}
 	
@@ -36,7 +36,7 @@ public class Bullet extends Projectile {
 		//PImage temp;
 		if (thisSprite == null) {
 			System.out.println("loaded image");
-			thisSprite = (surface.loadImage("sprites/projectile-bullet.png"));
+			thisSprite = (surface.loadImage("sprites/projectile.png"));
 			thisSprite.resize((int)getWidth(), (int)getHeight());
 		}
 		setSprite(thisSprite);
