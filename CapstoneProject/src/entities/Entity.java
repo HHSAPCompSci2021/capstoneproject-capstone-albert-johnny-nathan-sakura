@@ -63,7 +63,8 @@ public class Entity {
 	public boolean isTouching(Entity e) {
 		//Rectangle-Rectangle
 		//if(!e.getCircleHitbox() && !getCircleHitbox()) {
-			if(isPointInside(e.getX(), e.getY()) || isPointInside(e.getX() + e.getWidth(), e.getY()) 
+			if(isPointInside(e.getX(), e.getY()) 
+			|| isPointInside(e.getX() + e.getWidth(), e.getY()) 
 			|| isPointInside(e.getX() + e.getWidth(), e.getY() + e.getHeight())
 			|| isPointInside(e.getX(), e.getY() + e.getHeight())) {
 				return true;
