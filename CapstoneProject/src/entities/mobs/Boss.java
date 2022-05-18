@@ -1,6 +1,10 @@
 package entities.mobs;
 
+import java.util.ArrayList;
+
+import entities.Entity;
 import entities.projectiles.Bullet;
+import entities.projectiles.PatternBullet;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -65,9 +69,13 @@ public class Boss extends Enemy{
 	 * Makes the boss shoot a "pattern" bullet
 	 */
 	public void shootPatternBullet() {
-		Bullet b = new Bullet(getX(), getY(), 30, 30, 0, 15, true, false, 10);
-		b.setup(surface);
-		getDaList().add(b);
+		
+		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), 1, 5);
+		
+		ArrayList<Entity> list = getDaList();
+		for (Bullet b : p.getBullets()) {
+			if (!list.contains(b)) list.add(b);
+		}
 	}
 	
 	public void act() {

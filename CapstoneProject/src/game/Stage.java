@@ -52,7 +52,7 @@ public class Stage {
 		entityList.add(p);
 		curPlayer = p;
 		b = null;
-		trapCD = 900;
+		trapCD = 0;
 		
 		//Johnny requested below
 		p.setEntityList(entityList);
@@ -172,17 +172,17 @@ public class Stage {
 				System.out.println("n");
 				//activate trap on p1 side
 				if (trapCD == 0) {
-					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 1, false, 20);
 					t.setup(surface);
 					t.giveBounds(topLeft, dimensions);
 					entityList.add(t);
 	
-					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 1, false, 0);
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 1, false, 20);
 					t1.setup(surface);
 					t1.giveBounds(topLeft, dimensions);
 					entityList.add(t1);
 	
-					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 1, false, 20);
 					t2.setup(surface);
 					t2.giveBounds(topLeft, dimensions);
 					entityList.add(t2);
@@ -191,12 +191,47 @@ public class Stage {
 				
 			}
 			if (surface.isPressed((int)'m') || surface.isPressed((int)'M')) {
-				System.out.println("x");
+				System.out.println("m");
 				//activate trap on p1 side
+				if (trapCD == 0) {
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 2, false, 0);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					entityList.add(t);
+	
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 2, false, 0);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					entityList.add(t1);
+	
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 2, false, 0);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					entityList.add(t2);
+					trapCD = 900;
+				}
 			}
 			if (surface.isPressed((int)',') || surface.isPressed((int)'<')) {
 				System.out.println(",");
 				//activate trap on p1 side
+
+				if (trapCD == 0) {
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 3, false, 0);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					entityList.add(t);
+	
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 3, false, 0);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					entityList.add(t1);
+	
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 3, false, 0);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					entityList.add(t2);
+					trapCD = 900;
+				}
 			}
 			
 			
@@ -238,14 +273,68 @@ public class Stage {
 			if (surface.isPressed((int)'z') || surface.isPressed((int)'Z')) {
 				System.out.println("z");
 				//activate trap on p2 side
+
+				if (trapCD == 0) {
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 1, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					entityList.add(t);
+	
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 1, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					entityList.add(t1);
+	
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 1, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					entityList.add(t2);
+					trapCD = 900;
+				}
 			}
 			if (surface.isPressed((int)'x') || surface.isPressed((int)'X')) {
 				System.out.println("x");
 				//activate trap on p2 side
+
+				if (trapCD == 0) {
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 2, false, 0);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					entityList.add(t);
+	
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 2, false, 0);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					entityList.add(t1);
+	
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 2, false, 0);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					entityList.add(t2);
+					trapCD = 900;
+				}
 			}
 			if (surface.isPressed((int)'c') || surface.isPressed((int)'C')) {
 				System.out.println("c");
 				//activate trap on p2 side
+
+				if (trapCD == 0) {
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 3, false, 0);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					entityList.add(t);
+	
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 3, false, 0);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					entityList.add(t1);
+	
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 3, false, 0);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					entityList.add(t2);
+					trapCD = 900;
+				}
 			}
 		}
 	}

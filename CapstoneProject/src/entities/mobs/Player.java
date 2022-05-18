@@ -20,6 +20,7 @@ public class Player extends Entity {
 	private boolean multishot, penetrate;
 	private long delay;
 	private int bulletDMG;
+	private double movementMulti;
 	
 	/**
 	 * Creates a new instance of Player with the properties of Entity
@@ -37,7 +38,7 @@ public class Player extends Entity {
 		this.setHp(150);
 		multishot = false;
 		resetCD = 10;
-		
+		movementMulti = 1;
 		//hello this is the new damage
 		bulletDMG = 1000;
 	}
@@ -54,6 +55,9 @@ public class Player extends Entity {
 		setSprite(temp);
 	}
 	
+	public void setMovementSpeed(double num) {
+		movementMulti = num;
+	}
 	public boolean multishotActive() {
 		return multishot;
 	}
@@ -67,6 +71,7 @@ public class Player extends Entity {
 	public boolean dmgIncreaseActive() {
 		return bulletDMG == 500;
 	}
+	
 	
 //	public void draw(PApplet surface) {
 //		super.draw(surface);
@@ -150,8 +155,8 @@ public class Player extends Entity {
 	 * @param y Y-coordinate to move to
 	 */
 	public void move(double x, double y) {
-		setX(getX() + x);
-		setY(getY()+ y);
+		setX(getX() + x*movementMulti);
+		setY(getY()+ y*movementMulti);
 		//System.out.print("P" + playerNum + ":");
 		//System.out.println("Bounds: " + bounds[2] + " by " + bounds[3] + " at " + bounds[0] + " " + bounds[1]);
 		double midX = getX()+getWidth()/2;

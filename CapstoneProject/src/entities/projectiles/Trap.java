@@ -45,8 +45,7 @@ public class Trap extends Bullet {
 			player.setHp(player.getHp()-getDmg());
 		}
 		if (type == 2) {
-			player.setvx(0);
-			player.setvy(0);
+			player.setMovementSpeed(0.5);
 		}
 		if (type == 3) {
 			player.addCoins(-10);

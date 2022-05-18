@@ -133,7 +133,7 @@ public class Goon extends Enemy{
 	 */
 	public void shoot() {
 		if (shots % 3 == 0) {
-			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, 1, 4, true, false, 1);
+			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, 0.5, 4, true, false, 1);
 			b.setup(surface);
 			getDaList().add(b);
 		}
@@ -143,7 +143,7 @@ public class Goon extends Enemy{
 			getDaList().add(b);
 		}
 		if (shots % 3 == 2) {
-			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, -1, 4, true, false, 1);
+			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, -0.5, 4, true, false, 1);
 			b.setup(surface);
 			getDaList().add(b);
 		}
