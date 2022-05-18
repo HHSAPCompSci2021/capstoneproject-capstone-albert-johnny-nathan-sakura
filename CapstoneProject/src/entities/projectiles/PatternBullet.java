@@ -1,5 +1,6 @@
 package entities.projectiles;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -12,6 +13,7 @@ import processing.core.PApplet;
 public class PatternBullet {
 	private ArrayList<Bullet> bullets;
 	private int type;
+	public double[] bounds;
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
 	 * @param x X-Coordinate
@@ -19,18 +21,23 @@ public class PatternBullet {
 	 * @param type The type of bullet
 	 * @param dmg The damage of the bullet
 	 */
+	
+	public void giveBounds(double[] bounds) {
+		System.out.println("gave bounds" + bounds[0] + " " + bounds[1] + " " + bounds[2] + " " + bounds[3]);
+		this.bounds = bounds.clone();
+	}
 	public PatternBullet(int x, int y, int type, int dmg) {
 		this.type = type;
 		bullets = new ArrayList<Bullet>();
 		if (type == 1 || type == 2) {
-			bullets.add(new Bullet(x, y, 30, 30, -10, -10, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, -10, 0, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, -10, 10, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 0, -10, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 0, 10, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 10, -10, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 10, 0, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 10, 10, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -5, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -5, 0, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -5, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 0, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 0, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, 0, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, 5, true, false, dmg));
 		}
 		if (type == 3) {
 			for (int i = -5; i < 5; i++) {
@@ -60,6 +67,9 @@ public class PatternBullet {
 		//PImage temp;
 		for (Bullet b : bullets) {
 			b.setup(surface);
+		}
+		for (Bullet b : bullets) {
+			b.bounds = bounds.clone();
 		}
 	}
 }

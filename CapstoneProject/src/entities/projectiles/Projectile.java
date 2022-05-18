@@ -67,10 +67,15 @@ public class Projectile extends Entity {
 	 * @return boolean If the Projectile is out of bounds, return true, false otherwise
 	 */
 	public boolean outOfBounds() {
-		if (getX() < -10 || getX() > 1210 || getY() < -10 || getY() > 910) {
+		if (bounds == null) {
+			System.out.println("NOBOUDSN");
 			return true;
-		} else {
+		
+		}
+		if (bounds[0] < getX() && getX() < bounds[0]+bounds[2] && getY() > bounds[1] && getY() < bounds[1]+bounds[3]) {
 			return false;
+		} else {
+			return true;
 		}
 	}
 	

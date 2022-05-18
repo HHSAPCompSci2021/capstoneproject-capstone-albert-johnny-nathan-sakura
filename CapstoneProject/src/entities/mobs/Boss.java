@@ -20,6 +20,7 @@ public class Boss extends Enemy{
 	private int curInd;
 	private int frames;
 	private int counter;
+	private int framesMod;
 	/**
 	 * Creates a new instance of Boss
 	 * @param x X-coordinate
@@ -36,10 +37,14 @@ public class Boss extends Enemy{
 		frames = 0;
 		movement = new double[4][2];
 		if (stageNum == 1) {
-			movement[0][0] = -50;
-			movement[0][1] = 1;
-			movement[3][0] = 50;
-			movement[3][1] = -1;
+			movement[0][0] = 5;
+			movement[0][1] = -5;
+			movement[1][0] = 7;
+			movement[1][1] = 0;
+			movement[2][0] = 7;
+			movement[2][1] = 0;
+			movement[3][0] = 5;
+			movement[3][1] = 5;
 		}
 		if (stageNum == 2) {
 			movement[0][0] = -10;		
@@ -70,7 +75,8 @@ public class Boss extends Enemy{
 	 */
 	public void shootPatternBullet() {
 		
-		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), stageNum, 5);
+		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), stageNum, stageNum*2);
+		p.giveBounds(bounds.clone());
 		p.setup(surface);
 		ArrayList<Entity> list = getDaList();
 		for (Bullet b : p.getBullets()) {
@@ -83,7 +89,7 @@ public class Boss extends Enemy{
 		//constructor! i have made some examples you dont need
 		//all these if statements in act
 		frames++;	
-		if (frames % (stageNum * 6) == 0) {
+		if (frames % (stageNum * 10) == 0) {
 			counter++;
 			curInd++;
 			if (curInd >= movement.length) {

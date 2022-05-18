@@ -40,7 +40,7 @@ public class Player extends Entity {
 		resetCD = 10;
 		movementMulti = 1;
 		//hello this is the new damage
-		bulletDMG = 10000;
+		bulletDMG = 1000;
 		shieldLasts = 60;
 	}
 	
@@ -108,14 +108,14 @@ public class Player extends Entity {
 			penetrate = false;
 			resetCD = 10;
 			//dmg here also
-			bulletDMG = 10000;
+			bulletDMG = 1000;
 		} else {
 			delay--;
 		}
 		
 		if (powerUpDuration > 0) {
 			if (powerUpType == 1) {
-				this.setHp(42069);
+				this.setHp(this.getHp()+100);
 				powerUpType = 0;
 			} 
 			if (powerUpType == 2) {
@@ -251,16 +251,19 @@ public class Player extends Entity {
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, bulletDMG);
 		b.setup(surface);
 		b.setPenetrate(penetrate);
+		b.bounds = bounds.clone();
 		entityList.add(b);
 		if (multishot) {
 
 			Bullet b1 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 1, -6, true, true, bulletDMG);
 			b1.setup(surface);
 			b1.setPenetrate(penetrate);
+			b1.bounds = bounds.clone();
 			entityList.add(b1);
 			Bullet b2 = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, -1, -6, true, true, bulletDMG);
 			b2.setup(surface);
 			b2.setPenetrate(penetrate);
+			b2.bounds = bounds.clone();
 			entityList.add(b2);
 		}
 		shawtyFramesCD = resetCD;

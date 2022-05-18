@@ -135,16 +135,19 @@ public class Goon extends Enemy{
 		if (shots % 3 == 0) {
 			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, 0.5, 4, true, false, 1);
 			b.setup(surface);
+			b.bounds = bounds.clone();
 			getDaList().add(b);
 		}
 		if (shots % 3 == 1) {
 			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, 0, 5, true, false, 1);
 			b.setup(surface);
+			b.bounds = bounds.clone();
 			getDaList().add(b);
 		}
 		if (shots % 3 == 2) {
 			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, -0.5, 4, true, false, 1);
 			b.setup(surface);
+			b.bounds = bounds.clone();
 			getDaList().add(b);
 		}
 		shots++;
