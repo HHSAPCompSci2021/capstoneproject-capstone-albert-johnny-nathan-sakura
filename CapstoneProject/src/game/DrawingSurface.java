@@ -10,7 +10,7 @@ public class DrawingSurface extends PApplet {
 	private ArrayList<Integer> keys;
 	private Game game1, game2;
 	private boolean startMenu;
-	private boolean pauseMenu;
+	private boolean pauseMenu, cutscene;
 	private int newWidth, newHeight;
 	private int whoWon;
 	private boolean gameDone;
@@ -68,6 +68,15 @@ public class DrawingSurface extends PApplet {
 			text("Press SPACE to start game",width/4,height/3,width/2,height/2*3);
 			if (isPressed(32)) {
 				startMenu = false;
+				cutscene = true;
+			}
+		} else if (cutscene) {
+
+			background(200);
+			textSize(30);
+			text("LoreLoreLoreLoreLoreLoreLoreLore press y to skip",width/4,height/3,width/2,height/2*3);
+			if (isPressed(((int)'Y')) || isPressed(((int)'y'))) {
+				cutscene = false;
 			}
 		} else if (gameDone) {
 			background(225);

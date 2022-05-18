@@ -26,6 +26,7 @@ public class Stage {
 	private boolean gameOver, stageComplete;
 	private Background back;
 	private int curWave;
+	private int trapCD;
 	private Boss b;
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
@@ -51,6 +52,7 @@ public class Stage {
 		entityList.add(p);
 		curPlayer = p;
 		b = null;
+		trapCD = 900;
 		
 		//Johnny requested below
 		p.setEntityList(entityList);
@@ -96,7 +98,7 @@ public class Stage {
 	 */
 	public void draw(PApplet surface) {
 		//surface.clear();
-		
+		if (trapCD > 0) trapCD--;
 		back.draw(surface);
 		back.scroll(5);
 		act(surface);
@@ -167,22 +169,25 @@ public class Stage {
 			}
 			//traps
 			if (surface.isPressed((int)'n') || surface.isPressed((int)'N')) {
-				System.out.println("z");
+				System.out.println("n");
 				//activate trap on p1 side
-				Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
-				t.setup(surface);
-				t.giveBounds(topLeft, dimensions);
-				entityList.add(t);
-
-				Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 1, false, 0);
-				t1.setup(surface);
-				t1.giveBounds(topLeft, dimensions);
-				entityList.add(t1);
-
-				Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
-				t2.setup(surface);
-				t2.giveBounds(topLeft, dimensions);
-				entityList.add(t2);
+				if (trapCD == 0) {
+					Trap t = new Trap(topLeft.x+100, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					entityList.add(t);
+	
+					Trap t1 = new Trap(topLeft.x+200, topLeft.y+100, 40, 40, 0, 5, 1, false, 0);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					entityList.add(t1);
+	
+					Trap t2 = new Trap(topLeft.x+300, topLeft.y+50, 40, 40, 0, 5, 1, false, 0);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					entityList.add(t2);
+					trapCD = 900;
+				}
 				
 			}
 			if (surface.isPressed((int)'m') || surface.isPressed((int)'M')) {
