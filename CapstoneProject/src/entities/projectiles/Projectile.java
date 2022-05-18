@@ -14,6 +14,7 @@ public class Projectile extends Entity {
 	private static PImage thisSprite;
 	private boolean fromPlayer;
 	private boolean penetrate;
+	private int inv;
 	/**
 	 * Creates a new instance of Projectile
 	 * @param x X-coordinate
@@ -33,6 +34,7 @@ public class Projectile extends Entity {
 		setDmg(dmg);
 		this.setHp(1);
 		fromPlayer = p;
+		inv = 0;
 	}
 	
 	
@@ -42,19 +44,22 @@ public class Projectile extends Entity {
 	 */
 	public void interact(Entity e) {
 		//System.out.println("interact");
-		if (fromPlayer == false && e instanceof Player) {
-			e.setHp(e.getHp() - getDmg());
-			if (penetrate == false) {
-				setHp(0);
+		if (inv <= 1) {
+			if (fromPlayer == false && e instanceof Player) {
+				e.setHp(e.getHp() - getDmg());
+				if (penetrate == false) {
+					setHp(0);
+				}
+			}
+			if (fromPlayer == true && e instanceof Enemy) {
+				//System.out.println("drain");
+				e.setHp(e.getHp() - getDmg());
+				if (penetrate == false) {
+					setHp(0);
+				}
 			}
 		}
-		if (fromPlayer == true && e instanceof Enemy) {
-			//System.out.println("drain");
-			e.setHp(e.getHp() - getDmg());
-			if (penetrate == false) {
-				setHp(0);
-			}
-		}
+		inv = 10;
 	}
 	
 	/**
@@ -73,6 +78,7 @@ public class Projectile extends Entity {
 	 * moves the projectile
 	 */
 	public void act() {
+		inv--;
 		//System.out.println("cri");
 		setX(getX()+getvx());
 		setY(getY()+getvy());
