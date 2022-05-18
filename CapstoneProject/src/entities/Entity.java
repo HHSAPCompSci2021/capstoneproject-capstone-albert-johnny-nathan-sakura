@@ -11,7 +11,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Entity class represents an entity inside with a movement speed, location, and hitbox.
+ * The Entity class represents an entity with a movement speed, hp, damage, location, and hitbox.
  * The entity is drawn using the Processing library.
  * It detects collisions between other entities and allows the entity to act. 
  * @author nathangu
@@ -45,19 +45,25 @@ public class Entity {
 		bounds = new double[4];
 	}
 	
-	/**Sets up the sprite of an Entity with an image
-	 * @param image sprite to draw
+	/**
+	 * Sets up the sprite of an Entity with an image
+	 * @param image Sprite to draw
 	 */
 	public void setSprite(PImage image) {
 		sprite = image;
 	}
 	
+	/**
+	 * If the sprite exists
+	 * @return True if the sprite exists, false otherwise
+	 */
 	public boolean spriteExists() {
 		return sprite != null;
 	}
+	
 	/**
-	 * Returns whether or not the entity is touching another entity(based on centers)
-	 * @param e The other entity
+	 * Returns whether or not the entity is touching another entity
+	 * @param e The other Entity
 	 * @return True if the two entities touch, false otherwise
 	 */
 	public boolean isTouching(Entity e) {
@@ -142,13 +148,7 @@ public class Entity {
 //	}
 	
 	
-	/**
-	 * Returns whether or not the point is inside
-	 * @param x X-coordinate
-	 * @param y Y-coordinate
-	 * @return True if the point is inside, false otherwise
-	 */
-	public boolean isPointInside(double x, double y) {
+	private boolean isPointInside(double x, double y) {
 		
 		if(x >= this.getX() && x <= this.getX() + this.getWidth() 
 		&& y >= this.getY() && y <= this.getY() + this.getHeight()) {
@@ -158,7 +158,7 @@ public class Entity {
 	}
 
 	/**
-	 * Causes the entity to act
+	 * Allows the Entity to move given its current movement speeds
 	 */
 	public void act() {
 		x += vx;
@@ -175,8 +175,8 @@ public class Entity {
 	}
 	
 	/**
-	 * sets up the image for the entity
-	 * @param surface the drawing surface
+	 * Sets up the image for the entity
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		setSprite(surface.loadImage("player1.png"));
@@ -184,7 +184,7 @@ public class Entity {
 	
 	
 	/**
-	 * Draws out the entity
+	 * Draws out the Entity
 	 * @param surface The surface to be drawn on
 	 * @pre setSprite must be called first
 	 */
@@ -277,20 +277,20 @@ public class Entity {
 		return isCircleHitbox;
 	}
 	/**
-	 * @return HP of the entity
+	 * @return HP of the Entity
 	 */
 	public double getHp() {
 		return hp;
 	}
 	/**
-	 * Sets the HP of the entity
+	 * Sets the HP of the Entity
 	 * @param h New HP value
 	 */
 	public void setHp(double h) {
 		hp = h;
 	}
 	/**
-	 * Sets the damage per bullet of the entity
+	 * Sets the damage per bullet of the Entity
 	 * @param d New damage value
 	 */
 	public void setDmg(double d) {
@@ -305,12 +305,13 @@ public class Entity {
 	}
 	
 	/**
-	 * Causes the entity to act
+	 * Allows the entity to act
 	 * @param e The Entity
 	 */
 	public void act(Entity e) {
 		
 	}
+	
 	/**
 	 * @return If the player is dead
 	 */
@@ -351,6 +352,9 @@ public class Entity {
 //		//uwu owo meow meow nya~
 //	}
 	
+	/**
+	 * Makes the Entity die
+	 */
 	public void die() {
 		isDead = true;
 	}

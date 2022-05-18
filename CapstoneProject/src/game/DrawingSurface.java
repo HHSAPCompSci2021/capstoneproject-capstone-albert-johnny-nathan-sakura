@@ -16,9 +16,9 @@ public class DrawingSurface extends PApplet {
 	private boolean gameDone;
 	
 	/**
-	 * Constructs a DrawingSurface with initalizing the default game with width and height
-	 * @param width1 both games width
-	 * @param height1 each games height
+	 * Constructs a DrawingSurface with initializing the default game with width and height
+	 * @param width1 Both Game's width
+	 * @param height1 Each Game's height
 	 */
 	public DrawingSurface(int width1, int height1) {
 		this.newWidth = width1;
@@ -29,7 +29,7 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	/**
-	 * Sets up a DrawingSurface by setting up the game
+	 * Sets up a DrawingSurface by setting up the Game
 	 */
 	public void setup() {
 		textFont(createFont("fonts/redalert1.ttf",30));
@@ -41,7 +41,7 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	/**
-	 * Draws both games
+	 * Draws the games
 	 */
 	public void draw() {
 		game1.giveInputs(this);
@@ -74,7 +74,14 @@ public class DrawingSurface extends PApplet {
 
 			background(200);
 			textSize(30);
-			text("LoreLoreLoreLoreLoreLoreLoreLore press y to skip",width/4,height/3,width/2,height/2*3);
+			text("Each player will move up the tower while dodging a sea of bullets approaching in different patterns. "
+					+ "Besides surviving their own path, they must foresee traps the other hero sends in their direction. "
+					+ "Each section of the map features a different boss. "
+					+ "By surviving and killing the final adversary standing in their way, can they progress to the next floor. "
+					+ "The hero to complete all the floors and reach the pinnacle first will be crowned the victor in this futile race. "
+					+ "They will also receive bragging rights for the rest of their short lives inhabiting the deserted wasteland."
+					+ " A hero will also win if the counterpart perishes in this unforgiving world. "
+					,width/6,height/4,width - 360, height - 150);
 			if (isPressed(((int)'Y')) || isPressed(((int)'y'))) {
 				cutscene = false;
 			}
@@ -115,7 +122,7 @@ public class DrawingSurface extends PApplet {
 		}
 	}
 	/**
-	 * Run by PApplet whenever key pressed - updates keypressed list
+	 * Updates keypressed list
 	 */
 	public void keyPressed() {
 		keys.add(keyCode);
@@ -124,17 +131,17 @@ public class DrawingSurface extends PApplet {
 	}
 
 	/**
-	 * Run by PApplet whenever key released - updates keypressed list
+	 * Updates keypressed list
 	 */
 	public void keyReleased() {
 		while(keys.contains(keyCode))
 			keys.remove(keys.indexOf(keyCode));
 	}
 	
-	/**Detects if a key is pressed
-	 * 
-	 * @param code key number
-	 * @return true if key is pressed
+	/**
+	 * Detects if a key is pressed
+	 * @param code Key number
+	 * @return True if key is pressed, false otherwise
 	 */
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);

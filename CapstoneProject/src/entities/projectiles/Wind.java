@@ -24,11 +24,10 @@ public class Wind extends Projectile {
 	 */
 	public Wind(double x, double y, double w, double h, double vx, double vy, boolean circle, double dmg) {
 		super(x, y, w, h, vx, vy, circle, false, dmg);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
-	 * Pushes the player back 
+	 * Pushes the Player back 
 	 * @param player The Player
 	 */
 	public void interact(Player player) {
@@ -37,7 +36,7 @@ public class Wind extends Projectile {
 	
 	/**
 	 * Sets up the image
-	 * @param surface the drawing surface
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		PImage temp;

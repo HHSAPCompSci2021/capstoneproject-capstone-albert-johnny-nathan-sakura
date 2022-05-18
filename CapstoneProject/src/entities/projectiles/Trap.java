@@ -34,11 +34,10 @@ public class Trap extends Bullet {
 	}
 	
 	/**
-	 * Determines the type of trap and applies the effects on the specified Player
-	 * @param player The Player that receives the trap effects
+	 * Determines the type of Trap and applies the effects on the specified Entity
+	 * @param e The Entity that receives the trap effects
 	 */
 	public void interact(Entity e) {
-		
 		if (!(e instanceof Player)) return;
 		Player player = (Player)e;
 		if (type == 1) {
@@ -55,14 +54,14 @@ public class Trap extends Bullet {
 	
 	/**
 	 * Deploys a trap
-	 * @param t the type of trap
+	 * @param t the type of Trap
 	 */
 	public void use(int t) {
 		
 	}
 	
 	/**
-	 * Sets up the image for the trap
+	 * Sets up the image for the Trap
 	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {

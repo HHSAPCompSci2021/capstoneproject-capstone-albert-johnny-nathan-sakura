@@ -26,8 +26,8 @@ public class Coin extends Entity {
 	}
 	
 	/**
-	 * Adds the coins to the player
-	 * @param e The player
+	 * Adds the coins to the Player
+	 * @param e The Player
 	 */
 	public void interact(Player e) {
 		e.addCoins(value);
@@ -36,7 +36,7 @@ public class Coin extends Entity {
 	
 	/**
 	 * Sets up the image for the coin
-	 * @param surface the drawing surface
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		PImage temp;

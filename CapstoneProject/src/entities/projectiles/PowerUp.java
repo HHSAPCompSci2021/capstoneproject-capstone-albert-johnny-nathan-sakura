@@ -21,7 +21,7 @@ public class PowerUp extends Entity {
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
 	 * @param h Height of hitbox
-	 * @param type The type
+	 * @param type The type of PowerUp
 	 * @param circle If the hitbox is a circle
 	 */
 	public PowerUp(double x, double y, double w, double h, int type, boolean circle) {

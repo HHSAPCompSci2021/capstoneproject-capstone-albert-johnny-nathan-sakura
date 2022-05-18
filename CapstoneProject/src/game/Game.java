@@ -25,9 +25,9 @@ public class Game {
 	
 	
 	/**Constructs a new Game window
-	 * @param gameNum denoting the game for player 1 or 2 
-	 * @param width the width of the processing window
-	 * @param height the height of the processing window
+	 * @param gameNum Denoting the game for player 1 or 2 
+	 * @param width The width of the processing window
+	 * @param height The height of the processing window
 	 */
 	public Game(int gameNum, int width, int height) {
 		//System.out.println(gameNum + " width: " + width);
@@ -76,7 +76,7 @@ public class Game {
 	}
 	/** 
 	 * Draws the current Game on the PApplet
-	 * @param surface PApplet to draw things on
+	 * @param surface Surface to draw things on
 	 */
 	public void draw(PApplet surface) {
 		if (curStage.isCompleted()) {
@@ -103,23 +103,23 @@ public class Game {
 	}
 	
 	/**
-	 * Returns if game is completed (the last Stage is completed)
-	 * @return true if all stages are completed
+	 * Returns if game is completed(last stage)
+	 * @return True if all stages are completed, false otherwise
 	 */
 	public boolean gameCompleted() {
 		return curStageInd >= stages.size();
 	}
 	
 	/**
-	 * Returns if game is over (stage game over or player is dead)
-	 * @return true if player is dead in stages
+	 * Returns if game is over (game over or player is dead)
+	 * @return True if the game is over, false otherwise
 	 */
 	public boolean gameOver() {
 		return curStage.gameOver();
 	}
 	
 	/**
-	 * Forwards player inputs into Player class stored in current stage
+	 * Forwards player inputs into Player
 	 * @param surface DrawingSurface class that has keypresses
 	 */
 	public void giveInputs(DrawingSurface surface) {

@@ -6,7 +6,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * This class is a projectile, which collides with entities and damages them
+ * This class is a Projectile, which collides with Entity and damages them
  * @author Johnny Zhang
  *
  */
@@ -39,7 +39,7 @@ public class Projectile extends Entity {
 	
 	
 	/**
-	 * Causes the Entity hit by the bullet to lose HP
+	 * Causes the Entity hit by the Bullet to lose HP
 	 * @param e Entity that is interacted with
 	 */
 	public void interact(Entity e) {
@@ -80,7 +80,7 @@ public class Projectile extends Entity {
 	}
 	
 	/**
-	 * moves the projectile
+	 * Allows the Projectile to move
 	 */
 	public void act() {
 		inv--;
@@ -94,8 +94,8 @@ public class Projectile extends Entity {
 	}
 	
 	/**
-	 * sets up the image for the trap
-	 * @param surface the drawing surface
+	 * Sets up the image for the trap
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		//PImage temp;
@@ -108,8 +108,8 @@ public class Projectile extends Entity {
 	}
 	
 	/**
-	 * setter for penetrate
-	 * @param b
+	 * Sets if Bullet can penetrate
+	 * @param b If the Bullet can penetrate
 	 */
 	public void setPenetrate(boolean b) {
 		penetrate = b;

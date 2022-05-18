@@ -33,10 +33,17 @@ public class Enemy extends Entity{
 		
 	}
 	
+	/**
+	 * Sets the current Entity list
+	 * @param e The new list of entities
+	 */
 	public void setEntityList(ArrayList<Entity> e) {
 		daList = e;
 	}
 	
+	/**
+	 * @return The list with the entities
+	 */
 	public ArrayList<Entity> getDaList() {
 		return daList;
 	}

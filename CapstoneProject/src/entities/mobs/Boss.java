@@ -28,12 +28,12 @@ public class Boss extends Enemy{
 	 * @param w Width of the hitbox
 	 * @param h Height of the hitbox
 	 * @param circle If the hitbox is a circle
-	 * @param stageNum the stage # of the boss
+	 * @param stageNum the stage number of the Boss
 	 */
 	public Boss(double x, double y, double w, double h, boolean circle, int stageNum) {
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
-		setHp(100000);
+		setHp(50000);
 		frames = 0;
 		movement = new double[4][2];
 		if (stageNum == 1) {
@@ -47,23 +47,23 @@ public class Boss extends Enemy{
 			movement[3][1] = 5;
 		}
 		if (stageNum == 2) {
-			movement[0][0] = -10;		
+			movement[0][0] = -7;		
 			movement[0][1] = 8 ;		
-			movement[1][0] = 10;		
+			movement[1][0] = 7;		
 			movement[1][1] = 8;		
-			movement[2][0] = 10;
+			movement[2][0] = 7;
 			movement[2][1] = -8;
-			movement[3][0] = -10;
+			movement[3][0] = -7;
 			movement[3][1] = -8;	
 		}
 		if (stageNum == 3) {
-			movement[0][0] = 13;
+			movement[0][0] = 5;
 			movement[0][1] = -7;
-			movement[1][0] = -13;
+			movement[1][0] = -5;
 			movement[1][1] = -7;
-			movement[2][0] = -13;
+			movement[2][0] = -5;
 			movement[2][1] = 7;
-			movement[3][0] = 13;
+			movement[3][0] = 5;
 			movement[3][1] = 7;
 		}
 		
@@ -74,7 +74,6 @@ public class Boss extends Enemy{
 	 * Makes the boss shoot a "pattern" bullet
 	 */
 	public void shootPatternBullet() {
-		
 		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), stageNum, stageNum*2);
 		p.giveBounds(bounds.clone());
 		p.setup(surface);
@@ -84,10 +83,10 @@ public class Boss extends Enemy{
 		}
 	}
 	
+	/**
+	 * Allows the Boss to move and shoot
+	 */
 	public void act() {
-		//hey nathan! you can change movements based on stageNum/goonNum in the 
-		//constructor! i have made some examples you dont need
-		//all these if statements in act
 		frames++;	
 		if (frames % (stageNum * 10) == 0) {
 			counter++;
@@ -104,7 +103,7 @@ public class Boss extends Enemy{
 				movement[curInd][0] = -vx;
 				counter = 0;
 				if(stageNum == 3) {
-					shootPatternBullet();
+					//shootPatternBullet();
 				}
 			}
 			setvx(vx);
@@ -119,7 +118,8 @@ public class Boss extends Enemy{
 	
 	
 	
-	/**Sets up the boss with an image
+	/**
+	 * Sets up the boss with an image
 	 * @param surface PApplet to setup with
 	 */
 	public void setup(PApplet surface) {

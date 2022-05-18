@@ -35,17 +35,17 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
-		this.setHp(150);
+		this.setHp(10000);
 		multishot = false;
 		resetCD = 10;
 		movementMulti = 1;
 		//hello this is the new damage
-		bulletDMG = 1000;
+		bulletDMG = 5000;
 		shieldLasts = 60;
 	}
 	
 	/**
-	 * sets up the image for the player
+	 * Sets up the image for the player
 	 * @param surface the drawing surface
 	 */
 	public void setup(PApplet surface) {
@@ -56,23 +56,43 @@ public class Player extends Entity {
 		setSprite(temp);
 	}
 	
+	/**
+	 * Sets the movement speed
+	 * @param num The new movement speed
+	 */
 	public void setMovementSpeed(double num) {
 		movementMulti = num;
 	}
+	/**
+	 * @return True if Player has multishot, false otherwise
+	 */
 	public boolean multishotActive() {
 		return multishot;
 	}
+	
+	/**
+	 * @return True if Player bullets can penetrate, false otherwise
+	 */
 	public boolean penetrateActive() {
 		return penetrate;
 	}
+	/**
+	 * @return True if the shot frequency increases, false otherwise
+	 */
 	public boolean rateIncreaseActive() {
 		return resetCD == 5;
 	}
-
+	
+	/**
+	 * @return True if damage increase buff is active, false otherwise
+	 */
 	public boolean dmgIncreaseActive() {
 		return bulletDMG == 500;
 	}
 	
+	/**
+	 * @return True if Player has a shield, false otherwise
+	 */
 	public boolean shieldOn() {
 		return shieldLasts > 0;
 	}

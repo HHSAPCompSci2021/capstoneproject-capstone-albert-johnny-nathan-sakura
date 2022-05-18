@@ -182,6 +182,11 @@ public class Goon extends Enemy{
 		setX(getvx() + getX());
 		setY(getvy() + getY());
 	}
+	
+	/**
+	 * Draws out the Goon
+	 * @param surface The drawing surface
+	 */
 	public void draw(PApplet surface) {
 		surface.tint(255, (float)(1.0*(getHp())/2500*125)+100);
 		surface.tint((int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125,(int)(1.0*(getHp())/2500*100)+125);
@@ -193,7 +198,7 @@ public class Goon extends Enemy{
 	
 	/**
 	 * Sets the X-coordinate velocity
-	 * @param d
+	 * @param d The new x velocity
 	 */
 	public void setXMovement(double d) {
 		setvx(d);
@@ -201,7 +206,7 @@ public class Goon extends Enemy{
 	
 	/**
 	 * Sets the X-coordinate velocity
-	 * @param d
+	 * @param d The new y velocity
 	 */
 	public void setYMovement(double d) {
 		setvy(d);

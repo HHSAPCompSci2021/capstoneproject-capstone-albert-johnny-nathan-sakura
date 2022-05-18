@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * This class is basically the same as projectile, i don't know why we have it
+ * This class represents a Bullet with the properties of Prjectile 
  * @author Johnny Zhang
  *
  */
@@ -30,7 +30,7 @@ public class Bullet extends Projectile {
 	
 	/**
 	 * Sets up the image for the Bullet
-	 * @param surface the drawing surface
+	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
 		//PImage temp;

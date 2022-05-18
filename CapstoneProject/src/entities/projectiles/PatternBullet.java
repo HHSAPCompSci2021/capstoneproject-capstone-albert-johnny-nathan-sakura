@@ -14,6 +14,7 @@ public class PatternBullet {
 	private ArrayList<Bullet> bullets;
 	private int type;
 	public double[] bounds;
+
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
 	 * @param x X-Coordinate
@@ -21,11 +22,6 @@ public class PatternBullet {
 	 * @param type The type of bullet
 	 * @param dmg The damage of the bullet
 	 */
-	
-	public void giveBounds(double[] bounds) {
-		System.out.println("gave bounds" + bounds[0] + " " + bounds[1] + " " + bounds[2] + " " + bounds[3]);
-		this.bounds = bounds.clone();
-	}
 	public PatternBullet(int x, int y, int type, int dmg) {
 		this.type = type;
 		bullets = new ArrayList<Bullet>();
@@ -48,6 +44,18 @@ public class PatternBullet {
 		}
 	}
 	
+	/**
+	 * Gives the boundaries of the window
+	 * @param bounds The array of boundaries
+	 */
+	public void giveBounds(double[] bounds) {
+		System.out.println("gave bounds" + bounds[0] + " " + bounds[1] + " " + bounds[2] + " " + bounds[3]);
+		this.bounds = bounds.clone();
+	}
+	
+	/**
+	 * Allows the Bullets to move
+	 */
 	public void act() {
 		if (type == 2) {
 			for (Bullet b : bullets) {
@@ -59,10 +67,18 @@ public class PatternBullet {
 		}
 	}
 	
+	/**
+	 * @return The bullets
+	 */
 	public ArrayList<Bullet> getBullets() {
 		return bullets;
 	}
 	
+	
+	/**
+	 * Sets up the PatterBullet
+	 * @param surface The drawing surface
+	 */
 	public void setup(PApplet surface) {
 		//PImage temp;
 		for (Bullet b : bullets) {

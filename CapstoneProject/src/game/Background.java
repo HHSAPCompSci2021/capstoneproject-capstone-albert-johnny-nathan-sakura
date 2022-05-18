@@ -30,9 +30,10 @@ public class Background {
 		this.stageNum = stageNum;
 		photo.resize(width, height);
 	}
+	
 	/**
-	 * Draws this Background class from the currentCenter scrolled 
-	 * @param marker To draw on
+	 * Draws the Background class from the currentCenter scrolled 
+	 * @param marker The drawing surface
 	 */
 	public void draw(PApplet marker) {
 		if (stageNum == 2) {
@@ -51,8 +52,8 @@ public class Background {
 	}
 	
 	/**
-	 * Changes the y the Background is currently at while scrolling
-	 * @param yMove Y value to move
+	 * Changes the scrolling speed 
+	 * @param yMove The speed to scroll
 	 */
 	public void scroll(int yMove) {
 		curCenterY+=yMove;

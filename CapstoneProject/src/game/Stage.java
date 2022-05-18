@@ -39,7 +39,6 @@ public class Stage {
 	 * @param p player passed into the stage and to interact there
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
-		//System.out.println(stageNum + " width: " + width);
 		curWave = 1;
 		gameOver = false;
 		stageComplete = false;
@@ -48,7 +47,6 @@ public class Stage {
 		dimensions = new Point(width, height);
 		this.stageNum = stageNum;
 		entityList = new ArrayList<Entity>();
-		//entityList.add(new Player(0, 0, 0, 0, false, null));
 		entityList.add(p);
 		curPlayer = p;
 		b = null;
@@ -77,7 +75,7 @@ public class Stage {
 	}
 	
 	/**
-	 * Sets up the stage with an image using processing
+	 * Sets up the stage with an image using Processing
 	 * @param surface PApplet to setup with
 	 */
 	public void setup(PApplet surface) {
@@ -121,8 +119,8 @@ public class Stage {
 	}
 	
 	/**
-	 * Returns a Statistics object used for drawing outside of this class
-	 * @return Statistics the statistics for this player
+	 * Returns a Statistics object used for drawing outside of the class
+	 * @return Statistics The statistics for this Player
 	 */
 	public Statistics getStats() {
 		return playerStats;
@@ -130,8 +128,8 @@ public class Stage {
 	
 	/**
 	 * Forward inputs into the player for movement and skill activation
-	 * @param surface Surface
-	 * @param gameNum Game number
+	 * @param surface Surface to draw on
+	 * @param gameNum The game number
 	 */
 	public void giveInputs(DrawingSurface surface, int gameNum) {
 		if (surface.isPressed(66) || surface.isPressed(98)) {
@@ -340,15 +338,13 @@ public class Stage {
 	}
 	
 	/** 
-	 * Returns true if the stage has been cleared
-	 * @return true if all enemies are dead
+	 * @return True if all enemies died, false otherwise
 	 */
 	public boolean isCompleted() {
 		return curWave > 3;
 	}
 	/** 
-	 * Returns if the game is over
-	 * @return true if player is dead
+	 * @return True if the game is over, false otherwise
 	 */
 	public boolean gameOver() {
 		return gameOver;
@@ -427,25 +423,28 @@ public class Stage {
 			//you can add below another set of if conditions for each stage that
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
-				Boss b = new Boss(topLeft.x+100, topLeft.y+100, 100, 100, false, stageNum);
+				Boss b = new Boss(topLeft.x+125, topLeft.y+100, 100, 100, false, stageNum);
 				b.setup(surface);
 				b.giveBounds(topLeft, dimensions);
 				this.b = b;
 				entityList.add(b);
 			} else if (curWave < 3) {
 				
-				Goon g = new Goon(topLeft.x+50, topLeft.y+50, 75, 75, false, stageNum, 1);
+				Goon g = new Goon(topLeft.x+100, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
+				
 				g = new Goon(topLeft.x+300, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
-				g = new Goon(topLeft.x+50, topLeft.y+200, 75, 75, false, stageNum, 2);
+				
+				g = new Goon(topLeft.x+100, topLeft.y+200, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
+				
 				g = new Goon(topLeft.x+300, topLeft.y+200, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);

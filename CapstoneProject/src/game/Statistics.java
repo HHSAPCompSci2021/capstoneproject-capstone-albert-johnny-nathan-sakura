@@ -17,7 +17,7 @@ public class Statistics {
 	private Player p;
 	
 	/**
-	 * Constructing a Statistics class with a Player class 
+	 * Constructs a Statistics class with a Player class 
 	 * @param p The Player
 	 * @param x X-coordinate Statistics box
 	 * @param y Y-coordinate Statistics box
@@ -35,7 +35,7 @@ public class Statistics {
 	}
 	
 	/**
-	 * Draws out the Statistics in a concise manner
+	 * Draws out the Statistics
 	 * @param surface The surface to draw on
 	 */
 	public void draw(PApplet surface) {
@@ -63,7 +63,7 @@ public class Statistics {
 	}
 	/**
 	 * Updates the hp by num amount
-	 * @param num positive for adding HP, negative for subtracting
+	 * @param num The amount the hp increases of decrease by
 	 */
 	public void updateHP(double num) {
 		hp += num;
@@ -71,7 +71,7 @@ public class Statistics {
 	
 	/**
 	 * Updates the Statistics class to show that a skill is usable
-	 * @param i number of the skill
+	 * @param i Number of the skill
 	 * @pre i must be 0 less than the number of trap
 	 */
 	public void makeSkillUsable(int i) {
@@ -80,7 +80,7 @@ public class Statistics {
 	
 	/**
 	 * Updates the Statistics class to show that a trap is usable
-	 * @param i number of the trap
+	 * @param i number of the Trap
 	 * @pre i must be 0 less than the number of trap
 	 */
 	public void makeTrapUsable(int i) {
@@ -89,7 +89,7 @@ public class Statistics {
 	
 	/**
 	 * Updates the Statistics class to show that a trap is usable
-	 * @param i number of the trap
+	 * @param i number of the Trap
 	 * @pre i must be 0 less than the number of trap
 	 */
 	public void useSkill(int i) {
@@ -98,7 +98,7 @@ public class Statistics {
 	
 	/**
 	 * Updates the Statistics class to show that a trap is usable
-	 * @param i number of the trap
+	 * @param i number of the Trap
 	 * @pre i must be 0 less than the number of trap
 	 */
 	public void useTrap(int i) {
