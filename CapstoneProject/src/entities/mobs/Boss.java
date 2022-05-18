@@ -70,8 +70,8 @@ public class Boss extends Enemy{
 	 */
 	public void shootPatternBullet() {
 		
-		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), 1, 5);
-		
+		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), stageNum, 5);
+		p.setup(surface);
 		ArrayList<Entity> list = getDaList();
 		for (Bullet b : p.getBullets()) {
 			if (!list.contains(b)) list.add(b);

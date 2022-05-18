@@ -19,7 +19,7 @@ public class Player extends Entity {
 	private int resetCD;
 	private boolean multishot, penetrate;
 	private long delay;
-	private int bulletDMG;
+	private int bulletDMG, shieldLasts;
 	private double movementMulti;
 	
 	/**
@@ -40,7 +40,8 @@ public class Player extends Entity {
 		resetCD = 10;
 		movementMulti = 1;
 		//hello this is the new damage
-		bulletDMG = 1000;
+		bulletDMG = 10000;
+		shieldLasts = 60;
 	}
 	
 	/**
@@ -72,6 +73,14 @@ public class Player extends Entity {
 		return bulletDMG == 500;
 	}
 	
+	public boolean shieldOn() {
+		return shieldLasts > 0;
+	}
+
+//	public void activateShield() {
+//		shieldLasts = 10;
+//	}
+	
 	
 //	public void draw(PApplet surface) {
 //		super.draw(surface);
@@ -99,7 +108,7 @@ public class Player extends Entity {
 			penetrate = false;
 			resetCD = 10;
 			//dmg here also
-			bulletDMG = 1000;
+			bulletDMG = 10000;
 		} else {
 			delay--;
 		}
@@ -130,6 +139,11 @@ public class Player extends Entity {
 			if (powerUpType == 5) {
 				//System.out.println("Shinderu!");
 				bulletDMG = 500;
+				powerUpType = 0;
+				delay = 300;
+			}
+			if (powerUpType == 6) {
+				shieldLasts = 300;
 				powerUpType = 0;
 				delay = 300;
 			}

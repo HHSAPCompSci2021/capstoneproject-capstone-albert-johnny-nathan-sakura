@@ -452,7 +452,7 @@ public class Stage {
 				entityList.add(g);
 
 			}
-			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, ((int)(Math.random()*5.0))+1, true);
+			PowerUp p = new PowerUp(topLeft.x+200, topLeft.y+200, 50, 50, ((int)(Math.random()*6.0))+1, true);
 //			PowerUp p1 = new PowerUp(topLeft.x+200, topLeft.y+300, 50, 50, 2, true);
 //			PowerUp p2 = new PowerUp(topLeft.x+200, topLeft.y+400, 50, 50, 3, true);
 //			PowerUp p3 = new PowerUp(topLeft.x+200, topLeft.y+500, 50, 50, 4, true);
