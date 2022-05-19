@@ -38,7 +38,7 @@ public class PatternBullet {
 		if (type == 3) {
 			for (int i = -5; i < 5; i++) {
 				for (int j = -5; j < 5; j++) {
-					bullets.add(new Bullet(x + i * 10, y + i * 10, 30, 30, 0, 10, true, false, dmg));
+					bullets.add(new Bullet(x + (i * 10), y + (i * 10), 30, 30, 0, 5, true, false, dmg));
 				}
 			}
 		}
