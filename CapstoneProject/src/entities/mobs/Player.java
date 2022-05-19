@@ -97,6 +97,11 @@ public class Player extends Entity {
 		return shieldLasts > 0;
 	}
 
+	
+	
+	public int numCoins() {
+		return coins;
+	}
 //	public void activateShield() {
 //		shieldLasts = 10;
 //	}

@@ -24,6 +24,7 @@ public class Coin extends Entity {
 		super(x, y, w, h, circle);
 		System.out.println("dfdfsf");
 		value = 5;
+		setHp(1);
 	}
 	
 	/**
