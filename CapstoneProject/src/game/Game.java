@@ -18,7 +18,7 @@ public class Game {
 	private Statistics playerStats;
 	private Point dimensions, topLeft;
 	private Player p, otherPlayer;
-	private int trapCD;
+	private int trapCD, stageSkipCD;
 
 	//somehow add black bars in the game - set the Game's dimensions to 
 	//fit within these black bars
@@ -38,7 +38,6 @@ public class Game {
 		p = null;
 		if (gameNum == 1) p = new Player(width/4-50, height/4*3-50, 100, 50, false, gameNum);
 		if (gameNum == 2) p = new Player(width/4*3-50, height/4*3-50, 100, 50, false, gameNum);
-		
 		this.gameNum = gameNum;
 		int x = 0;
 		stages = new ArrayList<Stage>();
@@ -48,12 +47,16 @@ public class Game {
 		} else {
 			//System.out.println("game1x is " + x);
 		}
-		for (int i = 1; i < 4; i++) {
+		for (int i = 1; i <= 4; i++) {
 			stages.add(new Stage(i, x+50, 0+50, width/2-50-50, height-200-50,p)); //100 on the bottom saved for statistics
 		}
 		curStage = stages.get(0);
 		topLeft = new Point(x, 0);
 		trapCD = 0;
+		
+		//delete this when done testing
+		stageSkipCD = 0;
+		
 	}
 	
 	//switches stage
@@ -94,6 +97,7 @@ public class Game {
 	 */
 	public void draw(PApplet surface) {
 		if (trapCD > 0) trapCD--;
+		if (stageSkipCD > 0) stageSkipCD--;
 		if (curStage.isCompleted()) {
 			System.out.println(nextStage());
 			return;
@@ -138,6 +142,13 @@ public class Game {
 	 * @param surface DrawingSurface class that has keypresses
 	 */
 	public void giveInputs(DrawingSurface surface) {
+		if ((surface.isPressed(66) || surface.isPressed(98)) && stageSkipCD == 0) {
+			//hard code stage skip
+			System.out.println("WHY");
+			nextStage();
+			stageSkipCD = 30;
+		}
+		
 		if (gameNum == 1) {
 			//traps
 			if (surface.isPressed((int)'n') || surface.isPressed((int)'N')) {
