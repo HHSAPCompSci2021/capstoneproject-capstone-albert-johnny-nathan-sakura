@@ -37,13 +37,13 @@ public class Background {
 	 */
 	public void draw(PApplet marker) {
 		if (stageNum == 2) {
-			marker.tint(200,100,0);
+			marker.tint(125,225,175);
 		}
 		if (stageNum == 3) {
-			marker.tint(100,200,0);
+			marker.tint(255, 180, 200);
 		}
 		if (stageNum == 4) {
-			marker.tint(0,100,200);
+			marker.tint(200,50,50);
 		}
 		marker.image(photo, x,  curCenterY-photo.height);
 		marker.image(photo, x, curCenterY);//, 0, curCenterY, width, photo.height);
