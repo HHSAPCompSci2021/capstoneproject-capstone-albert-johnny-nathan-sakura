@@ -17,10 +17,10 @@ public class Main {
 		JFrame window = (JFrame)canvas.getFrame();
 
 		window.setSize(1200, 900);
+		window.setLocationRelativeTo(null);
 		window.setMinimumSize(new Dimension(1200,900));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
-
 		window.setVisible(true);
 		
 		
