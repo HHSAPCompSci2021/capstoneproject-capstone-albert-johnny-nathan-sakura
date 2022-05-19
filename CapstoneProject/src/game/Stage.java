@@ -423,7 +423,7 @@ public class Stage {
 			//you can add below another set of if conditions for each stage that
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
-				Boss b = new Boss(topLeft.x+125, topLeft.y+100, 100, 100, false, stageNum);
+				Boss b = new Boss(topLeft.x+150, topLeft.y+125, 100, 100, false, stageNum);
 				b.setup(surface);
 				b.giveBounds(topLeft, dimensions);
 				this.b = b;
