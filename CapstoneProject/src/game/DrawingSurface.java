@@ -102,6 +102,7 @@ public class DrawingSurface extends PApplet {
 				text("You've killed a jazz band... and your own kind... \n",width/2-400,height/2-100,width,height);
 				text("It seems like the real monster was you,", width/2-300,height/2,width,height);
 
+				if (whoWon == 1) fill(130, 7, 0);
 				if (whoWon == 2) fill(0, 95, 143);
 				textSize(50);
 				text("Player " +  whoWon, width/2-300,height/2+100,width,height);
