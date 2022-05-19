@@ -21,6 +21,7 @@ public class Player extends Entity {
 	private long delay;
 	private int bulletDMG, shieldLasts;
 	private double movementMulti;
+	private int inv;
 	
 	/**
 	 * Creates a new instance of Player with the properties of Entity
@@ -127,6 +128,9 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
+		if (inv > 0) {
+			inv--;
+		}
 		if (coins < 0) {
 			coins = 0;
 		}
@@ -295,6 +299,14 @@ public class Player extends Entity {
 			entityList.add(b2);
 		}
 		shawtyFramesCD = resetCD;
+	}
+	
+	public int getInv() {
+		return inv;
+	}
+	
+	public void setInv(int i) {
+		inv = i;
 	}
 	
 }

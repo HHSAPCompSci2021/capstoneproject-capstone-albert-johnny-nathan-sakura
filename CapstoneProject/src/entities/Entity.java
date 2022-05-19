@@ -358,4 +358,12 @@ public class Entity {
 	public void die() {
 		isDead = true;
 	}
+
+	public int getInv() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void setInv(int n) {
+		
+	}
 }
