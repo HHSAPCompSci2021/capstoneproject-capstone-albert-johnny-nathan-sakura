@@ -207,7 +207,6 @@ public class Boss extends Enemy{
 			if (curInd >= movement.length) {
 				curInd = 0;
 			}
-			
 			double vx = movement[curInd][0];
 			double vy = movement[curInd][1];
 			double chance = Math.random();
@@ -216,9 +215,11 @@ public class Boss extends Enemy{
 				movement[curInd][0] = -vx;
 				counter = 0;
 			}
+			if(curInd % 3 == 1) {
+				shootPatternBullet();
+			}
 			setvx(vx);
 			setvy(vy);
-			shootPatternBullet();
 			frames = 0;
 		}
 		setX(getvx() + getX());

@@ -43,6 +43,25 @@ public class PatternBullet {
 				}
 			}
 		}
+		if(type == 4) {
+			for (int i = -5; i < 5; i++) {
+				for (int j = -5; j < 5; j++) {
+					if (i == j)
+					bullets.add(new Bullet(x + (i * 10), y + (i * 10), 30, 30, 0, 5, true, false, dmg));
+				}
+			}
+			
+			
+			bullets.add(new Bullet(x, y, 30, 30, -3.5, -3.5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -5, 0, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -3.5, 3.5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 0, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 0, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 3.5, -3.5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, 0, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 3.5, 3.5, true, false, dmg));
+			
+		}
 	}
 	
 	/**
