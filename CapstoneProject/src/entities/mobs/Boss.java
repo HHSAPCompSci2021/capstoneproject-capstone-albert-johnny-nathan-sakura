@@ -75,38 +75,38 @@ public class Boss extends Enemy{
 		}
 		if(stageNum == 4) {
 			movement = new double[16][2];
-			movement[0][0] = -3;
-			movement[0][1] = -4;	
-			movement[1][0] = -3;
-			movement[1][1] = -4;	
-			movement[2][0] = 3;
-			movement[2][1] = 4;
-			movement[3][0] = 3;
-			movement[3][1] = 4;	
-			movement[4][0] = -3;
-			movement[4][1] = 4;		
-			movement[5][0] = 3;
-			movement[5][1] = -4;			
-			movement[6][0] = 3;
-			movement[6][1] = -4;	
-			movement[7][0] = -3;
-			movement[7][1] = 4;	
-			movement[8][0] = 3;
-			movement[8][1] = 4;
-			movement[9][0] = 3;
-			movement[9][1] = 4;		
-			movement[10][0] = -3;
-			movement[10][1] = -4;		
-			movement[11][0] = -3;
-			movement[11][1] = -4;		
-			movement[12][0] = 3;
-			movement[12][1] = -4;		
-			movement[13][0] = -3;
-			movement[13][1] = 4;		
-			movement[14][0] = -3;
-			movement[14][1] = 4;	
-			movement[15][0] = 3;
-			movement[15][1] = -4;	
+			movement[0][0] = -7;
+			movement[0][1] = -5;	
+			movement[1][0] = -7;
+			movement[1][1] = -5;	
+			movement[2][0] = 7;
+			movement[2][1] = 5;
+			movement[3][0] = 7;
+			movement[3][1] = 5;	
+			movement[4][0] = -7;
+			movement[4][1] = 5;		
+			movement[5][0] = 7;
+			movement[5][1] = -5;			
+			movement[6][0] = 7;
+			movement[6][1] = -5;	
+			movement[7][0] = -7;
+			movement[7][1] = 5;	
+			movement[8][0] = 7;
+			movement[8][1] = 5;
+			movement[9][0] = 7;
+			movement[9][1] = 5;		
+			movement[10][0] = -7;
+			movement[10][1] = -5;		
+			movement[11][0] = -7;
+			movement[11][1] = -5;		
+			movement[12][0] = 7;
+			movement[12][1] = -5;		
+			movement[13][0] = -7;
+			movement[13][1] = 5;		
+			movement[14][0] = -7;
+			movement[14][1] = 5;	
+			movement[15][0] = 7;
+			movement[15][1] = -5;	
 		}
 		
 		setHp(ogHP);
@@ -201,7 +201,7 @@ public class Boss extends Enemy{
 			frames = 0;
 		}
 		
-		if (frames % 25 == 0 && stageNum == 4) {
+		if (frames % 10 == 0 && stageNum == 4) {
 			counter++;
 			curInd++;
 			if (curInd >= movement.length) {
