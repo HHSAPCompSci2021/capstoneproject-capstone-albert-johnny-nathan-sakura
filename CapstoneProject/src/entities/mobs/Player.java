@@ -35,7 +35,7 @@ public class Player extends Entity {
 		super(x,y,w,h,circle);
 		entityList = new ArrayList<Entity>();
 		this.playerNum = gameNum;
-		this.setHp(10000);
+		this.setHp(150);
 		multishot = false;
 		resetCD = 10;
 		movementMulti = 1;
@@ -135,7 +135,7 @@ public class Player extends Entity {
 		
 		if (powerUpDuration > 0) {
 			if (powerUpType == 1) {
-				this.setHp(this.getHp()+100);
+				this.setHp(getHp()+100);
 				powerUpType = 0;
 			} 
 			if (powerUpType == 2) {

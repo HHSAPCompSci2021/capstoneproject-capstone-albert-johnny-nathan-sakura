@@ -8,6 +8,7 @@ import entities.mobs.Enemy;
 import entities.mobs.Goon;
 import entities.mobs.Player;
 import entities.projectiles.Bullet;
+import entities.projectiles.Coin;
 import entities.projectiles.PowerUp;
 import entities.projectiles.Projectile;
 import entities.projectiles.Trap;
@@ -66,6 +67,9 @@ public class Stage {
 		//entityList.add(new Boss(stageNum));
 		//this is accounted in different waives
 		//entityList.add(new Boss(0, 0, 0, 0, false, null));
+
+		Coin c = new Coin(topLeft.x+dimensions.x-200, topLeft.y+dimensions.y-200, 40, 40, false);
+		entityList.add(c);
 		
 		for (Entity e : entityList) {
 			System.out.println(topLeft.x + " " + topLeft.y + " " + dimensions.x + " " + dimensions.y);
@@ -428,6 +432,21 @@ public class Stage {
 				b.giveBounds(topLeft, dimensions);
 				this.b = b;
 				entityList.add(b);
+				if (stageNum == 1) {
+					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+500, 50, 50, ((int)(Math.random()*6.0))+1, true);
+					p.setup(surface);
+					entityList.add(p);
+				}
+				if (stageNum == 2) {
+					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+200, 50, 50, ((int)(Math.random()*6.0))+1, true);
+					p.setup(surface);
+					entityList.add(p);
+				}
+				if (stageNum == 3) {
+					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+100, 50, 50, ((int)(Math.random()*6.0))+1, true);
+					p.setup(surface);
+					entityList.add(p);
+				}
 			} else if (curWave < 3) {
 				
 				Goon g = new Goon(topLeft.x+100, topLeft.y+50, 75, 75, false, stageNum, 1);
@@ -449,22 +468,6 @@ public class Stage {
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
-
-			}
-			if (stageNum == 1) {
-				PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+500, 50, 50, ((int)(Math.random()*6.0))+1, true);
-				p.setup(surface);
-				entityList.add(p);
-			}
-			if (stageNum == 2) {
-				PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+200, 50, 50, ((int)(Math.random()*6.0))+1, true);
-				p.setup(surface);
-				entityList.add(p);
-			}
-			if (stageNum == 3) {
-				PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+100, 50, 50, ((int)(Math.random()*6.0))+1, true);
-				p.setup(surface);
-				entityList.add(p);
 			}
 		}
 	}

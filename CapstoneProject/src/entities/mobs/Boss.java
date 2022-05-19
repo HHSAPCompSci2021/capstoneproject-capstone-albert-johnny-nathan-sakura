@@ -20,6 +20,7 @@ public class Boss extends Enemy{
 	private int curInd;
 	private int frames;
 	private int counter;
+	private int ogHP;
 	private int framesMod;
 	/**
 	 * Creates a new instance of Boss
@@ -33,10 +34,12 @@ public class Boss extends Enemy{
 	public Boss(double x, double y, double w, double h, boolean circle, int stageNum) {
 		super(x, y, w, h, circle);
 		this.stageNum = stageNum;
-		setHp(50000);
+		ogHP = 40000;
+		setHp(40000);
 		frames = 0;
 		movement = new double[4][2];
 		if (stageNum == 1) {
+			ogHP = 40000;
 			movement[0][0] = 5;
 			movement[0][1] = -5;
 			movement[1][0] = 7;
@@ -47,7 +50,8 @@ public class Boss extends Enemy{
 			movement[3][1] = 5;			
 		}
 		if (stageNum == 2) {
-			movement[0][0] = -7;		
+			ogHP = 60000;
+			movement[0][0] = -10;
 			movement[0][1] = 8 ;		
 			movement[1][0] = 7;		
 			movement[1][1] = 8;		
@@ -57,7 +61,7 @@ public class Boss extends Enemy{
 			movement[3][1] = -8;	
 		}
 		if (stageNum == 3) {
-			movement[0][0] = 5;
+			ogHP = 80000;
 			movement[0][1] = -7;
 			movement[1][0] = -5;
 			movement[1][1] = -7;
@@ -102,14 +106,14 @@ public class Boss extends Enemy{
 			movement[15][1] = -4;	
 		}
 		
-		
+		setHp(ogHP);
 	}
 	
 	/**
 	 * Makes the boss shoot a "pattern" bullet
 	 */
 	public void shootPatternBullet() {
-		PatternBullet p = new PatternBullet((int)getX(), (int)getY(), stageNum, stageNum*2);
+		PatternBullet p = new PatternBullet((int)(getX() + getWidth()/2), (int)(getY()+ getHeight()/2), stageNum, stageNum*2);
 		p.giveBounds(bounds.clone());
 		p.setup(surface);
 		ArrayList<Entity> list = getDaList();
@@ -121,6 +125,13 @@ public class Boss extends Enemy{
 	/**
 	 * Allows the Boss to move and shoot
 	 */
+
+	public void draw(PApplet surface) {
+		surface.tint(255, (float)(1.0*(getHp())/ogHP*125)+100);
+		surface.tint((int)(1.0*(getHp())/ogHP*100)+125,(int)(1.0*(getHp())/ogHP*100)+125,(int)(1.0*(getHp())/ogHP*100)+125);
+		super.draw(surface);
+		surface.noTint();
+	}
 	public void act() {
 		frames++;	
 		if (frames % (stageNum * 10) == 0) {
