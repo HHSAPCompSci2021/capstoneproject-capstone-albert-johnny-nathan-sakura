@@ -133,10 +133,10 @@ public class Stage {
 	 * @param gameNum The game number
 	 */
 	public void giveInputs(DrawingSurface surface, int gameNum) {
-		if (surface.isPressed(66) || surface.isPressed(98)) {
-			//hard code stage skip
-			curWave +=1;
-		}
+//		if (surface.isPressed(66) || surface.isPressed(98)) {
+//			//hard code stage skip
+//			curWave +=1;
+//		}
 		
 		
 		
