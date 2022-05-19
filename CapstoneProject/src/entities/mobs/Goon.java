@@ -117,18 +117,18 @@ public class Goon extends Enemy{
 		if (stageNum == 4) {
 			if(goonNum == 1) {
 				movement[0][0] = -5;
-				movement[0][1] = 10;
+				movement[0][1] = 8;
 				movement[1][0] = 5;
-				movement[1][1] = 10;
+				movement[1][1] = 8;
 				movement[2][0] = 5;
-				movement[2][1] = -10;
+				movement[2][1] = -8;
 				movement[3][0] = -5;
-				movement[3][1] = -10;
+				movement[3][1] = -8;
 			}
 			if(goonNum == 2) {
-				movement[0][0] = -10;
+				movement[0][0] = -8;
 				movement[0][1] = 6;
-				movement[1][0] = 10;
+				movement[1][0] = 8;
 				movement[1][1] = 6;	
 			}
 		}
