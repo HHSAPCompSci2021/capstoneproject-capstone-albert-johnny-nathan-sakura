@@ -13,7 +13,7 @@ public class DrawingSurface extends PApplet {
 	private boolean pauseMenu, cutscene;
 	private int newWidth, newHeight;
 	private int whoWon;
-	private boolean gameDone;
+	private boolean gameDone, loreDone;
 	
 	/**
 	 * Constructs a DrawingSurface with initializing the default game with width and height
@@ -26,6 +26,8 @@ public class DrawingSurface extends PApplet {
 		keys = new ArrayList<Integer>();
 		startMenu = true;
 		pauseMenu = false;
+		gameDone = false;
+		loreDone = false;
 	}
 	
 	/**
@@ -77,22 +79,37 @@ public class DrawingSurface extends PApplet {
 
 			background(200);
 			textSize(30);
-			text("Each player will move up the tower while dodging a sea of bullets approaching in different patterns. "
-					+ "Besides surviving their own path, they must foresee traps the other hero sends in their direction. "
-					+ "Each section of the map features a different boss. "
-					+ "By surviving and killing the final adversary standing in their way, can they progress to the next floor. "
-					+ "The hero to complete all the floors and reach the pinnacle first will be crowned the victor in this futile race. "
-					+ "They will also receive bragging rights for the rest of their short lives inhabiting the deserted wasteland."
-					+ " A hero will also win if the counterpart perishes in this unforgiving world. "
+			text("In a tattered world littered with monsters, traps, and bosses, "
+					+ "the summoned heroes and their rival battled to the brink of existence. "
+					+ "In the final, unfruitful search for life, meaning, and glory, the two "
+					+ "stand at the base of the opponent's remaining tower. Unforgiving to their "
+					+ "previous rivalries, the two each scale the tower from another side. With an "
+					+ "insatiable thirst for vengeance, their unforgivingness to their previous rivalries, "
+					+ "to two mercilessly disassemble the tower each on a different side. "
+					+ "Which hero will evade all the traps, defeat all the enemies, "
+					+ "and kill this so-called foe first? "
 					,width/6,height/4,width - 360, height - 150);
 			if (isPressed(((int)'Y')) || isPressed(((int)'y'))) {
 				cutscene = false;
 			}
 		} else if (gameDone) {
-			background(225);
+			background(0);
 			fill(0, 95, 143);
 			if (whoWon == 1) fill(130, 7, 0);
-			text("Player " + whoWon + " won!!", width/2-100,height/2,width,height);
+			if (loreDone) {
+
+				fill(200, 7, 0);
+				text("You've killed a jazz band... and your own kind... \n",width/2-400,height/2-100,width,height);
+				text("It seems like the real monster was you,", width/2-300,height/2,width,height);
+
+				if (whoWon == 2) fill(0, 95, 143);
+				textSize(50);
+				text("Player " +  whoWon, width/2-300,height/2+100,width,height);
+				
+			} else {
+				background(100);
+				text("Player " + whoWon + " won!!", width/2-100,height/2,width,height);
+			}
 			
 		}
 		else {
@@ -117,10 +134,12 @@ public class DrawingSurface extends PApplet {
 			if (game1.gameCompleted()) {
 				whoWon = 1;
 				gameDone = true;
+				loreDone = true;
 			}
 			if (game2.gameCompleted()) {
 				whoWon = 2;
 				gameDone = true;
+				loreDone = true;
 			}
 		}
 	}

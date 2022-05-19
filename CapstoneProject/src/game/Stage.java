@@ -249,8 +249,8 @@ public class Stage {
 		if (gameNum == 2) {
 			if (surface.isPressed((int)'o') || surface.isPressed((int)'O')) {
 				System.out.println("o");
-				if (walkingMulti == 0.5) walkingMulti = 1;
-				else walkingMulti = 0.5;
+				if (walkingMulti == 2) walkingMulti = 1;
+				else walkingMulti = 2;
 				walkingSwapCD = 30;
 			}
 			if (surface.isPressed(74) || surface.isPressed(106)) {
