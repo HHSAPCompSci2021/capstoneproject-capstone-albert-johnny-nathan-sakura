@@ -38,6 +38,9 @@ public class DrawingSurface extends PApplet {
 		game2 = new Game(2, newWidth, newHeight);
 		game1.setup(this);
 		game2.setup(this);
+		//bad design
+		game2.setOtherPlayer(game1.getCurPlayer());
+		game1.setOtherPlayer(game2.getCurPlayer());
 	}
 	
 	/**

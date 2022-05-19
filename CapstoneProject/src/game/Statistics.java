@@ -43,7 +43,9 @@ public class Statistics {
 		//surface.fill(200);
 		///surface.rect(x, y, width, height);
 		surface.fill(225);
-		String s = "HP: " + p.getHp() + "\nPowerups: \n";
+		String s = "HP: " + p.getHp();
+		s = s + "\nCoins: " + p.numCoins();
+		s = s + "\nPowerups: \n";
 		if (p.multishotActive()) {
 			s+="Multishot, ";
 		}

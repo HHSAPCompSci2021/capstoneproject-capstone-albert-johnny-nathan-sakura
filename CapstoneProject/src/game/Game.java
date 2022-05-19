@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import entities.mobs.Player;
+import entities.projectiles.Trap;
 import processing.core.PApplet;
 
 /**A game class that contains all menus, stages, and other elements in it's half
@@ -16,7 +17,9 @@ public class Game {
 	private int curStageInd;
 	private Statistics playerStats;
 	private Point dimensions, topLeft;
-	private Player p;
+	private Player p, otherPlayer;
+	private int trapCD;
+
 	//somehow add black bars in the game - set the Game's dimensions to 
 	//fit within these black bars
 	//plan: 50 on the left of game1, 50 in middle, 50 on the right of
@@ -50,6 +53,7 @@ public class Game {
 		}
 		curStage = stages.get(0);
 		topLeft = new Point(x, 0);
+		trapCD = 0;
 	}
 	
 	//switches stage
@@ -67,6 +71,14 @@ public class Game {
 		return switchStage(stages.indexOf(curStage)+2);
 	}
 	
+	
+	public Player getCurPlayer() {
+		return p;
+	}
+	
+	public void setOtherPlayer(Player p) {
+		otherPlayer = p;
+	}
 	/**
 	 * Sets up the stages
 	 * @param surface PApplet to setup things with
@@ -74,11 +86,14 @@ public class Game {
 	public void setup(PApplet surface) {
 		for (Stage s : stages) s.setup(surface);
 	}
+	
+	
 	/** 
 	 * Draws the current Game on the PApplet
 	 * @param surface Surface to draw things on
 	 */
 	public void draw(PApplet surface) {
+		if (trapCD > 0) trapCD--;
 		if (curStage.isCompleted()) {
 			System.out.println(nextStage());
 			return;
@@ -123,6 +138,155 @@ public class Game {
 	 * @param surface DrawingSurface class that has keypresses
 	 */
 	public void giveInputs(DrawingSurface surface) {
+		if (gameNum == 1) {
+			//traps
+			if (surface.isPressed((int)'n') || surface.isPressed((int)'N')) {
+				System.out.println("n");
+				//activate trap on p1 side
+				if (otherPlayer.numCoins() >= 10 && trapCD == 0) {
+					Trap t = new Trap(p.getX()+p.getWidth()/2-100-20, topLeft.y+50, 40, 40, -1, 4, 1, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t);
+	
+					Trap t1 = new Trap(p.getX()+p.getWidth()/2-20, topLeft.y+100, 40, 40, 0, 5, 1, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t1);
+	
+					Trap t2 = new Trap(p.getX()+p.getWidth()/2+100-20, topLeft.y+50, 40, 40, 1, 4, 1, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t2);
+					otherPlayer.addCoins(-10);
+					
+					trapCD = 30;
+				}
+				
+			}
+			if (surface.isPressed((int)'m') || surface.isPressed((int)'M')) {
+				System.out.println("m");
+				//activate trap on p1 side
+				if (otherPlayer.numCoins() >= 10 && trapCD == 0) {
+					Trap t = new Trap(p.getX()+p.getWidth()/2-100-20, topLeft.y+50, 40, 40, -1, 4, 2, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t);
+	
+					Trap t1 = new Trap(p.getX()+p.getWidth()/2-20, topLeft.y+100, 40, 40, 0, 5, 2, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t1);
+	
+					Trap t2 = new Trap(p.getX()+p.getWidth()/2+100-20, topLeft.y+50, 40, 40, 1, 4, 2, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t2);
+					otherPlayer.addCoins(-10);
+					
+					trapCD = 30;
+				}
+			}
+			if (surface.isPressed((int)',') || surface.isPressed((int)'<')) {
+				System.out.println(",");
+				//activate trap on p1 side
+
+				if (otherPlayer.numCoins() >= 10 && trapCD == 0) {
+					Trap t = new Trap(p.getX()+p.getWidth()/2-100-20, topLeft.y+50, 40, 40, -1, 4, 3, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t);
+	
+					Trap t1 = new Trap(p.getX()+p.getWidth()/2-20, topLeft.y+100, 40, 40, 0, 5, 3, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t1);
+	
+					Trap t2 = new Trap(p.getX()+p.getWidth()/2+100-20, topLeft.y+50, 40, 40, 1, 4, 3, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t2);
+					otherPlayer.addCoins(-10);
+					
+					trapCD = 30;
+				}
+			}
+		}
+		if (gameNum == 2) {
+			//traps
+			if (surface.isPressed((int)'z') || surface.isPressed((int)'Z')) {
+				System.out.println("z");
+				//activate trap on p1 side
+				if (otherPlayer.numCoins() >= 10 && trapCD == 0) {
+					Trap t = new Trap(p.getX()+p.getWidth()/2-100-20, topLeft.y+50, 40, 40, -1, 4, 1, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t);
+	
+					Trap t1 = new Trap(p.getX()+p.getWidth()/2-20, topLeft.y+100, 40, 40, 0, 5, 1, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t1);
+	
+					Trap t2 = new Trap(p.getX()+p.getWidth()/2+100-20, topLeft.y+50, 40, 40, 1, 4, 1, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t2);
+					otherPlayer.addCoins(-10);
+					
+					trapCD = 30;
+				}
+				
+			}
+			if (surface.isPressed((int)'x') || surface.isPressed((int)'X')) {
+				System.out.println("x");
+				//activate trap on p1 side
+				if (otherPlayer.numCoins() >= 10 && trapCD == 0) {
+					Trap t = new Trap(p.getX()+p.getWidth()/2-100-20, topLeft.y+50, 40, 40, -1, 4, 2, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t);
+	
+					Trap t1 = new Trap(p.getX()+p.getWidth()/2-20, topLeft.y+100, 40, 40, 0, 5, 2, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t1);
+	
+					Trap t2 = new Trap(p.getX()+p.getWidth()/2+100-20, topLeft.y+50, 40, 40, 1, 4, 2, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t2);
+					otherPlayer.addCoins(-10);
+					
+					trapCD = 30;
+				}
+			}
+			if (surface.isPressed((int)'c') || surface.isPressed((int)'C')) {
+				System.out.println("c");
+				//activate trap on p1 side
+
+				if (otherPlayer.numCoins() >= 10 && trapCD == 0) {
+					Trap t = new Trap(p.getX()+p.getWidth()/2-100-20, topLeft.y+50, 40, 40, -1, 4, 3, false, 20);
+					t.setup(surface);
+					t.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t);
+	
+					Trap t1 = new Trap(p.getX()+p.getWidth()/2-20, topLeft.y+100, 40, 40, 0, 5, 3, false, 20);
+					t1.setup(surface);
+					t1.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t1);
+	
+					Trap t2 = new Trap(p.getX()+p.getWidth()/2+100-20, topLeft.y+50, 40, 40, 1, 4, 3, false, 20);
+					t2.setup(surface);
+					t2.giveBounds(topLeft, dimensions);
+					curStage.getEntityList().add(t2);
+					otherPlayer.addCoins(-10);
+					
+					trapCD = 30;
+				}
+			}
+		}
+		
 		curStage.giveInputs(surface, gameNum);
 	}
 }
