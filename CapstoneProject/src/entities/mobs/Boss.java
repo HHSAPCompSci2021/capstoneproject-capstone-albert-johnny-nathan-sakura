@@ -47,7 +47,7 @@ public class Boss extends Enemy{
 			movement[2][0] = 7;
 			movement[2][1] = 0;
 			movement[3][0] = 5;
-			movement[3][1] = 5;
+			movement[3][1] = 5;			
 		}
 		if (stageNum == 2) {
 			ogHP = 60000;
@@ -69,6 +69,41 @@ public class Boss extends Enemy{
 			movement[2][1] = 7;
 			movement[3][0] = 5;
 			movement[3][1] = 7;
+		}
+		if(stageNum == 4) {
+			movement = new double[16][2];
+			movement[0][0] = -3;
+			movement[0][1] = -4;	
+			movement[1][0] = -3;
+			movement[1][1] = -4;	
+			movement[2][0] = 3;
+			movement[2][1] = 4;
+			movement[3][0] = 3;
+			movement[3][1] = 4;	
+			movement[4][0] = -3;
+			movement[4][1] = 4;		
+			movement[5][0] = 3;
+			movement[5][1] = -4;			
+			movement[6][0] = 3;
+			movement[6][1] = -4;	
+			movement[7][0] = -3;
+			movement[7][1] = 4;	
+			movement[8][0] = 3;
+			movement[8][1] = 4;
+			movement[9][0] = 3;
+			movement[9][1] = 4;		
+			movement[10][0] = -3;
+			movement[10][1] = -4;		
+			movement[11][0] = -3;
+			movement[11][1] = -4;		
+			movement[12][0] = 3;
+			movement[12][1] = -4;		
+			movement[13][0] = -3;
+			movement[13][1] = 4;		
+			movement[14][0] = -3;
+			movement[14][1] = 4;	
+			movement[15][0] = 3;
+			movement[15][1] = -4;	
 		}
 		
 		setHp(ogHP);
@@ -113,9 +148,27 @@ public class Boss extends Enemy{
 				movement[curInd][1] = -vy;
 				movement[curInd][0] = -vx;
 				counter = 0;
-				if(stageNum == 3) {
-					//shootPatternBullet();
-				}
+			}
+			setvx(vx);
+			setvy(vy);
+			shootPatternBullet();
+			frames = 0;
+		}
+		
+		if (frames % 25 == 0 && stageNum == 4) {
+			counter++;
+			curInd++;
+			if (curInd >= movement.length) {
+				curInd = 0;
+			}
+			
+			double vx = movement[curInd][0];
+			double vy = movement[curInd][1];
+			double chance = Math.random();
+			if(counter == 1 || (chance < 0.5 && stageNum == 3)) {
+				movement[curInd][1] = -vy;
+				movement[curInd][0] = -vx;
+				counter = 0;
 			}
 			setvx(vx);
 			setvy(vy);
