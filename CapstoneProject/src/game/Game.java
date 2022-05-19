@@ -36,8 +36,10 @@ public class Game {
 		//System.out.println(gameNum + " width: " + width);
 		dimensions = new Point(width/2,height);
 		p = null;
-		if (gameNum == 1) p = new Player(width/4-50, height/4*3-50, 100, 50, false, gameNum);
-		if (gameNum == 2) p = new Player(width/4*3-50, height/4*3-50, 100, 50, false, gameNum);
+		
+		if (gameNum == 1) p = new Player(width/4-50, height/4*3-50, 40, 50, false, gameNum);
+		if (gameNum == 2) p = new Player(width/4*3-50, height/4*3-50, 40, 50, false, gameNum);
+
 		this.gameNum = gameNum;
 		int x = 0;
 		stages = new ArrayList<Stage>();
