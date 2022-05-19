@@ -138,7 +138,49 @@ public class Boss extends Enemy{
 	
 	public void act() {
 		frames++;	
-		if (frames % (stageNum * 12) == 0) {
+		if (frames % 15 == 0 && stageNum == 1) {
+			counter++;
+			curInd++;
+			if (curInd >= movement.length) {
+				curInd = 0;
+			}
+			
+			double vx = movement[curInd][0];
+			double vy = movement[curInd][1];
+			double chance = Math.random();
+			if(counter == 1 || (chance < 0.5 && stageNum == 3)) {
+				movement[curInd][1] = -vy;
+				movement[curInd][0] = -vx;
+				counter = 0;
+			}
+			setvx(vx);
+			setvy(vy);
+			shootPatternBullet();
+			frames = 0;
+		}
+		
+		if (frames % 23 == 0 && stageNum == 2) {
+			counter++;
+			curInd++;
+			if (curInd >= movement.length) {
+				curInd = 0;
+			}
+			
+			double vx = movement[curInd][0];
+			double vy = movement[curInd][1];
+			double chance = Math.random();
+			if(counter == 1 || (chance < 0.5 && stageNum == 3)) {
+				movement[curInd][1] = -vy;
+				movement[curInd][0] = -vx;
+				counter = 0;
+			}
+			setvx(vx);
+			setvy(vy);
+			shootPatternBullet();
+			frames = 0;
+		}
+		
+		if (frames % 30 == 0 && stageNum == 3) {
 			counter++;
 			curInd++;
 			if (curInd >= movement.length) {
