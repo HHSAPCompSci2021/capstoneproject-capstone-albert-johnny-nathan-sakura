@@ -41,9 +41,9 @@ public class Goon extends Enemy{
 		if (stageNum == 1) {
 			if(goonNum == 1) {
 				movement = new double[6][2];
-				movement[0][0] = -7;
+				movement[0][0] = -6;
 				movement[0][1] = 0;
-				movement[3][0] = 7;
+				movement[3][0] = 6;
 				movement[3][1] = 0;
 			}
 			if(goonNum == 2) {
@@ -103,13 +103,13 @@ public class Goon extends Enemy{
 
 			}
 			if(goonNum == 2) {
-				movement[0][0] = 5;
+				movement[0][0] = 2;
 				movement[0][1] = -10;
-				movement[1][0] = -10;
+				movement[1][0] = -7;
 				movement[1][1] = -10;
-				movement[2][0] = -5;
+				movement[2][0] = -2;
 				movement[2][1] = 10;
-				movement[3][0] = 15;
+				movement[3][0] = 12;
 				movement[3][1] = 10;
 			}
 		}

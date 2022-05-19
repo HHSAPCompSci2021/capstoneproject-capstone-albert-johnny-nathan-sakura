@@ -42,26 +42,26 @@ public class Boss extends Enemy{
 			ogHP = 40000;
 			movement[0][0] = 5;
 			movement[0][1] = -5;
-			movement[1][0] = 7;
+			movement[1][0] = 6;
 			movement[1][1] = 0;
-			movement[2][0] = 7;
+			movement[2][0] = 6;
 			movement[2][1] = 0;
 			movement[3][0] = 5;
 			movement[3][1] = 5;			
 		}
 		if (stageNum == 2) {
 			ogHP = 60000;
-			movement[0][0] = -6;
-			movement[0][1] = 8 ;
+			movement[0][0] = -5;
+			movement[0][1] = 7 ;
 			
-			movement[1][0] = 6;		
-			movement[1][1] = 8;	
+			movement[1][0] = 5;		
+			movement[1][1] = 7;	
 			
-			movement[2][0] = 6;
-			movement[2][1] = -8;
+			movement[2][0] = 5;
+			movement[2][1] = -7;
 			
-			movement[3][0] = -6;
-			movement[3][1] = -8;	
+			movement[3][0] = -5;
+			movement[3][1] = -7;	
 		}
 		if (stageNum == 3) {
 			ogHP = 80000;

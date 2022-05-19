@@ -450,10 +450,31 @@ public class Stage {
 			//you can add below another set of if conditions for each stage that
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
-				Boss b = new Boss(topLeft.x+150, topLeft.y+125, 100, 100, false, stageNum);
-				b.setup(surface);
-				b.giveBounds(topLeft, dimensions);
-				this.b = b;
+				if(stageNum == 1) {
+					Boss b = new Boss(topLeft.x+75, topLeft.y+125, 100, 100, false, stageNum);
+					b.setup(surface);
+					b.giveBounds(topLeft, dimensions);
+					this.b = b;
+				}
+				if(stageNum == 2) {
+					Boss b = new Boss(topLeft.x+175, topLeft.y+125, 100, 100, false, stageNum);
+					b.setup(surface);
+					b.giveBounds(topLeft, dimensions);
+					this.b = b;
+				}
+				if(stageNum == 3) {
+					Boss b = new Boss(topLeft.x+225, topLeft.y+125, 100, 100, false, stageNum);
+					b.setup(surface);
+					b.giveBounds(topLeft, dimensions);
+					this.b = b;
+				}
+				if(stageNum == 4) {
+					Boss b = new Boss(topLeft.x+140, topLeft.y+125, 100, 100, false, stageNum);
+					b.setup(surface);
+					b.giveBounds(topLeft, dimensions);
+					this.b = b;
+				}
+				
 				entityList.add(b);
 				if (stageNum == 1) {
 					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+500, 50, 50, ((int)(Math.random()*6.0))+1, true);
@@ -472,22 +493,22 @@ public class Stage {
 				}
 			} else if (curWave < 3) {
 				
-				Goon g = new Goon(topLeft.x+100, topLeft.y+50, 75, 75, false, stageNum, 1);
+				Goon g = new Goon(topLeft.x+75, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 				
-				g = new Goon(topLeft.x+300, topLeft.y+50, 75, 75, false, stageNum, 1);
+				g = new Goon(topLeft.x+275, topLeft.y+50, 75, 75, false, stageNum, 1);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 				
-				g = new Goon(topLeft.x+100, topLeft.y+200, 75, 75, false, stageNum, 2);
+				g = new Goon(topLeft.x+75, topLeft.y+200, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
 				
-				g = new Goon(topLeft.x+300, topLeft.y+200, 75, 75, false, stageNum, 2);
+				g = new Goon(topLeft.x+275, topLeft.y+200, 75, 75, false, stageNum, 2);
 				g.setup(surface);
 				g.giveBounds(topLeft, dimensions);
 				entityList.add(g);
