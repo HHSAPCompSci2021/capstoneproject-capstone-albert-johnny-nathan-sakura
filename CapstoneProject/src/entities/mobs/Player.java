@@ -127,6 +127,9 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
+		if (coins < 0) {
+			coins = 0;
+		}
 		System.out.println(bounds[0] + " " + bounds[1] + " " + bounds[2] + " " +bounds[3]);
 		if (delay <= 0) {
 			multishot = false;
