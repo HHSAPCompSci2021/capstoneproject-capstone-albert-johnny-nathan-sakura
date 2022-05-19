@@ -19,16 +19,16 @@ public class BossBar {
 	
 	public void draw(PApplet surface) {
 		String str = "[";
-		int percentage = (int) hp / maxhp;
+		/*int percentage = (int) hp / maxhp;
 		for (int i = 0; i < 10 * percentage; i++) {
 			str += '|';
 		}
 		for (int i = 0; i < 100 - 10*percentage; i++) {
 			str += ' ';
 		}
-		str += ']';
+		str += ']';*/
 		surface.text(name, x, y, 300, 50);
-		surface.text(name, x, y + 60, 300, 50);
+		surface.text(str, x, y + 60, 300, 50);
 		surface.text(subtext, x, y+120, 200, 40);
 	}
 	
