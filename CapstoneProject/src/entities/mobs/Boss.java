@@ -51,13 +51,16 @@ public class Boss extends Enemy{
 		}
 		if (stageNum == 2) {
 			ogHP = 60000;
-			movement[0][0] = -10;
-			movement[0][1] = 8 ;		
-			movement[1][0] = 7;		
-			movement[1][1] = 8;		
-			movement[2][0] = 7;
+			movement[0][0] = -6;
+			movement[0][1] = 8 ;
+			
+			movement[1][0] = 6;		
+			movement[1][1] = 8;	
+			
+			movement[2][0] = 6;
 			movement[2][1] = -8;
-			movement[3][0] = -7;
+			
+			movement[3][0] = -6;
 			movement[3][1] = -8;	
 		}
 		if (stageNum == 3) {
@@ -132,9 +135,10 @@ public class Boss extends Enemy{
 		super.draw(surface);
 		surface.noTint();
 	}
+	
 	public void act() {
 		frames++;	
-		if (frames % (stageNum * 10) == 0) {
+		if (frames % (stageNum * 12) == 0) {
 			counter++;
 			curInd++;
 			if (curInd >= movement.length) {

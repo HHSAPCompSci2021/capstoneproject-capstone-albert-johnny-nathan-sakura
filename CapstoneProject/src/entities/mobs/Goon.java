@@ -165,7 +165,7 @@ public class Goon extends Enemy{
 	 */
 	public void act() {
 		frames++;	
-		if (frames % 10 == 0) {
+		if (frames % 15 == 0) {
 			counter++;
 			curInd++;
 			if (curInd >= movement.length) {

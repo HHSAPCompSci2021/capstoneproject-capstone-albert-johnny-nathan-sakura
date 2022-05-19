@@ -35,7 +35,7 @@ public class Entity {
 		this.x = x; 
 		this.y = y; 
 		this.width = w; 
-		this.height = h; 
+		this.height = h;
 		isCircleHitbox = circle; 
 		vx = 0;
 		vy = 0;
