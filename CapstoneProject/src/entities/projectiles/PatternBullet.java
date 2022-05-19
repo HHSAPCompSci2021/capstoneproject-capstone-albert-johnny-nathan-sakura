@@ -26,14 +26,14 @@ public class PatternBullet {
 		this.type = type;
 		bullets = new ArrayList<Bullet>();
 		if (type == 1 || type == 2) {
-			bullets.add(new Bullet(x, y, 30, 30, -5, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -3.5, -3.5, true, false, dmg));
 			bullets.add(new Bullet(x, y, 30, 30, -5, 0, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, -5, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -3.5, 3.5, true, false, dmg));
 			bullets.add(new Bullet(x, y, 30, 30, 0, -5, true, false, dmg));
 			bullets.add(new Bullet(x, y, 30, 30, 0, 5, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 5, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 3.5, -3.5, true, false, dmg));
 			bullets.add(new Bullet(x, y, 30, 30, 5, 0, true, false, dmg));
-			bullets.add(new Bullet(x, y, 30, 30, 5, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 3.5, 3.5, true, false, dmg));
 		}
 		if (type == 3) {
 			for (int i = -5; i < 5; i++) {

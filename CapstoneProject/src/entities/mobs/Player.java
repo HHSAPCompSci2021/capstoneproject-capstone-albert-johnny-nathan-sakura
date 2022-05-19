@@ -135,7 +135,7 @@ public class Player extends Entity {
 		
 		if (powerUpDuration > 0) {
 			if (powerUpType == 1) {
-				this.setHp(this.getHp()+100);
+				this.setHp(getHp()+100);
 				powerUpType = 0;
 			} 
 			if (powerUpType == 2) {
