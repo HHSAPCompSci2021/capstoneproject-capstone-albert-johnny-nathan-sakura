@@ -40,18 +40,20 @@ public class Goon extends Enemy{
 		movement = new double[6][2];
 		if (stageNum == 1) {
 			if(goonNum == 1) {
-				movement = new double[6][2];
-				movement[0][0] = -6;
-				movement[0][1] = 0;
-				movement[3][0] = 6;
-				movement[3][1] = 0;
+				movement = new double[][]{{-6, 0}, {6, 0}
+				};
+//				movement[0][0] = -6;
+//				movement[0][1] = 0;
+//				movement[3][0] = 6;
+//				movement[3][1] = 0;
 			}
 			if(goonNum == 2) {
-				movement = new double[2][2];
-				movement[0][0] = -10;
-				movement[0][1] = 6;
-				movement[1][0] = 10;
-				movement[1][1] = 6;	
+				movement = new double[][]{{-10, 6}, {10, 6}
+				};
+//				movement[0][0] = -10;
+//				movement[0][1] = 6;
+//				movement[1][0] = 10;
+//				movement[1][1] = 6;	
 			}
 //			if(goonNum == 3) {
 //				movement[0][0] = -10;
@@ -64,7 +66,7 @@ public class Goon extends Enemy{
 		if (stageNum == 2) {
 			if(goonNum == 1) {
 				movement = new double[][] {
-					{-3, 0}, {-3, 0}, {-3, 0}, {-3,0}, {3,0}, {3,0}, {3,0}, {3,0}
+					{-3, 0}, {-3, 0}, {-3, 0}, {-3,0}, {3,0}, {3,0}, {3,0}
 				};
 //				movement[0][0] = -3;		
 //				movement[0][1] = -3 ;		
@@ -76,14 +78,17 @@ public class Goon extends Enemy{
 //				movement[3][1] = -10;	
 			}
 			if(goonNum == 2) {
-				movement[0][0] = -4;		
-				movement[0][1] = 10 ;		
-				movement[1][0] = 6;		
-				movement[1][1] = 10;		
-				movement[2][0] = -6;
-				movement[2][1] = -10;
-				movement[3][0] = -4;
-				movement[3][1] = -10;	
+				movement = new double[][] {
+					{-3, 8}, {5, 8}, {-5, -8}, {-3, -8}
+				};
+//				movement[0][0] = -4;		
+//				movement[0][1] = 10 ;		
+//				movement[1][0] = 6;		
+//				movement[1][1] = 10;		
+//				movement[2][0] = -6;
+//				movement[2][1] = -10;
+//				movement[3][0] = -4;
+//				movement[3][1] = -10;	
 			}
 //			if(goonNum == 3) {
 //				movement[0][0] = -6;		
@@ -99,37 +104,43 @@ public class Goon extends Enemy{
 		if (stageNum == 3) {
 			if(goonNum == 1) {
 				movement = new double[][] {
-					{-3, 0}, {-3, 0}, {-3, 0}, {-3,0}, {3,0}, {3,0}, {3,0}, {3,0}};
+					{-3, 0}, {-3, 0}, {-3, 0}, {-3,0}, {3,0}, {3,0}, {3,0}
+				};
 
 			}
 			if(goonNum == 2) {
-				movement[0][0] = 2;
-				movement[0][1] = -10;
-				movement[1][0] = -7;
-				movement[1][1] = -10;
-				movement[2][0] = -2;
-				movement[2][1] = 10;
-				movement[3][0] = 12;
-				movement[3][1] = 10;
+				movement = new double[][] {
+					{2, -10}, {-7, -10}, {-2, 10}, {12,10}
+				};
+//				movement[0][0] = 2;
+//				movement[0][1] = -10;
+//				movement[1][0] = -7;
+//				movement[1][1] = -10;
+//				movement[2][0] = -2;
+//				movement[2][1] = 10;
+//				movement[3][0] = 12;
+//				movement[3][1] = 10;
 			}
 		}
 		
 		if (stageNum == 4) {
 			if(goonNum == 1) {
-				movement[0][0] = -5;
-				movement[0][1] = 8;
-				movement[1][0] = 5;
-				movement[1][1] = 8;
-				movement[2][0] = 5;
-				movement[2][1] = -8;
-				movement[3][0] = -5;
-				movement[3][1] = -8;
+				movement = new double[][] {
+					{-5, 8}, {5, 8}, {5, -8}, {-5,-8}
+				};
+//				movement[0][0] = -5;
+//				movement[0][1] = 8;
+//				movement[1][0] = 5;
+//				movement[1][1] = 8;
+//				movement[2][0] = 5;
+//				movement[2][1] = -8;
+//				movement[3][0] = -5;
+//				movement[3][1] = -8;
 			}
 			if(goonNum == 2) {
-				movement[0][0] = -8;
-				movement[0][1] = 6;
-				movement[1][0] = 8;
-				movement[1][1] = 6;	
+				movement = new double[][] {
+					{-8, 6}, {8, 6}
+				};
 			}
 		}
 		curInd = 0;
