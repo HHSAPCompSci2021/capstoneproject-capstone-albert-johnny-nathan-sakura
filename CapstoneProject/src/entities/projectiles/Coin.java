@@ -22,6 +22,7 @@ public class Coin extends Entity {
 	 */
 	public Coin(double x, double y, double w, double h, boolean circle) {
 		super(x, y, w, h, circle);
+		System.out.println("dfdfsf");
 		value = 5;
 	}
 	
