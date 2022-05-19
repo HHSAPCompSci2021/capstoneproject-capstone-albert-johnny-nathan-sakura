@@ -27,6 +27,8 @@ public class Stage {
 	private boolean gameOver, stageComplete;
 	private Background back;
 	private int curWave;
+	private double walkingMulti;
+	private int walkingSwapCD;
 	private Boss b;
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
@@ -50,7 +52,8 @@ public class Stage {
 		entityList.add(p);
 		curPlayer = p;
 		b = null;
-		
+		walkingSwapCD = 0;
+		walkingMulti = 1;
 		//Johnny requested below
 		p.setEntityList(entityList);
 		entityList.add(new Goon(topLeft.x+50, topLeft.y+50, 100, 100, false, stageNum, 1));
@@ -138,25 +141,31 @@ public class Stage {
 		
 		
 		if (gameNum == 1) {
+			if (surface.isPressed((int)'e') || surface.isPressed((int)'E')) {
+				System.out.println("e");
+				if (walkingMulti == 0.5) walkingMulti = 1;
+				else walkingMulti = 0.5;
+				walkingSwapCD = 30;
+			}
 			if (surface.isPressed(65) || surface.isPressed(97)) {
 				System.out.println("a");
-				curPlayer.move(-5, 0);
+				curPlayer.move(-5 * walkingMulti, 0);
 			}
 
 			if (surface.isPressed(68) || surface.isPressed(100)) {
 				System.out.println("d");
-				curPlayer.move(5, 0);
+				curPlayer.move(5 * walkingMulti, 0);
 			}
 
 			if (surface.isPressed(87) || surface.isPressed(119)) {
 				System.out.println("w");
-				curPlayer.move(0, -5);
+				curPlayer.move(0, -5 * walkingMulti);
 			}
 
 			if (surface.isPressed(83) || surface.isPressed(115)) {
 
 				System.out.println("s");
-				curPlayer.move(0, 5);
+				curPlayer.move(0, 5 * walkingMulti);
 			}
 			if (surface.isPressed(102) || surface.isPressed(70)) {
 
@@ -238,25 +247,35 @@ public class Stage {
 //			}
 		}
 		if (gameNum == 2) {
+			if (surface.isPressed((int)'o') || surface.isPressed((int)'O')) {
+				System.out.println("o");
+				if (walkingMulti == 0.5) walkingMulti = 1;
+				else walkingMulti = 0.5;
+				walkingSwapCD = 30;
+			}
 			if (surface.isPressed(74) || surface.isPressed(106)) {
 				System.out.println("j");
-				curPlayer.move(-5, 0);
+				curPlayer.move(-5 * walkingMulti, 0);
+			}
+			if (surface.isPressed(74) || surface.isPressed(106)) {
+				System.out.println("j");
+				curPlayer.move(-5 * walkingMulti, 0);
 			}
 
 			if (surface.isPressed(76) || surface.isPressed(108)) {
 				System.out.println("l");
-				curPlayer.move(5, 0);
+				curPlayer.move(5 * walkingMulti, 0);
 			}
 
 			if (surface.isPressed(73) || surface.isPressed(105)) {
 				System.out.println("i");
-				curPlayer.move(0, -5);
+				curPlayer.move(0, -5 * walkingMulti);
 			}
 
 			if (surface.isPressed(75) || surface.isPressed(107)) {
 
 				System.out.println("k");
-				curPlayer.move(0, 5);
+				curPlayer.move(0, 5 * walkingMulti);
 			}
 			if (surface.isPressed(58) || surface.isPressed(59)) {
 				System.out.println(";");
@@ -350,6 +369,7 @@ public class Stage {
 	
 	
 	private void act(PApplet surface) {
+		walkingSwapCD--;
 		boolean playerExists = false;
 		boolean entitiesExist = false;
 		
