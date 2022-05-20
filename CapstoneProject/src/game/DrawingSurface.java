@@ -87,7 +87,7 @@ public class DrawingSurface extends PApplet {
 					+ "insatiable thirst for vengeance, their unforgivingness to their previous rivalries, "
 					+ "to two mercilessly disassemble the tower each on a different side. "
 					+ "Which hero will evade all the traps, defeat all the enemies, "
-					+ "and kill this so-called foe first? "
+					+ "and kill this so-called foe first?  Press Y to start."
 					,width/6,height/4,width - 360, height - 150);
 			if (isPressed(((int)'Y')) || isPressed(((int)'y'))) {
 				cutscene = false;

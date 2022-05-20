@@ -25,7 +25,17 @@ public class PatternBullet {
 	public PatternBullet(int x, int y, int type, int dmg) {
 		this.type = type;
 		bullets = new ArrayList<Bullet>();
-		if (type == 1 || type == 2) {
+		if (type == 1) {
+			bullets.add(new Bullet(x, y, 30, 30, -5, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -5, 0, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, -5, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 0, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 0, 5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, -5, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, 0, true, false, dmg));
+			bullets.add(new Bullet(x, y, 30, 30, 5, 5, true, false, dmg));
+		}
+		if (type == 2) {
 			bullets.add(new Bullet(x, y, 30, 30, -3.5, -3.5, true, false, dmg));
 			bullets.add(new Bullet(x, y, 30, 30, -5, 0, true, false, dmg));
 			bullets.add(new Bullet(x, y, 30, 30, -3.5, 3.5, true, false, dmg));
