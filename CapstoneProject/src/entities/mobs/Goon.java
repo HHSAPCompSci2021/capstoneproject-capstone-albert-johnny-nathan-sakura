@@ -11,6 +11,7 @@ import processing.core.PImage;
 
 /**
  * The class Goon class represents an Enemy
+ *  * @author nathangu
  */
 public class Goon extends Enemy{
 	private int stageNum;
@@ -34,7 +35,7 @@ public class Goon extends Enemy{
 		super(x, y, w, h, circle);
 		this.goonNum = goonNum;
 		this.stageNum = stageNum;
-		setHp(2500);	
+		setHp(2000);	
 		frames = 0;
 		counter = 0;
 		movement = new double[6][2];
@@ -42,100 +43,44 @@ public class Goon extends Enemy{
 			if(goonNum == 1) {
 				movement = new double[][]{{-6, 0}, {6, 0}
 				};
-//				movement[0][0] = -6;
-//				movement[0][1] = 0;
-//				movement[3][0] = 6;
-//				movement[3][1] = 0;
 			}
 			if(goonNum == 2) {
 				movement = new double[][]{{-10, 6}, {10, 6}
-				};
-//				movement[0][0] = -10;
-//				movement[0][1] = 6;
-//				movement[1][0] = 10;
-//				movement[1][1] = 6;	
+				};	
 			}
-//			if(goonNum == 3) {
-//				movement[0][0] = -10;
-//				movement[0][1] = 1;
-//				movement[3][0] = 10;
-//				movement[3][1] = 1;
-//			}
-			
 		}
 		if (stageNum == 2) {
+			setHp(2500);
 			if(goonNum == 1) {
 				movement = new double[][] {
 					{-3, 0}, {-3, 0}, {-3, 0}, {-3,0}, {3,0}, {3,0}, {3,0}
 				};
-//				movement[0][0] = -3;		
-//				movement[0][1] = -3 ;		
-//				movement[1][0] = -3;		
-//				movement[1][1] = -3;		
-//				movement[2][0] = 6;
-//				movement[2][1] = -10;
-//				movement[3][0] = -6;
-//				movement[3][1] = -10;	
 			}
 			if(goonNum == 2) {
 				movement = new double[][] {
-					{-3, 8}, {5, 8}, {-5, -8}, {-3, -8}
+					{-3, 8}, {4, 8}, {-4, -8}, {-3, -8}
 				};
-//				movement[0][0] = -4;		
-//				movement[0][1] = 10 ;		
-//				movement[1][0] = 6;		
-//				movement[1][1] = 10;		
-//				movement[2][0] = -6;
-//				movement[2][1] = -10;
-//				movement[3][0] = -4;
-//				movement[3][1] = -10;	
 			}
-//			if(goonNum == 3) {
-//				movement[0][0] = -6;		
-//				movement[0][1] = 8 ;		
-//				movement[1][0] = 6;		
-//				movement[1][1] = 8;		
-//				movement[2][0] = 6;
-//				movement[2][1] = -8;
-//				movement[3][0] = -6;
-//				movement[3][1] = -8;	
-//			}
-					}
+		}
 		if (stageNum == 3) {
+			setHp(3000);
 			if(goonNum == 1) {
 				movement = new double[][] {
 					{-3, 0}, {-3, 0}, {-3, 0}, {-3,0}, {3,0}, {3,0}, {3,0}
 				};
-
 			}
 			if(goonNum == 2) {
 				movement = new double[][] {
 					{2, -10}, {-7, -10}, {-2, 10}, {12,10}
 				};
-//				movement[0][0] = 2;
-//				movement[0][1] = -10;
-//				movement[1][0] = -7;
-//				movement[1][1] = -10;
-//				movement[2][0] = -2;
-//				movement[2][1] = 10;
-//				movement[3][0] = 12;
-//				movement[3][1] = 10;
 			}
 		}
-		
 		if (stageNum == 4) {
+			setHp(3500);
 			if(goonNum == 1) {
 				movement = new double[][] {
 					{-4, 6}, {4, 6}, {4, -6}, {-4,-6}
 				};
-//				movement[0][0] = -5;
-//				movement[0][1] = 8;
-//				movement[1][0] = 5;
-//				movement[1][1] = 8;
-//				movement[2][0] = 5;
-//				movement[2][1] = -8;
-//				movement[3][0] = -5;
-//				movement[3][1] = -8;
 			}
 			if(goonNum == 2) {
 				movement = new double[][] {
@@ -144,8 +89,7 @@ public class Goon extends Enemy{
 			}
 		}
 		curInd = 0;
-	}
-	
+	}	
 	
 	
 	/**
@@ -158,13 +102,13 @@ public class Goon extends Enemy{
 			b.bounds = bounds.clone();
 			getDaList().add(b);
 		}
-		if (shots % 6 == 1) {
+		if (shots % 5 == 1) {
 			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, 0, 5, true, false, 1);
 			b.setup(surface);
 			b.bounds = bounds.clone();
 			getDaList().add(b);
 		}
-		if (shots % 6 == 2) {
+		if (shots % 4 == 1) {
 			Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY()+this.getHeight(), 20, 20, -0.5, 4, true, false, 1);
 			b.setup(surface);
 			b.bounds = bounds.clone();

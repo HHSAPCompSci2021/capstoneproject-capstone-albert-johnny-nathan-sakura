@@ -148,7 +148,7 @@ public class Entity {
 //	}
 	
 	/**
-	 * Checjs if a point is inside the entity.
+	 * Checks if a point is inside the Entity
 	 * @param x x-coordinate of the point
 	 * @param y y-coordinate of the point
 	 * @return whether the point is inside
@@ -180,7 +180,7 @@ public class Entity {
 	}
 	
 	/**
-	 * Sets up the image for the entity
+	 * Sets up the image for the Entity
 	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
@@ -198,7 +198,7 @@ public class Entity {
 	}
 	
 	/**
-	 * @return X-Coordinate
+	 * @return Current X-Coordinate
 	 */
 	public double getX() {
 		return x;
@@ -211,7 +211,7 @@ public class Entity {
 		x = coord;
 	}
 	/**
-	 * @return Y-Coordinate
+	 * @return Current Y-Coordinate
 	 */
 	public double getY() {
 		return y;
@@ -224,7 +224,7 @@ public class Entity {
 		y = coord;
 	}
 	/**
-	 * @return X-velocity
+	 * @return Current X-velocity
 	 */
 	public double getvx() {
 		return vx;
@@ -237,7 +237,7 @@ public class Entity {
 		vx = velo;
 	}
 	/**
-	 * @return Y-velocity
+	 * @return Current Y-velocity
 	 */
 	public double getvy() {
 		return vy;
@@ -263,7 +263,7 @@ public class Entity {
 		this.width = width;
 	}
 	/**
-	 * @return Height of the entity
+	 * @return Height of the Entity
 	 */
 	public double getHeight() {
 		return height;
@@ -347,15 +347,6 @@ public class Entity {
 		
 				
 	}
-
-	
-//	/**
-//	 * Allows interactions between the Player and Entity
-//	 * @param player The Player
-//	 */
-//	public void interact(Player player) {
-//		//uwu owo meow meow nya~
-//	}
 	
 	/**
 	 * Makes the Entity die
@@ -366,13 +357,17 @@ public class Entity {
 
 	
 	/**
-	 * gets the invincibility frames of the entity
-	 * @return invincibility frames of the entity
+	 * Gets the invincibility frames of the Entity
+	 * @return invincibility frames of the Entity
 	 */
 	public int getInv() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	/**
+	 * Sets the invincibility frames of the Entity
+	 * @param n Number of frames
+	 */
 	public void setInv(int n) {
 		
 	}

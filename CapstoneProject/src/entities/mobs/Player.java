@@ -282,7 +282,7 @@ public class Player extends Entity {
 	
 	/**
 	 * Allows the player to shoot
-	 * @param surface The surface drawn on
+	 * @param PApplet The surface drawn on
 	 */
 	public boolean shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return false;
