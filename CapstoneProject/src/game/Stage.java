@@ -499,7 +499,7 @@ public class Stage {
 					this.b = b;
 				}
 				if(stageNum == 4) {
-					Boss b = new Boss(topLeft.x+140, topLeft.y+125, 100, 100, false, stageNum);
+					Boss b = new Boss(topLeft.x+140, topLeft.y+125, 200, 200, false, stageNum);
 					b.setup(surface);
 					b.giveBounds(topLeft, dimensions);
 					this.b = b;
