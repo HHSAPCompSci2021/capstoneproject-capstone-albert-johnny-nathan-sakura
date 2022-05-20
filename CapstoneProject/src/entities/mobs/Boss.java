@@ -21,7 +21,6 @@ public class Boss extends Enemy{
 	private int frames;
 	private int counter;
 	private int ogHP;
-	private int framesMod;
 	/**
 	 * Creates a new instance of Boss
 	 * @param x X-coordinate
@@ -40,73 +39,26 @@ public class Boss extends Enemy{
 		movement = new double[4][2];
 		if (stageNum == 1) {
 			ogHP = 40000;
-			movement[0][0] = 5;
-			movement[0][1] = -5;
-			movement[1][0] = 6;
-			movement[1][1] = 0;
-			movement[2][0] = 6;
-			movement[2][1] = 0;
-			movement[3][0] = 5;
-			movement[3][1] = 5;			
+			movement = new double[][] {{5, -5},{6, 0},{6, 0},{5, 5}
+			};
 		}
 		if (stageNum == 2) {
 			ogHP = 60000;
-			movement[0][0] = -5;
-			movement[0][1] = 7 ;
-			
-			movement[1][0] = 5;		
-			movement[1][1] = 7;	
-			
-			movement[2][0] = 5;
-			movement[2][1] = -7;
-			
-			movement[3][0] = -5;
-			movement[3][1] = -7;	
+			movement = new double[][] {{-5, 7},{5, 7},{5, -7},{-5, -7}
+			};
+
 		}
 		if (stageNum == 3) {
-			ogHP = 80000;
-			movement[0][1] = -7;
-			movement[1][0] = -5;
-			movement[1][1] = -7;
-			movement[2][0] = -5;
-			movement[2][1] = 7;
-			movement[3][0] = 5;
-			movement[3][1] = 7;
+			ogHP = 100000;
+			movement = new double[][] {{-4, -5},{4, -5},{4, 5},{-4, 5}
+			};
+
 		}
 		if(stageNum == 4) {
-			movement = new double[16][2];
-			movement[0][0] = -7;
-			movement[0][1] = -5;	
-			movement[1][0] = -7;
-			movement[1][1] = -5;	
-			movement[2][0] = 7;
-			movement[2][1] = 5;
-			movement[3][0] = 7;
-			movement[3][1] = 5;	
-			movement[4][0] = -7;
-			movement[4][1] = 5;		
-			movement[5][0] = 7;
-			movement[5][1] = -5;			
-			movement[6][0] = 7;
-			movement[6][1] = -5;	
-			movement[7][0] = -7;
-			movement[7][1] = 5;	
-			movement[8][0] = 7;
-			movement[8][1] = 5;
-			movement[9][0] = 7;
-			movement[9][1] = 5;		
-			movement[10][0] = -7;
-			movement[10][1] = -5;		
-			movement[11][0] = -7;
-			movement[11][1] = -5;		
-			movement[12][0] = 7;
-			movement[12][1] = -5;		
-			movement[13][0] = -7;
-			movement[13][1] = 5;		
-			movement[14][0] = -7;
-			movement[14][1] = 5;	
-			movement[15][0] = 7;
-			movement[15][1] = -5;	
+			movement = new double[][] {{-10, -4},{-10, -4},{10, 5},{10, 4},{-10, 4},{-10, 5}, {10, -4},
+			{10, -4},{-10, 5}, {-10, 4},{10, 4},{10, 5},{-10, -4}, {-10, -4},{10, -5}, {10, -4}, {-10, 4},
+			{-10, 5}, {10, -4}, {10, -4}
+			};
 		}
 		
 		setHp(ogHP);
