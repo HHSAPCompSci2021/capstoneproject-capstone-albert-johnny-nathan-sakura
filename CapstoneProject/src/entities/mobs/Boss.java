@@ -125,10 +125,11 @@ public class Boss extends Enemy{
 		}
 	}
 	
+	
 	/**
-	 * Allows the Boss to move and shoot
+	 * Surface to draw on
+	 * @param PApplet Surface to draw on
 	 */
-
 	public void draw(PApplet surface) {
 		surface.tint(255, (float)(1.0*(getHp())/ogHP*125)+100);
 		surface.tint((int)(1.0*(getHp())/ogHP*100)+125,(int)(1.0*(getHp())/ogHP*100)+125,(int)(1.0*(getHp())/ogHP*100)+125);
@@ -136,6 +137,9 @@ public class Boss extends Enemy{
 		surface.noTint();
 	}
 	
+	/**
+	 * Allows the Boss to move and shoot
+	 */
 	public void act() {
 		frames++;	
 		if (frames % 15 == 0 && stageNum == 1) {

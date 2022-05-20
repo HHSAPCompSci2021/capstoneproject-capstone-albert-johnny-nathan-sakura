@@ -126,7 +126,7 @@ public class Goon extends Enemy{
 		if (stageNum == 4) {
 			if(goonNum == 1) {
 				movement = new double[][] {
-					{-5, 8}, {5, 8}, {5, -8}, {-5,-8}
+					{-4, 6}, {4, 6}, {4, -6}, {-4,-6}
 				};
 //				movement[0][0] = -5;
 //				movement[0][1] = 8;
@@ -139,7 +139,7 @@ public class Goon extends Enemy{
 			}
 			if(goonNum == 2) {
 				movement = new double[][] {
-					{-8, 6}, {8, 6}
+					{-7, 5}, {7, 5}
 				};
 			}
 		}
