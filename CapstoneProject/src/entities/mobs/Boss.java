@@ -230,7 +230,9 @@ public class Boss extends Enemy{
 		setY(getvy() + getY());
 	}
 	
-	
+	public int getMaxHP() {
+		return ogHP;
+	}
 	
 	
 	/**

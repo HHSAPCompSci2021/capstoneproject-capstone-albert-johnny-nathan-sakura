@@ -29,6 +29,8 @@ public class Stage {
 	private int curWave;
 	private double walkingMulti;
 	private int walkingSwapCD;
+	private Sounds sound;
+	private boolean soundOn;
 	private Boss b;
 	
 	/**Constructs a stage with stage number stageNum, top left corner x, y, 
@@ -41,6 +43,7 @@ public class Stage {
 	 * @param p player passed into the stage and to interact there
 	 */
 	public Stage(int stageNum, int x, int y, int width, int height, Player p) {
+		//soundOn = false;
 		curWave = 1;
 		gameOver = false;
 		stageComplete = false;
@@ -97,6 +100,11 @@ public class Stage {
 	 * @param surface PApplet surface to draw on
 	 */
 	public void draw(PApplet surface) {
+		if (sound == null) {
+			sound = new Sounds(stageNum);
+			sound.nextTrack();
+			
+		}
 		//surface.clear();
 		back.draw(surface);
 		back.scroll(5);
@@ -110,12 +118,23 @@ public class Stage {
 			e.draw(surface);
 			//}
 		}
+
+		if (stageNum == 1) {
+			surface.fill(0, 132, 209);
+		}
+		if (stageNum == 2) {
+			surface.fill(181, 255, 233);
+		}
+		if (stageNum == 3) {
+			surface.fill(255, 0, 242);
+		}
+		if (stageNum == 4) {
+			surface.fill(255, 0, 0);
+		}
 		if (b!=null) {
-			surface.fill(225);
-			surface.text("BOSS HP: " + b.getHp(), topLeft.x, topLeft.y, dimensions.x, dimensions.y);
+			surface.text("BOSS HP: " + (int)b.getHp() + "/" + (int)b.getMaxHP(), topLeft.x+10, topLeft.y, dimensions.x, dimensions.y);
 		} else {
-			surface.fill(225);
-			surface.text("Current Wave: " + curWave + "/3", topLeft.x, topLeft.y, dimensions.x, dimensions.y);
+			surface.text("Current Wave: " + curWave + "/3", topLeft.x+10, topLeft.y, dimensions.x, dimensions.y);
 		}
 	}
 	
@@ -170,7 +189,9 @@ public class Stage {
 			if (surface.isPressed(102) || surface.isPressed(70)) {
 
 				System.out.println("f");
-				curPlayer.shoot(surface);
+				if(curPlayer.shoot(surface)) {
+					if (sound != null) sound.playEffect();
+				}
 			}
 //			//traps (handled in game now)
 //			if (surface.isPressed((int)'n') || surface.isPressed((int)'N')) {
@@ -279,7 +300,9 @@ public class Stage {
 			}
 			if (surface.isPressed(58) || surface.isPressed(59)) {
 				System.out.println(";");
-				curPlayer.shoot(surface);
+				if(curPlayer.shoot(surface)) {
+					if (sound != null) sound.playEffect();
+				}
 			}
 			
 			
@@ -367,6 +390,9 @@ public class Stage {
 		return gameOver;
 	}
 	
+	public void stopSound() {
+		if (sound != null) sound.stopTrack();
+	}
 	
 	private void act(PApplet surface) {
 		walkingSwapCD--;
@@ -416,6 +442,7 @@ public class Stage {
 						//System.out.println("neva");
 						if (e.isTouching(e2)) {
 							//System.out.println("say neva");
+							if (sound != null) sound.hitEffect();
 							((Projectile)e2).interact(e);
 						}
 					}
@@ -423,11 +450,13 @@ public class Stage {
 						//System.out.println("neva");
 						if (e.isTouching(e2)) {
 							//System.out.println("say neva2");
+							if (sound != null) sound.pickUpEffect();
 							((PowerUp)e2).interact((Player)e);
 						}
 					}
 					else if (e2 instanceof Coin && e instanceof Player) {
 						if (e.isTouching(e2)) {
+							if (sound != null) sound.pickUpEffect();
 							((Coin)e2).interact((Player)e);
 						}
 					}
@@ -450,6 +479,7 @@ public class Stage {
 			//you can add below another set of if conditions for each stage that
 			//can change up wave number, enemy number, and other properties
 			if (curWave == 3) {
+				if (sound != null && soundOn) sound.nextTrack();
 				if(stageNum == 1) {
 					Boss b = new Boss(topLeft.x+75, topLeft.y+125, 100, 100, false, stageNum);
 					b.setup(surface);
@@ -477,17 +507,17 @@ public class Stage {
 				
 				entityList.add(b);
 				if (stageNum == 1) {
-					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+500, 50, 50, ((int)(Math.random()*6.0))+1, true);
+					PowerUp p = new PowerUp(topLeft.x+dimensions.x*Math.random(), topLeft.y+500, 50, 50, ((int)(Math.random()*6.0))+1, true);
 					p.setup(surface);
 					entityList.add(p);
 				}
 				if (stageNum == 2) {
-					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+200, 50, 50, ((int)(Math.random()*6.0))+1, true);
+					PowerUp p = new PowerUp(topLeft.x+dimensions.x*Math.random(), topLeft.y+200, 50, 50, ((int)(Math.random()*6.0))+1, true);
 					p.setup(surface);
 					entityList.add(p);
 				}
 				if (stageNum == 3) {
-					PowerUp p = new PowerUp(topLeft.x+250, topLeft.y+100, 50, 50, ((int)(Math.random()*6.0))+1, true);
+					PowerUp p = new PowerUp(topLeft.x+dimensions.x*Math.random(), topLeft.y+100, 50, 50, ((int)(Math.random()*6.0))+1, true);
 					p.setup(surface);
 					entityList.add(p);
 				}

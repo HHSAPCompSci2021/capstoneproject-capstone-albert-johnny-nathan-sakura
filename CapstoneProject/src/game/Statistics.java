@@ -42,8 +42,8 @@ public class Statistics {
 		//System.out.println("iambeingdrawn at " +x + " " + y);
 		//surface.fill(200);
 		///surface.rect(x, y, width, height);
-		surface.fill(225);
-		String s = "HP: " + p.getHp();
+		surface.fill(255);
+		String s = "HP: " + (int)p.getHp() + "/150";
 		s = s + "\nCoins: " + p.numCoins();
 		s = s + "\nPowerups: \n";
 		if (p.multishotActive()) {

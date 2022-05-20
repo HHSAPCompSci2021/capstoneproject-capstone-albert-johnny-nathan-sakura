@@ -73,6 +73,7 @@ public class Game {
 		return false;
 	}
 	private boolean nextStage() {
+		curStage.stopSound();
 		return switchStage(stages.indexOf(curStage)+2);
 	}
 	
@@ -128,6 +129,9 @@ public class Game {
 	 * @return True if all stages are completed, false otherwise
 	 */
 	public boolean gameCompleted() {
+		if (curStageInd >= stages.size()) {
+			curStage.stopSound();
+		}
 		return curStageInd >= stages.size();
 	}
 	
@@ -136,6 +140,9 @@ public class Game {
 	 * @return True if the game is over, false otherwise
 	 */
 	public boolean gameOver() {
+		if (curStage.gameOver()) {
+			curStage.stopSound();
+		}
 		return curStage.gameOver();
 	}
 	

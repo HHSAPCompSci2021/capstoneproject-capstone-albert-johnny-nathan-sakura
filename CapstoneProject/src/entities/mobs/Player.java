@@ -277,8 +277,8 @@ public class Player extends Entity {
 	 * Allows the player to shoot
 	 * @param surface The surface drawn on
 	 */
-	public void shoot(PApplet surface) {
-		if (shawtyFramesCD > 0) return;
+	public boolean shoot(PApplet surface) {
+		if (shawtyFramesCD > 0) return false;
 		//System.out.println("entityNum: " + entityList.size());
 		Bullet b = new Bullet(this.getX()+getWidth()/2-15, this.getY() - 50, 30, 30, 0, -8, true, true, bulletDMG);
 		b.setup(surface);
@@ -299,6 +299,7 @@ public class Player extends Entity {
 			entityList.add(b2);
 		}
 		shawtyFramesCD = resetCD;
+		return true;
 	}
 	
 	public int getInv() {

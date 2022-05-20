@@ -2,6 +2,7 @@ package game;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**A DrawingSurface class that can draw both games with half the screen
  * @author ayu663
@@ -14,6 +15,9 @@ public class DrawingSurface extends PApplet {
 	private int newWidth, newHeight;
 	private int whoWon;
 	private boolean gameDone, loreDone;
+	private int cutsceneTicks;
+	private PImage[] cutscenes;
+	private Sounds s;
 	
 	/**
 	 * Constructs a DrawingSurface with initializing the default game with width and height
@@ -28,6 +32,8 @@ public class DrawingSurface extends PApplet {
 		pauseMenu = false;
 		gameDone = false;
 		loreDone = false;
+		cutsceneTicks = 0;
+		cutscenes = new PImage[7];
 	}
 	
 	/**
@@ -43,6 +49,19 @@ public class DrawingSurface extends PApplet {
 		//bad design
 		game2.setOtherPlayer(game1.getCurPlayer());
 		game1.setOtherPlayer(game2.getCurPlayer());
+		cutscenes[0] = loadImage("sprites/start1.png");
+		cutscenes[1] = loadImage("sprites/start2.png");
+		cutscenes[2] = loadImage("sprites/start3.png");
+		cutscenes[3] = loadImage("sprites/start4.png");
+		cutscenes[4] = loadImage("sprites/end1-1.png");
+		cutscenes[5] = loadImage("sprites/end1-2.png");
+		cutscenes[6] = loadImage("sprites/end2.png");
+		
+		for (int i = 0; i < cutscenes.length; i++) {
+			cutscenes[i].resize(width, height);
+		}
+
+		s = new Sounds(0);
 	}
 	
 	/**
@@ -76,36 +95,71 @@ public class DrawingSurface extends PApplet {
 				cutscene = true;
 			}
 		} else if (cutscene) {
-
-			background(200);
-			textSize(30);
-			text("In a tattered world littered with monsters, traps, and bosses, "
-					+ "the summoned heroes and their rival battled to the brink of existence. "
-					+ "In the final, unfruitful search for life, meaning, and glory, the two "
-					+ "stand at the base of the opponent's remaining tower. Unforgiving to their "
-					+ "previous rivalries, the two each scale the tower from another side. With an "
-					+ "insatiable thirst for vengeance, their unforgivingness to their previous rivalries, "
-					+ "to two mercilessly disassemble the tower each on a different side. "
-					+ "Which hero will evade all the traps, defeat all the enemies, "
-					+ "and kill this so-called foe first?  Press Y to start."
-					,width/6,height/4,width - 360, height - 150);
+			cutsceneTicks++;
+			if (cutsceneTicks < 300) {
+				if (cutsceneTicks == 0) s.playVine();
+				image(cutscenes[0],0,0);
+			} else
+			if (cutsceneTicks < 600) {
+				if (cutsceneTicks == 300) s.playVine();
+				image(cutscenes[1],0,0);
+			} else
+			if (cutsceneTicks < 900) {
+				if (cutsceneTicks == 600) s.playVine();
+				image(cutscenes[2],0,0);
+			} else
+			if (cutsceneTicks < 1200) {
+				if (cutsceneTicks == 900) s.playVine();
+				image(cutscenes[3],0,0);
+			} else {
+				if (cutsceneTicks == 1200) s.playVine();
+				cutscene = false;
+				cutsceneTicks = 0;
+				s.stopTrack();
+			}
+//			background(200);
+//			textSize(30);
+//			text("In a tattered world littered with monsters, traps, and bosses, "
+//					+ "the summoned heroes and their rival battled to the brink of existence. "
+//					+ "In the final, unfruitful search for life, meaning, and glory, the two "
+//					+ "stand at the base of the opponent's remaining tower. Unforgiving to their "
+//					+ "previous rivalries, the two each scale the tower from another side. With an "
+//					+ "insatiable thirst for vengeance, their unforgivingness to their previous rivalries, "
+//					+ "to two mercilessly disassemble the tower each on a different side. "
+//					+ "Which hero will evade all the traps, defeat all the enemies, "
+//					+ "and kill this so-called foe first? "
+//					,width/6,height/4,width - 360, height - 150);
 			if (isPressed(((int)'Y')) || isPressed(((int)'y'))) {
 				cutscene = false;
+				cutsceneTicks = 0;
+				s.stopTrack();
 			}
 		} else if (gameDone) {
+			s.nextTrack();
+			cutsceneTicks++;
 			background(0);
 			fill(0, 95, 143);
 			if (whoWon == 1) fill(130, 7, 0);
 			if (loreDone) {
+				if (cutsceneTicks < 300) {
+					if (cutsceneTicks == 0) s.playVine();
+					if (whoWon == 1) image(cutscenes[4],0,0);
+					if (whoWon == 2) image(cutscenes[5],0,0);
+				} else if (cutsceneTicks < 600) {
+					if (cutsceneTicks == 300) s.playVine();
+					image(cutscenes[6],0,0);
+				} else {
+					if (cutsceneTicks == 600) s.playVine();
+					fill(255, 255, 255);
+					//text("You've killed a jazz band... and your own kind... \n",width/2-400,height/2-100,width,height);
+					text("It seems like the real monster was you,", width/2-300,height/2,width,height);
 
-				fill(255, 255, 255);
-				text("You've killed a jazz band... and your own kind... \n",width/2-400,height/2-100,width,height);
-				text("It seems like the real monster was you,", width/2-300,height/2,width,height);
-
-				if (whoWon == 1) fill(130, 7, 0);
-				if (whoWon == 2) fill(0, 95, 143);
-				textSize(50);
-				text("Player " +  whoWon, width/2-300,height/2+100,width,height);
+					if (whoWon == 1) fill(130, 7, 0);
+					if (whoWon == 2) fill(0, 95, 143);
+					textSize(50);
+					text("Player " +  whoWon, width/2-300,height/2+100,width,height);
+				}
+				
 				
 			} else {
 				background(100);
