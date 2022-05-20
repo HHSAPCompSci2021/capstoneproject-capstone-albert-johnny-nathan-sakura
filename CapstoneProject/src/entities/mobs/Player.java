@@ -99,7 +99,10 @@ public class Player extends Entity {
 	}
 
 	
-	
+	/**
+	 * returns the number of coins.
+	 * @return the number of coins
+	 */
 	public int numCoins() {
 		return coins;
 	}
@@ -120,6 +123,10 @@ public class Player extends Entity {
 		entityList = e;
 	}
 	
+	/**
+	 * returns the arraylist of all entities on screen. 
+	 * @return the entitylist. 
+	 */
 	public ArrayList<Entity> getEntityList(){
 		return entityList;
 	}
@@ -302,10 +309,17 @@ public class Player extends Entity {
 		return true;
 	}
 	
+	/**
+	 * gets i-frames
+	 */
 	public int getInv() {
 		return inv;
 	}
 	
+	/**
+	 * sets i-frames
+	 * @param i number of frames
+	 */
 	public void setInv(int i) {
 		inv = i;
 	}

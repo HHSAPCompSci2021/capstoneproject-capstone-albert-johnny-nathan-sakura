@@ -554,6 +554,10 @@ public class Stage {
 		return curPlayer;
 	}
 
+	/**
+	 * returns the entity list.
+	 * @return the entity list.
+	 */
 	public ArrayList<Entity> getEntityList() {
 		return entityList;
 	}

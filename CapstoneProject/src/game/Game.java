@@ -77,11 +77,18 @@ public class Game {
 		return switchStage(stages.indexOf(curStage)+2);
 	}
 	
-	
+	/**
+	 * gets the current player.
+	 * @return the player.
+	 */
 	public Player getCurPlayer() {
 		return p;
 	}
 	
+	/**
+	 * sets the other player.
+	 * @param p the other player
+	 */
 	public void setOtherPlayer(Player p) {
 		otherPlayer = p;
 	}

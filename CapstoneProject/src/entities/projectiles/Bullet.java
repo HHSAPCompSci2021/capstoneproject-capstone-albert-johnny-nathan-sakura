@@ -11,6 +11,7 @@ import processing.core.PImage;
  */
 public class Bullet extends Projectile {
 	private static PImage thisSprite;
+	private static PImage thisSpriteP;
 	/**
 	 * Creates a new instance of Bullet with the properties of Entity
 	 * @param x X-Coordinate
@@ -37,10 +38,18 @@ public class Bullet extends Projectile {
 		if (thisSprite == null) {
 			System.out.println("loaded image");
 			thisSprite = (surface.loadImage("sprites/projectile.png"));
+			thisSpriteP = (surface.loadImage("sprites/projectile-bullet.png"));
+
 			thisSprite.resize((int)getWidth(), (int)getHeight());
+			thisSpriteP.resize((int)getWidth()/2, (int)(getHeight()*1.5));
 		}
-		setSprite(thisSprite);
+		if (getFromPlayer()) {
+			setSprite(thisSpriteP);
+		} else {
+			setSprite(thisSprite);
+		}
 	}
+
 
 	
 	

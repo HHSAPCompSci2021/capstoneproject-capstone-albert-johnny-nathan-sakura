@@ -1,10 +1,15 @@
 package game;
 
 import processing.core.PApplet;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import jay.jaysound.*;
+
+/**
+ * sound. 
+ * @author albert
+ * contains all the stuff needed to implement sound. 
+ */
 public class Sounds implements ActionListener, JayLayerListener {
 	//jay.jaysound classes
 	//JayLayer and JayLayerListener

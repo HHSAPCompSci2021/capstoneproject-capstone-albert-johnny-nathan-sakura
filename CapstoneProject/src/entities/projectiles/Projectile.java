@@ -34,6 +34,7 @@ public class Projectile extends Entity {
 		setDmg(dmg);
 		this.setHp(1);
 		fromPlayer = p;
+		if (fromPlayer == true) System.out.println("+++++++++++++++++++++++");
 		inv = 0;
 	}
 	
@@ -102,7 +103,12 @@ public class Projectile extends Entity {
 		//PImage temp;
 		if (thisSprite == null) {
 			System.out.println("loaded image");
-			thisSprite = (surface.loadImage("sprites/projectile.png"));
+			if (fromPlayer) {
+				thisSprite = (surface.loadImage("sprites/projectile-bullet.png"));
+				setWidth(10);
+			} else {
+				thisSprite = (surface.loadImage("sprites/projectile.png"));
+			}
 			thisSprite.resize((int)getWidth(), (int)getHeight());
 		}
 		setSprite(thisSprite);
@@ -114,6 +120,14 @@ public class Projectile extends Entity {
 	 */
 	public void setPenetrate(boolean b) {
 		penetrate = b;
+	}
+	
+	/**
+	 * returns whether the bullet is from a player or not. 
+	 * @return fromPlayer
+	 */
+	public boolean getFromPlayer() {
+		return fromPlayer;
 	}
 
 }

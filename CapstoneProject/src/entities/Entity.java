@@ -147,7 +147,12 @@ public class Entity {
 //		}
 //	}
 	
-	
+	/**
+	 * Checjs if a point is inside the entity.
+	 * @param x x-coordinate of the point
+	 * @param y y-coordinate of the point
+	 * @return whether the point is inside
+	 */
 	private boolean isPointInside(double x, double y) {
 		
 		if(x >= this.getX() && x <= this.getX() + this.getWidth() 
@@ -359,6 +364,11 @@ public class Entity {
 		isDead = true;
 	}
 
+	
+	/**
+	 * gets the invincibility frames of the entity
+	 * @return invincibility frames of the entity
+	 */
 	public int getInv() {
 		// TODO Auto-generated method stub
 		return 0;
