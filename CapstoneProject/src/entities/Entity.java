@@ -21,6 +21,9 @@ public class Entity {
 	private double width, height, x, y, vx, vy, hp, dmg;
 	private boolean isCircleHitbox, isDead, isVisible;
 	private PImage sprite;
+	/**The bounds in which this entity is located (0, 1 are x, y and 2, 3, dim)
+	 * 
+	 */
 	public double[] bounds; //{topLeftX, topLeftY, windowWidth, windowHeight}
 	
 	/**

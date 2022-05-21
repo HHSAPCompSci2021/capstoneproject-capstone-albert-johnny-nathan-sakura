@@ -252,6 +252,10 @@ public class Boss extends Enemy{
 		setY(getvy() + getY());
 	}
 	
+	
+	/**Returns the bosses original MAX hp
+	 * @return int original max HP
+	 */
 	public int getMaxHP() {
 		return ogHP;
 	}

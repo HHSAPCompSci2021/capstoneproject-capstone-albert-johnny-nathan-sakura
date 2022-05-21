@@ -62,7 +62,8 @@ public class Game {
 		
 	}
 	
-	
+	/** Returns the current Stage number this game is on
+	 * @return int the current Stage (1-4)*/
 	public int getStageNum() {
 		return curStageInd+1;
 	}
