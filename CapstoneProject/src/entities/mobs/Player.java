@@ -8,6 +8,7 @@ import processing.core.PImage;
 
 /**
  * The Player class represents the two users in the program that interact with the entities 
+ * @author nathan and albert
  */
 public class Player extends Entity {
 	private int coins;
