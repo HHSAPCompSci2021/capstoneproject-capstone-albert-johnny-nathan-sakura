@@ -6,7 +6,8 @@ import processing.core.PImage;
 
 
 /**
- * this class represents wind, which pushes a player back. 
+ * Wind represents a Projectile that Players interact with
+ * Wind contains the same properties as Projectile
  * @author Johnny Zhang
  *
  */

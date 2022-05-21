@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * This class represents a Bullet with the properties of Prjectile 
+ * This class represents a Bullet with the properties of Projectile
  * @author Johnny Zhang
  *
  */
@@ -34,7 +34,6 @@ public class Bullet extends Projectile {
 	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
-		//PImage temp;
 		if (thisSprite == null) {
 			System.out.println("loaded image");
 			thisSprite = (surface.loadImage("sprites/projectile.png"));

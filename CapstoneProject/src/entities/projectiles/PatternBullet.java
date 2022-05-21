@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 
 /**
- * this class represents a collection of bullets that follow a certain pattern
+ * PatternBullet represents a collection of bullets that follow a certain pattern
  * @author Johnny Zhang
  *
  */
@@ -16,10 +16,10 @@ public class PatternBullet {
 	public double[] bounds;
 
 	/**
-	 * Creates a new instance of Bullet with the properties of Entity
+	 * Creates a new instance of PatternBullet
 	 * @param x X-Coordinate
 	 * @param y Y-Coordinate
-	 * @param type The type of bullet
+	 * @param type The stage number
 	 * @param dmg The damage of the bullet
 	 */
 	public PatternBullet(int x, int y, int type, int dmg) {

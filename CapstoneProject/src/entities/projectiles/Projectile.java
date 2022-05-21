@@ -6,7 +6,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * This class is a Projectile, which collides with Entity and damages them
+ * Projectile represents an Entity that can be interacted with
+ * It also contians the properties of Entity as well
  * @author Johnny Zhang
  *
  */
@@ -44,7 +45,6 @@ public class Projectile extends Entity {
 	 * @param e Entity that is interacted with
 	 */
 	public void interact(Entity e) {
-		//System.out.println("interact");
 		if (inv <= 1) {
 			if (fromPlayer == false && e instanceof Player && e.getInv() <= 0) {
 				if (!((Player)(e)).shieldOn()) e.setHp(e.getHp() - getDmg());
@@ -54,7 +54,6 @@ public class Projectile extends Entity {
 				e.setInv(10);
 			}
 			if (fromPlayer == true && e instanceof Enemy) {
-				//System.out.println("drain");
 				e.setHp(e.getHp() - getDmg());
 				if (penetrate == false) {
 					setHp(0);
@@ -86,11 +85,9 @@ public class Projectile extends Entity {
 	 */
 	public void act() {
 		inv--;
-		//System.out.println("cri");
 		setX(getX()+getvx());
 		setY(getY()+getvy());
 		if (outOfBounds()) {
-			//System.out.println("die");
 			die();
 		}
 	}

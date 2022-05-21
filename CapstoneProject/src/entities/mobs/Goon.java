@@ -162,7 +162,7 @@ public class Goon extends Enemy{
 	
 	/**
 	 * Sets the X-coordinate velocity
-	 * @param d The new x velocity
+	 * @param d The new x-velocity
 	 */
 	public void setXMovement(double d) {
 		setvx(d);
@@ -170,7 +170,7 @@ public class Goon extends Enemy{
 	
 	/**
 	 * Sets the X-coordinate velocity
-	 * @param d The new y velocity
+	 * @param d The new y-velocity
 	 */
 	public void setYMovement(double d) {
 		setvy(d);
@@ -179,7 +179,7 @@ public class Goon extends Enemy{
 	
 	/**
 	 * Sets up the image for the Goon
-	 * @param surface the drawing surface
+	 * @param surface The drawing surface
 	*/
 	public void setup(PApplet surface) {
 		this.surface = surface;

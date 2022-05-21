@@ -11,9 +11,9 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Entity class represents an entity with a movement speed, hp, damage, location, and hitbox.
- * The entity is drawn using the Processing library.
- * It detects collisions between other entities and allows the entity to act. 
+ * The Entity class represents an entity with a movement speed, hp, damage, location, and hitbox
+ * The entity is drawn using the Processing library
+ * It detects collisions between other entities and allows the entity to act with respect to its own unique actions
  * @author nathangu
  */
 public class Entity {
@@ -150,12 +150,7 @@ public class Entity {
 //		}
 //	}
 	
-	/**
-	 * Checks if a point is inside the Entity
-	 * @param x x-coordinate of the point
-	 * @param y y-coordinate of the point
-	 * @return whether the point is inside
-	 */
+	
 	private boolean isPointInside(double x, double y) {
 		
 		if(x >= this.getX() && x <= this.getX() + this.getWidth() 
@@ -166,7 +161,7 @@ public class Entity {
 	}
 
 	/**
-	 * Allows the Entity to move given its current movement speeds
+	 * Moves the Entity given its current velocities
 	 */
 	public void act() {
 		x += vx;

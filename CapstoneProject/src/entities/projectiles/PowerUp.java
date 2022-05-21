@@ -6,17 +6,17 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * This class is a powerup, which buffs the player
+ * PowerUp represents an Entity that the Player can interact with to receive benefits
+ * PowerUp provides the Player that interacts with it various buffs that increase damage or survivablity
  * @author Johnny Zhang
  *
  */
 public class PowerUp extends Entity {
 	//1 = heal, 2 = multi, 3 = pierce, 4 = rate, 5 = dmg, 6 = hp
-	int time;
-	int type;
-	//private static PImage thisSprite;
+	private int time;
+	private int type;
 	/**
-	 * Creates a new instance of PowerUp with the properties of Entity
+	 * Creates a new instance of PowerUp
 	 * @param x X-Coordinate
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
@@ -33,7 +33,7 @@ public class PowerUp extends Entity {
 	}
 	
 	/**
-	 * Gives the PowerUp to the player
+	 * Gives the PowerUp to the Player
 	 * @param e The Player receiving the PowerUp
 	 */
 	public void interact(Player e) {

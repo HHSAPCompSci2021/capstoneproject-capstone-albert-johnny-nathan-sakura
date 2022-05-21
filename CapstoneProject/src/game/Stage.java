@@ -15,7 +15,8 @@ import entities.projectiles.Trap;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-/**A Stage class that contains all stage entities and makes them act
+/**
+ * The Stage class represents the stages that contains entities and makes them "act"
  * @author ayu663
  */
 public class Stage {
@@ -33,8 +34,7 @@ public class Stage {
 	private boolean soundOn;
 	private Boss b;
 	
-	/**Constructs a stage with stage number stageNum, top left corner x, y, 
-	 * and dimensions width*height.
+	/**Constructs an instance of Stage 
 	 * @param stageNum the stage to construct (1-4)
 	 * @param x topLeft x of the stage
 	 * @param y topLeft y of the stage
@@ -96,7 +96,7 @@ public class Stage {
 	}
 	
 	/**
-	 * Will visually draw and update the current frame of the Stage elements, and the getStatistics
+	 * Visually draws and updates the current frame of the Stage elements, and the getStatistics
 	 * @param surface PApplet surface to draw on
 	 */
 	public void draw(PApplet surface) {
@@ -410,9 +410,9 @@ public class Stage {
 		return gameOver;
 	}
 	
-//	public void startSound() {
-//		if (sound != null) sound.nextTrack();
-//	}
+	/**
+	 * Stops the music or sound
+	 */
 	public void stopSound() {
 		if (sound != null) sound.stopTrack();
 	}
@@ -570,7 +570,7 @@ public class Stage {
 	}
 	
 	/**
-	 * Returns the current player referenced in Stage
+	 * Returns the current Player referenced in Stage
 	 * @return Player current Player character
 	 */
 	public Player getPlayer() {
@@ -578,8 +578,7 @@ public class Stage {
 	}
 
 	/**
-	 * returns the entity list.
-	 * @return the entity list.
+	 * @return The entity list.
 	 */
 	public ArrayList<Entity> getEntityList() {
 		return entityList;

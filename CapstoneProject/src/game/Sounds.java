@@ -6,9 +6,8 @@ import java.awt.event.ActionListener;
 import jay.jaysound.*;
 
 /**
- * sound. 
+ * The Sounds class represents the background sounds
  * @author albert
- * contains all the stuff needed to implement sound. 
  */
 public class Sounds implements ActionListener, JayLayerListener {
 	//jay.jaysound classes
@@ -18,8 +17,9 @@ public class Sounds implements ActionListener, JayLayerListener {
 	private JayLayer j;
 	private int stageNum;
 	
-	/**Constructs a Sounds class meant for stageNum stage (0 means for drawingsurface use)
-	 * @param stageNum
+	/**
+	 * Constructs an instance of Sounds for stageNum stage (0 means for drawingsurface use)
+	 * @param stageNum The stage number
 	 */
 	public Sounds(int stageNum) {
 		this.stageNum = stageNum;
@@ -72,8 +72,8 @@ public class Sounds implements ActionListener, JayLayerListener {
 			index = 0;
 		}
 	}
-	/** Starts the last song
-	 * 
+	/** 
+	 * Plays the last song
 	 */
 	public void playEnd() {
 		if (stageNum == 0) {
@@ -81,38 +81,47 @@ public class Sounds implements ActionListener, JayLayerListener {
 			j.nextSong();
 		}
 	}
-	/**Plays the default effect */
+	/**
+	 * Plays the default effect 
+	 */
 	public void playEffect() {
 		//if (index > j.getNumberOfSoundEffect()-1) index = 0;
 //		j.addSoundEffect("\\songs\\shoot.mp3");
 //		j.playSoundEffect(j.getNumberOfSoundEffect()-1);
 		//index++;
 	}
-	/**Plays the vine boom effect */
+	/**
+	 * Plays the vine boom effect
+	*/
 	public void playVine() {
 //		System.out.println("VINEBOOM");
 //		j.addSoundEffect("\\songs\\pickup.mp3");
 //		j.playSoundEffect(j.getNumberOfSoundEffect()-1);
 	}
-	/**Plays the pickup effect */
+	/**
+	 * Plays the pickup effect 
+	 */
 	public void pickUpEffect() {
 //		j.addSoundEffect("\\songs\\pickup.mp3");
 //		j.playSoundEffect(j.getNumberOfSoundEffect()-1);
 	}
-	/**Plays the hit effect */
+	/**Plays the hit effect
+	 */
 	public void hitEffect() {
 //		j.addSoundEffect("\\songs\\hit.mp3");
 //		j.playSoundEffect(j.getNumberOfSoundEffect()-1);
 	}
 	
 	
-	/**Plays the next track
+	/**
+	 * Plays the next track
 	 */
 	public void nextTrack() {
 		j.nextSong();
 	}
 	
-	/**Plays the next track
+	/**
+	 * Plays the next track
 	 */
 	public void stopTrack() {
 		j.stopSong();
@@ -153,9 +162,7 @@ public class Sounds implements ActionListener, JayLayerListener {
 		
 	}
 	
-//	public void play() {
-//		j.set
-//	}
+
 	
 	
 }

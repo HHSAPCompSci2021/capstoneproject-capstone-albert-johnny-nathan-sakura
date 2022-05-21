@@ -8,6 +8,7 @@ import processing.core.PImage;
 
 /**
  * The Enemy class represents an enemy with all the properties of the Entity class
+ * Enemies have the ability to shoot and move in their own specific patterns
  * @author nathangu
  */
 public class Enemy extends Entity{

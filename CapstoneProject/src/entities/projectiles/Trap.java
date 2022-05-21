@@ -6,7 +6,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * This is a trap, which can be deployed by players.
+ * Trap represents a Bullet that Players can summon on the other player's field of play
+ * Trap contains the properties of Bullet as well 
  * @author Johnny Zhang
  *
  */
@@ -17,7 +18,7 @@ public class Trap extends Bullet {
 	private static PImage thisSprite;
 	
 	/**
-	 * Creates a new instance of Trap with the properties of Entity
+	 * Creates a new instance of Trap
 	 * @param x X-Coordinate
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
@@ -54,7 +55,7 @@ public class Trap extends Bullet {
 	
 	/**
 	 * Deploys a trap
-	 * @param t the type of Trap
+	 * @param t The type of Trap
 	 */
 	public void use(int t) {
 		
@@ -65,7 +66,6 @@ public class Trap extends Bullet {
 	 * @param surface The drawing surface
 	 */
 	public void setup(PApplet surface) {
-		//PImage temp;
 		if (thisSprite == null)
 			System.out.println("loaded image");
 			String str = "sprites/trap-";

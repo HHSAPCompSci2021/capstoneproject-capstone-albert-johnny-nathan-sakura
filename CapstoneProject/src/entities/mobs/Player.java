@@ -7,7 +7,8 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The Player class represents the two users in the program that interact with the entities 
+ * The Player class represents the two users in the program that interact with the entities
+ * Player has the properties of Entity as well 
  * @author nathan and albert
  */
 public class Player extends Entity {
@@ -25,7 +26,7 @@ public class Player extends Entity {
 	private int inv;
 	
 	/**
-	 * Creates a new instance of Player with the properties of Entity
+	 * Creates a new instance of Player
 	 * @param x X-Coordinate
 	 * @param y Y-Coordinate
 	 * @param w Width of hitbox
@@ -107,14 +108,6 @@ public class Player extends Entity {
 	public int numCoins() {
 		return coins;
 	}
-//	public void activateShield() {
-//		shieldLasts = 10;
-//	}
-	
-	
-//	public void draw(PApplet surface) {
-//		super.draw(surface);
-//	}
 	
 	/**
 	 * Sets the entity list
@@ -125,8 +118,7 @@ public class Player extends Entity {
 	}
 	
 	/**
-	 * returns the arraylist of all entities on screen. 
-	 * @return the entitylist. 
+	 * @return The list of entities 
 	 */
 	public ArrayList<Entity> getEntityList(){
 		return entityList;
@@ -193,19 +185,11 @@ public class Player extends Entity {
 		if (shawtyFramesCD > 0) {
 			shawtyFramesCD--;
 		}
-//		for (int i = 0; i < entityList.size(); i++) {
-//			Entity e = entityList.get(i);
-//			if (e != this && isTouching(e)) {
-//				e.interact(this);
-//				entityList.remove(i);
-//				i--;
-//			}
-//		}
 		if (powerUpDuration > 0) powerUpDuration -= 1;
 	}
 	
 	/**
-	 * Allows the player to move
+	 * Allows the player to move given its current x and y velocities
 	 * @param x X-coordinate to move to
 	 * @param y Y-coordinate to move to
 	 */
@@ -244,15 +228,15 @@ public class Player extends Entity {
 		coins += a;
 	}
 	/**
-	 * Sets the power up type 
-	 * @param a The type of power up
+	 * Sets the PowerUp type 
+	 * @param a The type of PowerUp
 	 */
 	public void setPowerUpType(int a) {
 		powerUpType = a;
 	}
 	/**
-	 * Sets the duration of the power up
-	 * @param a Duration of the power up
+	 * Sets the duration of the PowerUp
+	 * @param a Duration of the PowerUp
 	 */
 	public void setPowerUpDuration(int a) {
 		powerUpDuration = a;
@@ -283,8 +267,9 @@ public class Player extends Entity {
 	}
 	
 	/**
-	 * Allows the player to shoot
-	 * @param PApplet The surface drawn on
+	 * Allows the Player to shoot
+	 * @param surface The surface to draw on
+	 * @return True if the Player shoots, false otherwise
 	 */
 	public boolean shoot(PApplet surface) {
 		if (shawtyFramesCD > 0) return false;
@@ -312,15 +297,15 @@ public class Player extends Entity {
 	}
 	
 	/**
-	 * gets i-frames
+	 * Gets invincibility frames
 	 */
 	public int getInv() {
 		return inv;
 	}
 	
 	/**
-	 * sets i-frames
-	 * @param i number of frames
+	 * Sets invincibility frames
+	 * @param i Number of frames
 	 */
 	public void setInv(int i) {
 		inv = i;

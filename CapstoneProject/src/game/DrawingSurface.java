@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-/**A DrawingSurface class that can draw both games with half the screen
+/**
+ * DrawingSurface represents a surface that can draw the game
  * @author ayu663
  */
 public class DrawingSurface extends PApplet {
@@ -22,7 +23,7 @@ public class DrawingSurface extends PApplet {
 	private Sounds s;
 	
 	/**
-	 * Constructs a DrawingSurface with initializing the default game with width and height
+	 * Constructs an instance of DrawingSurface
 	 * @param width1 Both Game's width
 	 * @param height1 Each Game's height
 	 */
@@ -127,19 +128,6 @@ public class DrawingSurface extends PApplet {
 			
 			fill(0);
 			text("Press Y to skip cutscenes!!!", 0+10, 0, width,height);
-			
-//			background(200);
-//			textSize(30);
-//			text("In a tattered world littered with monsters, traps, and bosses, "
-//					+ "the summoned heroes and their rival battled to the brink of existence. "
-//					+ "In the final, unfruitful search for life, meaning, and glory, the two "
-//					+ "stand at the base of the opponent's remaining tower. Unforgiving to their "
-//					+ "previous rivalries, the two each scale the tower from another side. With an "
-//					+ "insatiable thirst for vengeance, their unforgivingness to their previous rivalries, "
-//					+ "to two mercilessly disassemble the tower each on a different side. "
-//					+ "Which hero will evade all the traps, defeat all the enemies, "
-//					+ "and kill this so-called foe first? "
-//					,width/6,height/4,width - 360, height - 150);
 			if (cutsceneSkipCD <= 0 &&(isPressed(((int)'Y')) || isPressed(((int)'y')))) {
 				//cutscene = false;
 				cutsceneTicks = 300*(((int)(cutsceneTicks/300))+1);
@@ -203,17 +191,6 @@ public class DrawingSurface extends PApplet {
 			
 			game2.draw(this);
 			game1.draw(this);
-
-//			if (game1.getStageNum() > maxStage) {
-//				maxStage = game1.getStageNum();
-//				game2.soundOn = false;
-//				game1.soundOn = true;
-//			}
-//			if (game2.getStageNum() > maxStage) {
-//				maxStage = game2.getStageNum();
-//				game1.soundOn = false;
-//				game2.soundOn = true;
-//			}
 			if (game1.gameOver()) {
 				whoWon = 2;
 				gameDone = true;
@@ -234,8 +211,9 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 	}
+	
 	/**
-	 * Updates keypressed list
+	 * Updates the keypressed list
 	 */
 	public void keyPressed() {
 		keys.add(keyCode);
@@ -244,7 +222,7 @@ public class DrawingSurface extends PApplet {
 	}
 
 	/**
-	 * Updates keypressed list
+	 * Updates the keypressed list
 	 */
 	public void keyReleased() {
 		while(keys.contains(keyCode))

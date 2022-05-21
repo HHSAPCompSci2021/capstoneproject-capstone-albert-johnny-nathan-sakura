@@ -6,8 +6,9 @@ import entities.mobs.Player;
 import entities.projectiles.Trap;
 import processing.core.PApplet;
 
-/**A game class that contains all menus, stages, and other elements in it's half
- * of the processing screen
+/**
+ * Game represents the framework, with menus, stages, and other important elements in a game
+ * The Game class draws out the Game using the Processing library
  * @author ayu663
  */
 public class Game {
@@ -19,16 +20,9 @@ public class Game {
 	private Point dimensions, topLeft;
 	private Player p, otherPlayer;
 	private int trapCD, stageSkipCD;
-//	private Sounds sound;
-//	protected boolean soundOn;
-	//somehow add black bars in the game - set the Game's dimensions to 
-	//fit within these black bars
-	//plan: 50 on the left of game1, 50 in middle, 50 on the right of
-	//		game2, 50 on top, 100 at bottom for statistics (within game
-	//		x bounds also)
 	
-	
-	/**Constructs a new Game window
+	/**
+	 * Constructs a new Game window
 	 * @param gameNum Denoting the game for player 1 or 2 
 	 * @param width The width of the processing window
 	 * @param height The height of the processing window
@@ -62,8 +56,9 @@ public class Game {
 		
 	}
 	
-	/** Returns the current Stage number this game is on
-	 * @return int the current Stage (1-4)*/
+	/**
+	 *  Returns the current Stage number this game is on
+	 * @return int The current Stage (1-4)*/
 	public int getStageNum() {
 		return curStageInd+1;
 	}
@@ -84,16 +79,16 @@ public class Game {
 	}
 	
 	/**
-	 * gets the current player.
-	 * @return the player.
+	 * Gets the current Player
+	 * @return The Player
 	 */
 	public Player getCurPlayer() {
 		return p;
 	}
 	
 	/**
-	 * sets the other player.
-	 * @param p the other player
+	 * Sets the other Player
+	 * @param p The other player
 	 */
 	public void setOtherPlayer(Player p) {
 		otherPlayer = p;
@@ -112,15 +107,6 @@ public class Game {
 	 * @param surface Surface to draw things on
 	 */
 	public void draw(PApplet surface) {
-//		if (sound == null) {
-//			sound = new Sounds(0);
-//			sound.nextTrack();
-//		}
-//		if (!soundOn) {
-//			curStage.stopSound();
-//		} else {
-//			curStage.startSound();
-//		}
 		if (trapCD > 0) trapCD--;
 		if (stageSkipCD > 0) stageSkipCD--;
 		if (curStage.isCompleted()) {

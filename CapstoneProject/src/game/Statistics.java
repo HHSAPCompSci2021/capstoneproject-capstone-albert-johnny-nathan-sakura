@@ -5,8 +5,8 @@ import entities.mobs.Player;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-/**A Statistics class that contains a Player p and can display it's statistics
- * nicely
+/**
+ * Statistics represents the Player's statistics 
  * @author ayu663
  */
 public class Statistics {
@@ -19,7 +19,7 @@ public class Statistics {
 	private PImage[] powerups, traps;
 	
 	/**
-	 * Constructs a Statistics class with a Player class 
+	 * Constructs an instance of Statistics  
 	 * @param p The Player
 	 * @param x X-coordinate Statistics box
 	 * @param y Y-coordinate Statistics box
@@ -54,9 +54,6 @@ public class Statistics {
 				traps[i-1].resize(30, 30);
 			}
 		}
-		//System.out.println("iambeingdrawn at " +x + " " + y);
-		//surface.fill(200);
-		///surface.rect(x, y, width, height);
 		surface.fill(100);
 		surface.rect(x, y+5, width-10, 30);
 		surface.fill(0,255,0);
@@ -70,18 +67,6 @@ public class Statistics {
 		String s = "HP: " + (int)p.getHp() + "/150";
 		s = s + "\nTrap Coins: " + p.numCoins() + "/10";
 		s = s + "\nPowerups: \n";
-//		if (p.multishotActive()) {
-//			s+="Multishot, ";
-//		}
-//		if (p.penetrateActive()) {
-//			s+="Penetrate, ";
-//		}
-//		if (p.rateIncreaseActive()) {
-//			s+="Increased Rate, ";
-//		}
-//		if (p.dmgIncreaseActive()) {
-//			s+="Increased Damage, ";
-//		}
 		s = s.substring(0, s.length()-2);
 		surface.text(s, x, y+30, width, height);
 		

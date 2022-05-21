@@ -6,9 +6,9 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * this class represents a coin, which can be picked up.
+ * Coin represents an Entity that can be picked up by the Player
+ * The Coin has a value and can be added or deducted from a Player
  * @author Johnny Zhang
- *
  */
 public class Coin extends Entity {
 	private int value;
