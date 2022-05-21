@@ -27,7 +27,7 @@ public class Sounds implements ActionListener, JayLayerListener {
 			j = new JayLayer(System.getProperty("user.dir") ,System.getProperty("user.dir") ,true);
 			int playlist = j.addPlayList();
 			j.addSong(playlist, "\\songs\\stage"+stageNum+"-1.mp3");
-			System.out.println("Playlist = " + playlist);
+			//System.out.println("Playlist = " + playlist);
 			j.addSong(playlist, "\\songs\\stage"+stageNum+"-1.mp3");
 			j.changePlayList(playlist);
 			j.addJayLayerListener(this);
@@ -43,7 +43,7 @@ public class Sounds implements ActionListener, JayLayerListener {
 	//		sound.addSoundEffects(soundEffects);
 	//		sound.changePlayList(0);
 	//		sound.addJayLayerListener(this);
-			System.out.println(j.isPlaying());
+			//System.out.println(j.isPlaying());
 	//		if (stageNum == 1) {
 	//		}
 	//		if (stageNum == 2) { 

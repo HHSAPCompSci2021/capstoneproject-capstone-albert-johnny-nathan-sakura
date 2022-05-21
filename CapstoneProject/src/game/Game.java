@@ -161,7 +161,7 @@ public class Game {
 	public void giveInputs(DrawingSurface surface) {
 		if ((surface.isPressed(66) || surface.isPressed(98)) && stageSkipCD == 0) {
 			//hard code stage skip
-			System.out.println("WHY");
+			//System.out.println("WHY");
 			nextStage();
 			stageSkipCD = 30;
 		}

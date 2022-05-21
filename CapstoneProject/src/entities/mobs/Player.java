@@ -135,7 +135,7 @@ public class Player extends Entity {
 		if (coins < 0) {
 			coins = 0;
 		}
-		System.out.println(bounds[0] + " " + bounds[1] + " " + bounds[2] + " " +bounds[3]);
+		//System.out.println(bounds[0] + " " + bounds[1] + " " + bounds[2] + " " +bounds[3]);
 		if (delay <= 0) {
 			multishot = false;
 			penetrate = false;

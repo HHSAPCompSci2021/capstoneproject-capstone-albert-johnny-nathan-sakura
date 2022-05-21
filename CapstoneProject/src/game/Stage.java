@@ -48,7 +48,7 @@ public class Stage {
 		gameOver = false;
 		stageComplete = false;
 		topLeft = new Point(x,y);
-		System.out.println(width);
+		//System.out.println(width);
 		dimensions = new Point(width, height);
 		this.stageNum = stageNum;
 		entityList = new ArrayList<Entity>();
@@ -73,7 +73,7 @@ public class Stage {
 		//entityList.add(new Boss(0, 0, 0, 0, false, null));
 		
 		for (Entity e : entityList) {
-			System.out.println(topLeft.x + " " + topLeft.y + " " + dimensions.x + " " + dimensions.y);
+			//System.out.println(topLeft.x + " " + topLeft.y + " " + dimensions.x + " " + dimensions.y);
 			e.giveBounds(topLeft, dimensions);
 		}
 		playerStats = new Statistics(curPlayer, x, y+height, width, 200);
@@ -113,7 +113,7 @@ public class Stage {
 		//System.out.println("saygiydfiyfiyg: "+ entityList.size());
 		for (Entity e : entityList) {
 			//if (e.isVisble()) {
-			if (e instanceof Goon) System.out.println("goon drawn");
+//			if (e instanceof Goon) System.out.println("goon drawn");
 			//e.setup(surface);
 			e.draw(surface);
 			//}
