@@ -103,8 +103,8 @@ public class Stage {
 		if (sound == null) {
 			sound = new Sounds(stageNum);
 			sound.nextTrack();
-			
 		}
+		
 		//surface.clear();
 		back.draw(surface);
 		back.scroll(5);
@@ -132,7 +132,27 @@ public class Stage {
 			surface.fill(255, 0, 0);
 		}
 		if (b!=null) {
-			surface.text("BOSS HP: " + (int)b.getHp() + "/" + (int)b.getMaxHP(), topLeft.x+10, topLeft.y, dimensions.x, dimensions.y);
+			surface.fill(150);
+			surface.rect(topLeft.x+5, topLeft.y+5, dimensions.x-10, 30);
+
+			if (stageNum == 1) {
+				surface.fill(0, 132, 209);
+			}
+			if (stageNum == 2) {
+				surface.fill(181, 255, 233);
+			}
+			if (stageNum == 3) {
+				surface.fill(255, 0, 242);
+			}
+			if (stageNum == 4) {
+				surface.fill(255, 0, 0);
+			}
+			if (b.getHp()>b.getMaxHP()) {
+				surface.rect(topLeft.x+10, topLeft.y+10, (float)(dimensions.x-20), 20);
+			} else {
+				surface.rect(topLeft.x+10, topLeft.y+10, (float)((dimensions.x-20)*b.getHp()/b.getMaxHP()), 20);
+			}
+			surface.text("BOSS HP: " + (int)b.getHp() + "/" + (int)b.getMaxHP(), topLeft.x+10, topLeft.y+35, dimensions.x, dimensions.y);
 		} else {
 			surface.text("Current Wave: " + curWave + "/3", topLeft.x+10, topLeft.y, dimensions.x, dimensions.y);
 		}
@@ -190,7 +210,7 @@ public class Stage {
 
 				System.out.println("f");
 				if(curPlayer.shoot(surface)) {
-					if (sound != null) sound.playEffect();
+					//if (sound != null) sound.playEffect();
 				}
 			}
 //			//traps (handled in game now)
@@ -301,7 +321,7 @@ public class Stage {
 			if (surface.isPressed(58) || surface.isPressed(59)) {
 				System.out.println(";");
 				if(curPlayer.shoot(surface)) {
-					if (sound != null) sound.playEffect();
+					//if (sound != null) sound.playEffect();
 				}
 			}
 			
@@ -390,6 +410,9 @@ public class Stage {
 		return gameOver;
 	}
 	
+//	public void startSound() {
+//		if (sound != null) sound.nextTrack();
+//	}
 	public void stopSound() {
 		if (sound != null) sound.stopTrack();
 	}
@@ -442,7 +465,7 @@ public class Stage {
 						//System.out.println("neva");
 						if (e.isTouching(e2)) {
 							//System.out.println("say neva");
-							if (sound != null) sound.hitEffect();
+							//if (sound != null) sound.hitEffect();
 							((Projectile)e2).interact(e);
 						}
 					}
@@ -450,13 +473,13 @@ public class Stage {
 						//System.out.println("neva");
 						if (e.isTouching(e2)) {
 							//System.out.println("say neva2");
-							if (sound != null) sound.pickUpEffect();
+							//if (sound != null) sound.pickUpEffect();
 							((PowerUp)e2).interact((Player)e);
 						}
 					}
 					else if (e2 instanceof Coin && e instanceof Player) {
 						if (e.isTouching(e2)) {
-							if (sound != null) sound.pickUpEffect();
+							//if (sound != null) sound.pickUpEffect();
 							((Coin)e2).interact((Player)e);
 						}
 					}

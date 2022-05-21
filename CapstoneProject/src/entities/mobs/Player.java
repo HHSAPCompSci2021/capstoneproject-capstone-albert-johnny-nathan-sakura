@@ -135,6 +135,7 @@ public class Player extends Entity {
 	 * Allows the player to interact with the surrounding Entities
 	 */
 	public void act() {
+		shieldLasts--;
 		if (inv > 0) {
 			inv--;
 		}

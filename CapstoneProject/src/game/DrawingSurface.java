@@ -15,8 +15,10 @@ public class DrawingSurface extends PApplet {
 	private int newWidth, newHeight;
 	private int whoWon;
 	private boolean gameDone, loreDone;
-	private int cutsceneTicks;
+	private int cutsceneTicks, cst2;
 	private PImage[] cutscenes;
+	private int cutsceneSkipCD;
+	private int maxStage;
 	private Sounds s;
 	
 	/**
@@ -33,6 +35,8 @@ public class DrawingSurface extends PApplet {
 		gameDone = false;
 		loreDone = false;
 		cutsceneTicks = 0;
+		cutsceneSkipCD = 0;
+		cst2 = 0;
 		cutscenes = new PImage[7];
 	}
 	
@@ -46,6 +50,8 @@ public class DrawingSurface extends PApplet {
 		game2 = new Game(2, newWidth, newHeight);
 		game1.setup(this);
 		game2.setup(this);
+		maxStage = game1.getStageNum();
+		if (game2.getStageNum() > maxStage) maxStage = game2.getStageNum();
 		//bad design
 		game2.setOtherPlayer(game1.getCurPlayer());
 		game1.setOtherPlayer(game2.getCurPlayer());
@@ -96,6 +102,7 @@ public class DrawingSurface extends PApplet {
 			}
 		} else if (cutscene) {
 			cutsceneTicks++;
+			if (cutsceneSkipCD > 0) cutsceneSkipCD--;
 			if (cutsceneTicks < 300) {
 				if (cutsceneTicks == 0) s.playVine();
 				image(cutscenes[0],0,0);
@@ -117,6 +124,10 @@ public class DrawingSurface extends PApplet {
 				cutsceneTicks = 0;
 				s.stopTrack();
 			}
+			
+			fill(0);
+			text("Press Y to skip cutscenes!!!", 0+10, 0, width,height);
+			
 //			background(200);
 //			textSize(30);
 //			text("In a tattered world littered with monsters, traps, and bosses, "
@@ -129,30 +140,34 @@ public class DrawingSurface extends PApplet {
 //					+ "Which hero will evade all the traps, defeat all the enemies, "
 //					+ "and kill this so-called foe first? "
 //					,width/6,height/4,width - 360, height - 150);
-			if (isPressed(((int)'Y')) || isPressed(((int)'y'))) {
-				cutscene = false;
-				cutsceneTicks = 0;
-				s.stopTrack();
+			if (cutsceneSkipCD <= 0 &&(isPressed(((int)'Y')) || isPressed(((int)'y')))) {
+				//cutscene = false;
+				cutsceneTicks = 300*(((int)(cutsceneTicks/300))+1);
+				cutsceneSkipCD = 30;
+				//s.stopTrack();
 			}
 		} else if (gameDone) {
-			s.nextTrack();
-			cutsceneTicks++;
+			cst2++;
+			s.playEnd();
 			background(0);
 			fill(0, 95, 143);
 			if (whoWon == 1) fill(130, 7, 0);
 			if (loreDone) {
-				if (cutsceneTicks < 300) {
-					if (cutsceneTicks == 0) s.playVine();
-					if (whoWon == 1) image(cutscenes[4],0,0);
-					if (whoWon == 2) image(cutscenes[5],0,0);
-				} else if (cutsceneTicks < 600) {
-					if (cutsceneTicks == 300) s.playVine();
+				if (cst2 < 300) {
+					//if (cutsceneTicks == 0) s.playVine();
+					if (whoWon == 1) {
+						image(cutscenes[4],0,0);
+					} else {
+						image(cutscenes[5],0,0);
+					}
+				} else if (cst2 < 600) {
+					//if (cutsceneTicks == 300) s.playVine();
 					image(cutscenes[6],0,0);
 				} else {
-					if (cutsceneTicks == 600) s.playVine();
+					//if (cutsceneTicks == 600) s.playVine();
 					fill(255, 255, 255);
 					//text("You've killed a jazz band... and your own kind... \n",width/2-400,height/2-100,width,height);
-					text("It seems like the real monster was you,", width/2-300,height/2,width,height);
+					text("You truly have a Lunatic's Resolve,", width/2-300,height/2,width,height);
 
 					if (whoWon == 1) fill(130, 7, 0);
 					if (whoWon == 2) fill(0, 95, 143);
@@ -162,12 +177,20 @@ public class DrawingSurface extends PApplet {
 				
 				
 			} else {
-				background(100);
-				text("Player " + whoWon + " won!!", width/2-100,height/2,width,height);
+				background(200);
+				String t = "Player " + whoWon + " won!!";
+				if (whoWon == 2) {
+					t = t + "\nPlayer 1, you fell off";
+				} else {
+					t = t + "\nPlayer 2, you fell off";
+				}
+				
+				text(t, width/2-100,height/2,width,height);
 			}
 			
 		}
 		else {
+			cutsceneTicks = 0;
 			clear();
 			
 			//somehow add black bars in the game - set the Game's dimensions to 
@@ -176,8 +199,21 @@ public class DrawingSurface extends PApplet {
 			//		game2, 50 on top, 100 at bottom for statistics (within game
 			//		x bounds also)
 			background(100);
+			
+			
 			game2.draw(this);
 			game1.draw(this);
+
+//			if (game1.getStageNum() > maxStage) {
+//				maxStage = game1.getStageNum();
+//				game2.soundOn = false;
+//				game1.soundOn = true;
+//			}
+//			if (game2.getStageNum() > maxStage) {
+//				maxStage = game2.getStageNum();
+//				game1.soundOn = false;
+//				game2.soundOn = true;
+//			}
 			if (game1.gameOver()) {
 				whoWon = 2;
 				gameDone = true;

@@ -16,7 +16,9 @@ public class Sounds implements ActionListener, JayLayerListener {
 	//Player.java in jj.player
 	private int index = 0;
 	private JayLayer j;
+	private int stageNum;
 	public Sounds(int stageNum) {
+		this.stageNum = stageNum;
 		if (stageNum != 0) {
 			j = new JayLayer(System.getProperty("user.dir") ,System.getProperty("user.dir") ,true);
 			int playlist = j.addPlayList();
@@ -54,6 +56,10 @@ public class Sounds implements ActionListener, JayLayerListener {
 			int playlist = j.addPlayList();
 			j.addSong(playlist, "\\songs\\end1.mp3");
 			j.addSong(playlist, "\\songs\\start.mp3");
+//			j.addSong(playlist, "\\songs\\stage1-1.mp3");
+//			j.addSong(playlist, "\\songs\\stage2-1.mp3");
+//			j.addSong(playlist, "\\songs\\stage3-1.mp3");
+			j.addSong(playlist, "\\songs\\end1.mp3");
 			j.addSong(playlist, "\\songs\\end1.mp3");
 			j.changePlayList(playlist);
 			j.addJayLayerListener(this);
@@ -62,8 +68,15 @@ public class Sounds implements ActionListener, JayLayerListener {
 			index = 0;
 		}
 	}
-	
-	
+	/** Starts the last song
+	 * 
+	 */
+	public void playEnd() {
+		if (stageNum == 0) {
+			j.addSong(0, "\\songs\\end1.mp3");
+			j.nextSong();
+		}
+	}
 	public void playEffect() {
 		//if (index > j.getNumberOfSoundEffect()-1) index = 0;
 //		j.addSoundEffect("\\songs\\shoot.mp3");

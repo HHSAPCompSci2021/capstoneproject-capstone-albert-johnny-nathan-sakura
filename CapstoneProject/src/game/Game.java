@@ -19,7 +19,8 @@ public class Game {
 	private Point dimensions, topLeft;
 	private Player p, otherPlayer;
 	private int trapCD, stageSkipCD;
-
+//	private Sounds sound;
+//	protected boolean soundOn;
 	//somehow add black bars in the game - set the Game's dimensions to 
 	//fit within these black bars
 	//plan: 50 on the left of game1, 50 in middle, 50 on the right of
@@ -61,6 +62,10 @@ public class Game {
 		
 	}
 	
+	
+	public int getStageNum() {
+		return curStageInd+1;
+	}
 	//switches stage
 	private boolean switchStage(int i) {
 		if (i <= stages.size() && i > 0) {
@@ -106,6 +111,15 @@ public class Game {
 	 * @param surface Surface to draw things on
 	 */
 	public void draw(PApplet surface) {
+//		if (sound == null) {
+//			sound = new Sounds(0);
+//			sound.nextTrack();
+//		}
+//		if (!soundOn) {
+//			curStage.stopSound();
+//		} else {
+//			curStage.startSound();
+//		}
 		if (trapCD > 0) trapCD--;
 		if (stageSkipCD > 0) stageSkipCD--;
 		if (curStage.isCompleted()) {

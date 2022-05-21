@@ -47,7 +47,7 @@ public class Projectile extends Entity {
 		//System.out.println("interact");
 		if (inv <= 1) {
 			if (fromPlayer == false && e instanceof Player && e.getInv() <= 0) {
-				e.setHp(e.getHp() - getDmg());
+				if (!((Player)(e)).shieldOn()) e.setHp(e.getHp() - getDmg());
 				if (penetrate == false) {
 					setHp(0);
 				}
