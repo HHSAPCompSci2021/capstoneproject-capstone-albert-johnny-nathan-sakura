@@ -90,7 +90,7 @@ public class Player extends Entity {
 	 * @return True if damage increase buff is active, false otherwise
 	 */
 	public boolean dmgIncreaseActive() {
-		return bulletDMG == 500;
+		return bulletDMG == 2000;
 	}
 	
 	/**
